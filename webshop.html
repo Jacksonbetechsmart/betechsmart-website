@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producten — BeTechSmart | KNX-materiaal met advies</title>
+<meta name="description" content="6.000+ KNX- en elektrocomponenten: Zennio, Vimar, Berker en meer. Advies inbegrepen, levering in heel België.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#F0941F;--orange-deep:#D97F0E;--orange-soft:#FDF1E0;
+  --ink:#232A3D;--muted:#5C6478;--bg:#F5F7FB;--card:#FFFFFF;--line:#E3E8F0;--dark:#20242E;
+  --radius:14px;--maxw:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:16px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.15}
+.mono{font-family:'IBM Plex Mono',monospace}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange-deep);margin-bottom:14px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .15s ease}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange-deep)}
+
+header{position:sticky;top:0;z-index:60;background:rgba(245,247,251,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.nav img{height:48px;width:auto}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-weight:500;font-size:15px;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links .active{color:var(--ink);font-weight:700}
+@media (max-width:860px){.nav-links li:not(:last-child){display:none}}
+
+.hero{padding:56px 0 8px}
+.hero h1{font-size:clamp(30px,4.4vw,48px);font-weight:800;margin-bottom:14px}
+.hero h1 .accent{color:var(--orange)}
+.hero p{color:var(--muted);font-size:17.5px;max-width:60ch;margin-bottom:22px}
+.trust{display:flex;gap:24px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:8px}
+.trust span{display:flex;gap:8px;align-items:center}
+.trust i{width:7px;height:7px;border-radius:50%;background:var(--orange);flex:none;font-style:normal}
+
+/* filters */
+.filters{position:sticky;top:72px;z-index:50;background:var(--bg);padding:18px 0 14px;border-bottom:1px solid var(--line)}
+.filter-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.search{flex:1;min-width:220px;position:relative}
+.search input{width:100%;padding:12px 16px 12px 42px;border:1.5px solid var(--line);border-radius:999px;font-size:15px;font-family:'DM Sans',sans-serif;background:var(--card)}
+.search input:focus{border-color:var(--orange);outline:none}
+.search::before{content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-52%);font-size:19px;color:var(--muted)}
+select{padding:12px 16px;border:1.5px solid var(--line);border-radius:999px;font-size:14.5px;font-family:'DM Sans',sans-serif;background:var(--card);color:var(--ink)}
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.cat-chip{font-size:13.5px;font-weight:500;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:7px 15px;border-radius:999px;cursor:pointer;transition:all .13s ease}
+.cat-chip:hover{border-color:var(--orange)}
+.cat-chip.sel{background:var(--orange);border-color:var(--orange);color:#fff}
+.count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-left:auto}
+
+/* grid */
+.gridwrap{padding:30px 0 70px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s ease,transform .15s ease}
+.pcard:hover{border-color:var(--orange);transform:translateY(-3px)}
+.pimg{aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);padding:14px}
+.pimg img{max-height:100%;object-fit:contain}
+.pimg .noimg{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B7BECB;letter-spacing:.1em;text-transform:uppercase}
+.pbody{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pbrand{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pname{font-family:'Sora',sans-serif;font-weight:700;font-size:14.5px;line-height:1.35}
+.pshort{font-size:13px;color:var(--muted)}
+.pfoot{margin-top:auto;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pprice{font-family:'Sora',sans-serif;font-weight:800;font-size:16.5px}
+.pprice small{font-size:10.5px;color:var(--muted);font-weight:400;font-family:'IBM Plex Mono',monospace;display:block}
+.pask{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--orange-deep);text-decoration:none;font-weight:500}
+.pask:hover{text-decoration:underline}
+.pid{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#B7BECB}
+.more{display:flex;justify-content:center;margin-top:34px}
+.empty{text-align:center;color:var(--muted);padding:60px 0;font-size:16px}
+
+/* admin */
+.adminbar{display:none;background:var(--dark);color:#E8EBF2;padding:14px 0;position:sticky;top:72px;z-index:55}
+body.admin .adminbar{display:block}
+body.admin .filters{top:130px}
+.adminbar .wrap{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.adminbar .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.adminbar .btn{padding:9px 16px;font-size:11px}
+.adminbar .note{font-size:12.5px;color:#9AA3B5;margin-left:auto}
+.padmin{display:none;border-top:1px dashed var(--line);margin-top:10px;padding-top:10px;gap:8px;align-items:center}
+body.admin .padmin{display:flex}
+.padmin input[type=number]{width:90px;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;font-size:13px}
+.padmin label{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);cursor:pointer}
+.adminlink{cursor:pointer;color:#B7BECB}
+
+footer{background:var(--dark);color:#8E96A8;padding:34px 0;font-size:13.5px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer a{color:#B4BBC9;text-decoration:none}
+footer a:hover{color:#fff}
+
+/* detail modal */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(35,42,61,.55);z-index:90;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:var(--card);border-radius:18px;max-width:820px;width:100%;max-height:88vh;overflow:auto;padding:30px;position:relative;display:grid;grid-template-columns:280px 1fr;gap:28px}
+.modal .close{position:absolute;top:14px;right:16px;border:none;background:var(--bg);width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;color:var(--muted)}
+.modal .mimg{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;align-items:center;justify-content:center;aspect-ratio:1/1}
+.modal .mimg img{max-height:100%;object-fit:contain}
+.modal h3{font-size:20px;font-weight:800;margin:4px 0 6px}
+.modal .mdesc{font-size:14px;color:var(--ink);white-space:pre-line;margin:14px 0;max-height:260px;overflow:auto;border-top:1px solid var(--line);padding-top:12px}
+.modal .mlinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+@media (max-width:640px){.modal{grid-template-columns:1fr}}
+
+/* ZS55 samensteller */
+.builder{display:none;background:linear-gradient(150deg,#262B38,#171B25);color:#E8EBF2;border-radius:18px;padding:28px;margin-bottom:26px}
+.builder.open{display:block}
+.builder h3{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:4px}
+.builder .sub{font-size:13.5px;color:#9AA3B5;margin-bottom:18px}
+.builder .b-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.builder .b-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);width:80px;flex:none}
+.bchip{font-size:13.5px;font-weight:500;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#E8EBF2;padding:8px 16px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.bchip.sel{background:var(--orange);border-color:var(--orange);color:#fff}
+.bchip .sw{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.2);flex:none}
+.b-result{border-top:1px dashed rgba(255,255,255,.18);margin-top:16px;padding-top:16px;display:grid;gap:8px}
+.b-line{display:flex;align-items:center;gap:12px;font-size:14px;background:rgba(255,255,255,.05);border-radius:10px;padding:8px 12px}
+.b-line img{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:8px;flex:none}
+.b-line .lp{margin-left:auto;font-family:'Sora',sans-serif;font-weight:700;white-space:nowrap}
+.b-total{display:flex;align-items:center;gap:14px;justify-content:flex-end;font-family:'Sora',sans-serif;font-weight:800;font-size:19px;margin-top:6px;flex-wrap:wrap}
+.b-total small{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#9AA3B5;font-weight:400}
+.builder{position:relative}
+.builder .close{position:absolute;top:12px;right:14px;border:none;background:rgba(255,255,255,.08);color:#C6CCDA;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:15px}
+
+/* winkelmandje */
+.cartbtn{position:fixed;bottom:22px;right:22px;z-index:80;background:var(--orange);color:#fff;border:none;border-radius:999px;padding:15px 22px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;cursor:pointer;box-shadow:0 10px 26px -10px rgba(240,148,31,.7);display:flex;gap:10px;align-items:center}
+.cartbtn:hover{background:var(--orange-deep)}
+.cartbtn .n{background:#fff;color:var(--orange-deep);border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-weight:700;font-size:12px;padding:0 6px}
+.cart-drawer{position:fixed;top:0;right:-420px;width:min(400px,100vw);height:100vh;background:var(--card);z-index:95;box-shadow:-20px 0 50px rgba(35,42,61,.25);transition:right .25s ease;display:flex;flex-direction:column}
+.cart-drawer.open{right:0}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid var(--line)}
+.cart-head h3{font-size:18px;font-weight:800}
+.cart-head button{border:none;background:var(--bg);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;color:var(--muted)}
+.cart-items{flex:1;overflow:auto;padding:16px 22px;display:grid;gap:12px;align-content:start}
+.citem{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.citem img{width:44px;height:44px;object-fit:contain;background:#fff;border-radius:8px;flex:none}
+.citem .ci-name{font-size:12.5px;font-weight:600;line-height:1.3}
+.citem .ci-price{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)}
+.citem .qty{display:flex;gap:6px;align-items:center;margin-left:auto;flex:none}
+.citem .qty button{width:24px;height:24px;border-radius:6px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;font-weight:700}
+.citem .rm{border:none;background:none;color:#C4553B;cursor:pointer;font-size:15px;flex:none}
+.cart-foot{border-top:1px solid var(--line);padding:18px 22px;display:grid;gap:12px}
+.cart-total{display:flex;justify-content:space-between;font-family:'Sora',sans-serif;font-weight:800;font-size:18px}
+.cart-total small{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);font-weight:400}
+.cart-empty{text-align:center;color:var(--muted);padding:40px 10px;font-size:14.5px}
+.btn-mand{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);padding:7px 12px;border-radius:999px;cursor:pointer}
+.btn-mand:hover{border-color:var(--orange);color:var(--orange-deep)}
+.btn-stel{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;border:none;background:var(--orange);color:#fff;padding:8px 13px;border-radius:999px;cursor:pointer}
+.btn-stel:hover{background:var(--orange-deep)}
+.qtybox{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.qtybox button{width:28px;height:30px;border:none;background:var(--bg);cursor:pointer;font-weight:700;font-size:14px;color:var(--ink)}
+.qtybox button:hover{background:var(--orange-soft)}
+.qtybox input{width:38px;border:none;text-align:center;font-size:13.5px;font-family:'DM Sans',sans-serif;-moz-appearance:textfield}
+.qtybox input::-webkit-outer-spin-button,.qtybox input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.vchip{font-size:12.5px;font-weight:500;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);padding:6px 13px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.vchip:hover{border-color:var(--orange)}
+.vchip.sel{background:var(--orange);border-color:var(--orange);color:#fff}
+.vchip .sw,.cdot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.18);display:inline-block;flex:none}
+.cdots{display:flex;gap:6px;margin-top:4px}
+.cdot{width:17px;height:17px;cursor:pointer;transition:transform .12s ease}
+.cdot:hover{transform:scale(1.2)}
+.cdot.sel{outline:2.5px solid var(--orange);outline-offset:1.5px}
+
+@media (max-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html"><img src="https://static.wixstatic.com/media/2e9bab_c7d7649194be49cf89fd66394828bad8~mv2.png/v1/fill/w_253,h_151,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/color1_logo_transparent_background.png" alt="BeTechSmart"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#waarom">Waarom KNX</a></li>
+      <li><a href="index.html#pakketten">Pakketten</a></li>
+      <li><a href="index.html#werkwijze">Werkwijze</a></li>
+      <li><a class="active" href="#">Producten</a></li>
+      <li><a href="index.html#contact" class="btn btn-primary">Showroom boeken</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="adminbar">
+  <div class="wrap">
+    <span class="tag">Adminmodus</span>
+    <button class="btn btn-primary" id="a-show">Toon prijzen (filterresultaat)</button>
+    <button class="btn btn-primary" style="background:#3A4152" id="a-hide">Verberg prijzen (filterresultaat)</button>
+    <button class="btn btn-primary" style="background:#8A5A00" id="a-disc">Korting % op filterresultaat</button>
+    <button class="btn btn-primary" style="background:#2E7D32" id="a-download">⬇ Download products.js</button>
+    <button class="btn btn-primary" style="background:#3A4152" id="a-exit">Sluit admin</button>
+    <span class="note">Wijzigingen zijn pas live nadat je het gedownloade products.js naar GitHub uploadt.</span>
+  </div>
+</div>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Producten</p>
+    <h1>Alles voor je KNX-project, <span class="accent">advies inbegrepen</span>.</h1>
+    <p>Meer dan 6.000 componenten van Zennio, Vimar, Berker en andere topmerken — permanent leverbaar. Niet zeker wat jouw project nodig heeft? Dat is exact waar wij het verschil maken.</p>
+    <div class="trust">
+      <span><i></i>Levering in heel België</span>
+      <span><i></i>Technische ondersteuning inbegrepen</span>
+      <span><i></i>Advies bij productkeuze</span>
+    </div>
+  </div>
+</div>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="filter-row">
+      <div class="search"><input type="search" id="f-q" placeholder="Zoek op naam, code of omschrijving… (bv. MAXinBOX, Z70, duoclip)"></div>
+      <select id="f-brand"><option value="">Alle merken</option></select>
+      <span class="count" id="f-count"></span>
+    </div>
+    <div class="cats" id="f-cats"></div>
+  </div>
+</div>
+
+<div class="gridwrap">
+  <div class="wrap">
+    <div class="builder" id="builder">
+      <button class="close" id="b-close" aria-label="Sluiten">✕</button>
+      <h3 id="b-title">Stel je KNX-drukknop samen</h3>
+      <p class="sub">Kies je opties — wij tonen meteen de juiste onderdelen met prijs.</p>
+      <div class="b-row"><span class="b-label">Serie</span>
+        <button class="bchip sel" data-serie="ZS55">ZS55 (55×55)</button>
+        <button class="bchip" data-serie="ZS70">ZS70 (70×70)</button>
+      </div>
+      <div class="b-row" id="b-row-type"><span class="b-label">Bediening</span>
+        <button class="bchip sel" data-type="enkel">Enkel (1-v)</button>
+        <button class="bchip" data-type="opneer">Op/neer (2-v)</button>
+        <button class="bchip" data-type="dubbel">Dubbel (2-v)</button>
+        <button class="bchip" data-type="vier">Dubbel op/neer (4-v)</button>
+      </div>
+      <div class="b-row" id="b-row-stopc" style="display:none"><span class="b-label">Type</span>
+        <button class="bchip sel" data-stopc="penaarde">Penaarde (België)</button>
+        <button class="bchip" data-stopc="schuko">Schuko</button>
+        <span style="font-size:12px;color:#9AA3B5">In België gebruik je enkel penaarde</span>
+      </div>
+      <div class="b-row"><span class="b-label">Kleur</span>
+        <button class="bchip sel" data-kleur="wit"><span class="sw" style="background:#F4F4F2"></span>Wit</button>
+        <button class="bchip" data-kleur="antraciet"><span class="sw" style="background:#3A3F45"></span>Antraciet</button>
+        <button class="bchip" data-kleur="champagne"><span class="sw" style="background:#D8C49A"></span>Champagne</button>
+        <button class="bchip" data-kleur="mokka"><span class="sw" style="background:#6B5344"></span>Mokka</button>
+        <button class="bchip" data-kleur="zilver"><span class="sw" style="background:#C9CCD1"></span>Zilver</button>
+      </div>
+      <div class="b-result" id="b-result"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" style="display:none">Geen producten gevonden. Probeer een andere zoekterm — of <a href="index.html#contact" style="color:var(--orange-deep)">vraag het ons rechtstreeks</a>.</p>
+    <div class="more"><button class="btn btn-ghost" id="more" style="display:none">Toon meer producten</button></div>
+  </div>
+</div>
+</main>
+
+<button class="cartbtn" id="cartbtn">🛒 Mandje <span class="n" id="cart-n">0</span></button>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-head"><h3>Jouw mandje</h3><button id="cart-close" aria-label="Sluiten">✕</button></div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-foot">
+    <div class="cart-total"><span>Totaal</span><span id="cart-total">€ 0,00 <small>excl. btw</small></span></div>
+    <button class="btn btn-primary" id="cart-send">Ga naar bestellen →</button>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);text-align:center">Geen online betaling — je vult je factuurgegevens in en wij bevestigen prijs, voorraad en levering binnen 1 werkdag.</p>
+  </div>
+</div>
+
+<div class="modal-bg" id="order-bg">
+  <div class="modal" role="dialog" aria-modal="true" style="grid-template-columns:1fr;max-width:560px">
+    <button class="close" id="o-close" aria-label="Sluiten">✕</button>
+    <div>
+      <span class="pbrand">Bestelling · <span id="o-count"></span></span>
+      <h3>Factuurgegevens invullen</h3>
+      <p class="pshort" style="display:block;margin-top:4px">Vul je gegevens in — wij bevestigen prijs, voorraad en levering binnen 1 werkdag. Betalen doe je pas na onze bevestiging, via factuur.</p>
+      <form id="o-form" style="display:grid;gap:12px;margin-top:16px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Naam *<input name="naam" required style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+          <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Bedrijf<input name="bedrijf" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">E-mail *<input type="email" name="email" required style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+          <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Telefoon *<input type="tel" name="telefoon" required style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+        </div>
+        <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">BTW-nummer (indien van toepassing)<input name="btw" placeholder="BE 0xxx.xxx.xxx" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+        <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Facturatieadres *<textarea name="facturatieadres" required rows="2" placeholder="Straat + nr, postcode gemeente" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
+        <div style="display:flex;gap:16px;font-size:14px;align-items:center;flex-wrap:wrap">
+          <b style="font-family:'Sora',sans-serif;font-size:13px">Levering *</b>
+          <label style="display:flex;gap:6px;align-items:center"><input type="radio" name="levering" value="Afhalen in Kapellen" checked style="accent-color:var(--orange)"> Afhalen in Kapellen</label>
+          <label style="display:flex;gap:6px;align-items:center"><input type="radio" name="levering" value="Leveren" style="accent-color:var(--orange)"> Leveren</label>
+        </div>
+        <label id="o-lever-adres" style="display:none;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;gap:5px">Leveradres<textarea name="leveradres" rows="2" placeholder="Indien anders dan facturatieadres" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
+        <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Opmerkingen<textarea name="opmerking" rows="2" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
+        <button type="submit" class="btn btn-primary" id="o-submit">Bestelling versturen</button>
+        <p id="o-msg" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;text-align:center;color:var(--muted)"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-bg">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" id="m-close" aria-label="Sluiten">✕</button>
+    <div class="mimg" id="m-img"></div>
+    <div>
+      <span class="pbrand" id="m-brand"></span>
+      <h3 id="m-name"></h3>
+      <span class="pshort" id="m-short"></span>
+      <div id="m-vars" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px"></div>
+      <div id="m-price" style="margin-top:10px"></div>
+      <div id="m-note"></div>
+      <div id="m-extra"></div>
+      <div class="mdesc" id="m-desc"></div>
+      <div class="mlinks" id="m-links"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 BeTechSmart — Klinkaardstraat 210, Unit C001, 2950 Kapellen</span>
+    <span><a href="mailto:info@betechsmart.be">info@betechsmart.be</a> · <a href="tel:+3233149068">+32 3 314 90 68</a> · <span class="adminlink mono" id="adminlink" style="font-size:11px">beheer</span></span>
+  </div>
+</footer>
+
+<script src="products.js"></script>
+<script>
+// ================= instellingen =================
+const ADMIN_CODE = "BTS-2026";        // ← pas dit aan naar je eigen admincode
+const CONTACT_EMAIL = "info@betechsmart.be";
+// Bestellingen worden verstuurd via Web3Forms — formulier "BeTechSmart Webshop", aflevering op info@betechsmart.be.
+const WEB3FORMS_KEY = "9a7809dd-5ff2-452d-a363-78a1351357bc";
+const BATCH = 48;                      // producten per lading
+
+// ================= state =================
+let q = "", brand = "", cat = "", shown = BATCH;
+const grid = document.getElementById('grid');
+const byId = {}; PRODUCTS.forEach(p=>byId[p.id]=p);
+// kleurvarianten-index: zelfde naam, andere (kleur)
+const KLEUR_HEX={wit:'#F4F4F2',antraciet:'#3A3F45',zilver:'#C9CCD1',champagne:'#D8C49A',mokka:'#6B5344'};
+const VARKEY=p=>p.brand+'|'+p.name.replace(/\s*\([^)]*\)\s*(?:v\d+)?\s*$/i,'');
+const VARIANTS={};
+PRODUCTS.forEach(p=>{
+  if(/\([^)]*\)\s*(?:v\d+)?\s*$/i.test(p.name) && !/custom/i.test(p.name)){
+    (VARIANTS[VARKEY(p)]=VARIANTS[VARKEY(p)]||[]).push(p);
+  }
+});
+function kleurVan(name){
+  const g=[...name.matchAll(/\(([^)]*)\)/g)].map(m=>m[1].toLowerCase()).join(' ');
+  return Object.keys(KLEUR_HEX).find(k=>g.includes(k))||null;
+}
+function kleurDots(p){
+  const sibs=VARIANTS[VARKEY(p)]||[];
+  if(sibs.length<2) return [];
+  const seen={}, out=[];
+  ['antraciet','wit','zilver','champagne','mokka'].forEach(k=>{
+    const v=sibs.find(x=>kleurVan(x.name)===k);
+    if(v && !seen[k]){seen[k]=1; out.push({k,v});}
+  });
+  return out.length>1?out:[];
+}
+
+// filters vullen
+const cats = [...new Set(PRODUCTS.map(p=>p.cat))].sort((a,b)=>a.localeCompare(b,'nl'));
+const catsEl = document.getElementById('f-cats');
+const allChip = document.createElement('button');
+allChip.className='cat-chip sel'; allChip.textContent='Alle categorieën';
+allChip.onclick=()=>{cat='';refresh()};
+catsEl.appendChild(allChip);
+cats.forEach(c=>{
+  const b=document.createElement('button');
+  b.className='cat-chip'; b.textContent=c; b.dataset.c=c;
+  b.onclick=()=>{cat = (cat===c?'':c); refresh()};
+  catsEl.appendChild(b);
+});
+const brandSel = document.getElementById('f-brand');
+[...new Set(PRODUCTS.map(p=>p.brand))].sort().forEach(b=>{
+  const o=document.createElement('option'); o.value=b; o.textContent=b; brandSel.appendChild(o);
+});
+brandSel.onchange=()=>{brand=brandSel.value;refresh()};
+document.getElementById('f-q').addEventListener('input',e=>{q=e.target.value.toLowerCase();refresh()});
+
+function filtered(){
+  const words = q.split(/\s+/).filter(Boolean);
+  return PRODUCTS.filter(p=>{
+    if(brand && p.brand!==brand) return false;
+    if(cat && p.cat!==cat) return false;
+    if(words.length){
+      const hay = (p.name+' '+p.short+' '+p.id+' '+p.brand).toLowerCase();
+      if(!words.every(w=>hay.includes(w))) return false;
+    }
+    return true;
+  });
+}
+function euro(v){return '€ '+v.toLocaleString('nl-BE',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+function card(p){
+  const el=document.createElement('div'); el.className='pcard';
+  const hoverAttrs = p.hover ? ` data-src="${p.img}" data-hover="${p.hover}" onmouseenter="this.src=this.dataset.hover" onmouseleave="this.src=this.dataset.src"` : '';
+  const img = p.img
+    ? `<img loading="lazy" src="${p.img}"${hoverAttrs} alt="${p.name.replace(/"/g,'&quot;')}" onerror="this.outerHTML='<span class=noimg>Foto op aanvraag</span>'">`
+    : `<span class="noimg">Foto op aanvraag</span>`;
+  const hasDisc = p.show && p.price!=null && p.rrp!=null && p.price < p.rrp;
+  const pct = hasDisc ? Math.round((1 - p.price/p.rrp)*100) : 0;
+  const priceHtml = (p.show && p.price!=null)
+    ? (hasDisc
+        ? `<div class="pprice"><s style="font-weight:400;font-size:12.5px;color:var(--muted)">${euro(p.rrp)}</s> ${euro(p.price)}<small>excl. btw · <b style="color:var(--orange-deep)">-${pct}%</b></small></div>`
+        : `<div class="pprice">${euro(p.price)}<small>excl. btw</small></div>`)
+    : `<div class="pprice" style="font-size:13px;color:var(--muted);font-weight:500">Prijs op aanvraag</div>`;
+  const mail = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Vraag over '+p.id+' — '+p.name)}`;
+  el.innerHTML = `
+    <div class="pimg">${img}</div>
+    <div class="pbody">
+      <span class="pbrand">${p.brand} · ${p.cat}</span>
+      <span class="pname">${p.name}</span>
+      <span class="pshort">${p.short}</span>
+      ${(()=>{const d=kleurDots(p);return d.length?`<div class="cdots">${d.map(x=>`<span class="cdot${x.v.id===p.id?' sel':''}" style="background:${KLEUR_HEX[x.k]}" data-vdot="${x.v.id}" title="${x.k.charAt(0).toUpperCase()+x.k.slice(1)}"></span>`).join('')}</div>`:''})()}
+      ${p.note?`<span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--orange-deep);background:var(--orange-soft);border-radius:6px;padding:4px 8px;margin-top:2px;display:inline-block">⚠ ${p.note}</span>`:''}
+      <div class="pfoot">${priceHtml}<a class="pask" href="${mail}">Vraag advies →</a></div>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center">
+        <span class="qtybox"><button type="button" data-step="-1">−</button><input class="qv" type="number" min="1" value="1" aria-label="Aantal"><button type="button" data-step="1">＋</button></span>
+        <button class="btn-mand" data-add="${p.id}">＋ In mandje</button>
+        ${BUILDER_TRIGGERS[p.id]?`<button class="btn-stel" data-builder="${p.id}">Stel samen</button>`:''}
+      </div>
+      <span class="pid">${p.id}</span>
+      <div class="padmin">
+        <input type="number" step="0.01" value="${p.price??''}" data-id="${p.id}" class="a-price" placeholder="verkoopprijs" title="Jouw verkoopprijs">
+        <span style="font-size:11px;color:var(--muted)">RRP ${p.rrp!=null?euro(p.rrp):'—'}</span>
+        <label><input type="checkbox" class="a-show" data-id="${p.id}" ${p.show?'checked':''}> prijs zichtbaar</label>
+      </div>
+    </div>`;
+  const open=()=>openModal(p);
+  const pi=el.querySelector('.pimg'), pn=el.querySelector('.pname');
+  pi.style.cursor='pointer'; pn.style.cursor='pointer';
+  pi.onclick=open; pn.onclick=open;
+  el.querySelectorAll('[data-vdot]').forEach(d=>d.onclick=(e)=>{e.stopPropagation();openModal(byId[d.dataset.vdot]);});
+  return el;
+}
+
+// ================= detail modal =================
+const mbg=document.getElementById('modal-bg');
+let modalRaam=null;
+function openModal(p){
+  document.getElementById('m-img').innerHTML = p.img?`<img src="${p.img}" alt="">`:`<span class="noimg">Foto op aanvraag</span>`;
+  document.getElementById('m-brand').textContent = p.brand+' · '+p.cat+' · '+p.id;
+  document.getElementById('m-name').textContent = p.name;
+  document.getElementById('m-short').textContent = p.short;
+  const hasDisc = p.show && p.price!=null && p.rrp!=null && p.price<p.rrp;
+  document.getElementById('m-price').innerHTML = (p.show&&p.price!=null)
+    ? `<span class="pprice">${hasDisc?`<s style="font-weight:400;font-size:13px;color:var(--muted)">${euro(p.rrp)}</s> `:''}${euro(p.price)} <small style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">excl. btw${hasDisc?` · <b style="color:var(--orange-deep)">-${Math.round((1-p.price/p.rrp)*100)}%</b>`:''}</small></span>`
+    : `<span style="color:var(--muted);font-weight:500">Prijs op aanvraag</span>`;
+  document.getElementById('m-note').innerHTML = p.note?`<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--orange-deep);background:var(--orange-soft);border-radius:6px;padding:4px 8px;display:inline-block;margin-top:8px">⚠ ${p.note}</span>`:'';
+  document.getElementById('m-desc').textContent = p.desc||'';
+  document.getElementById('m-desc').style.display = p.desc?'block':'none';
+  // kleur-/uitvoeringsvarianten: zelfde naam, andere (kleur)
+  const vars = VARIANTS[VARKEY(p)]||[];
+  const mv=document.getElementById('m-vars');
+  if(vars.length>1){
+    mv.innerHTML='<span style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);width:100%">Uitvoering / kleur</span>'+
+      vars.map(v=>{
+        const lbl=(v.name.match(/\(([^)]*)\)\s*(?:v\d+)?\s*$/i)||[,''])[1];
+        const k=kleurVan(v.name);
+        return `<button class="vchip${v.id===p.id?' sel':''}" data-var="${v.id}">${k?`<span class="sw" style="background:${KLEUR_HEX[k]}"></span>`:''}${lbl}</button>`;
+      }).join('');
+    mv.querySelectorAll('[data-var]').forEach(b=>b.onclick=()=>openModal(byId[b.dataset.var]));
+  } else mv.innerHTML='';
+  // Extra blok: afgewerkte foto + Tecla-raam aanvinken
+  const ex=document.getElementById('m-extra');
+  modalRaam=null;
+  let exHtml='';
+  if(p.hover){
+    exHtml+=`<div style="border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:12px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <img src="${p.hover}" alt="Afgewerkte versie" style="width:110px;height:110px;object-fit:contain;background:#fff;border-radius:10px">
+      <span style="flex:1;min-width:150px;font-size:13px"><b style="font-family:'Sora',sans-serif">Zo ziet het er compleet geplaatst uit</b><br>
+      <span style="color:var(--muted)">${p.id==='ZE8300005'||p.id==='ZE8300003'?'Het schroefje in het midden is zwart. In België gebruik je enkel stopcontacten met penaarde.':'Met toets en afdekraam gemonteerd.'}</span></span></div>`;
+  }
+  const tm=p.name.match(/tecla (?:rgb )?(55|70) x/i);
+  if(tm){
+    const raamSerie='ZS'+tm[1];
+    const k=kleurVan(p.name);
+    const raam=k?PRODUCTS.find(r=>r.brand==='Zennio'&&r.name.includes(raamSerie)&&/afdekraam 1m/i.test(r.name)&&!/custom/i.test(r.name)&&kleurIn(r.name,k)):null;
+    if(raam){
+      modalRaam=raam.id;
+      exHtml+=`<label style="border:1.5px dashed var(--line);border-radius:12px;padding:12px 14px;margin-top:12px;display:flex;gap:12px;align-items:center;cursor:pointer">
+        <input type="checkbox" id="m-raam-chk" checked style="width:18px;height:18px;accent-color:var(--orange)">
+        ${raam.img?`<img src="${raam.img}" alt="" style="width:42px;height:42px;object-fit:contain;background:#fff;border-radius:8px">`:''}
+        <span style="flex:1;min-width:150px"><b style="font-family:'Sora',sans-serif;font-size:13px">Met afdekraam, zelfde kleur</b><br>
+        <span style="font-size:12px;color:var(--muted)">${raam.name} · +${raam.price!=null?euro(raam.price):'op aanvraag'} per stuk</span></span></label>`;
+    } else {
+      exHtml+=`<p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--orange-deep);margin-top:10px">Afdekraam apart te bestellen — kies eerst een kleur-uitvoering hierboven.</p>`;
+    }
+    // gewone Tecla: verwijs naar RGB-reeks voor meer kleuren
+    if(!/rgb/i.test(p.name)){
+      const rgbBase=p.name.replace(/\s*\([^)]*\)\s*$/,'').replace(/Tecla 55/i,'Tecla RGB 55');
+      const rgbSibs=(VARIANTS[p.brand+'|'+rgbBase]||[]);
+      if(rgbSibs.length){
+        const doel=rgbSibs.find(v=>kleurVan(v.name)===k)||rgbSibs[0];
+        exHtml+=`<button class="btn-mand" id="m-rgb-link" style="margin-top:10px">Meer kleuren nodig? Bekijk de ${rgbBase.replace('Zennio ','')} →</button>`;
+        setTimeout(()=>{const b=document.getElementById('m-rgb-link'); if(b) b.onclick=()=>openModal(doel);},0);
+      }
+    }
+  }
+  ex.innerHTML=exHtml;
+  const mail=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Vraag over '+p.id+' — '+p.name)}`;
+  document.getElementById('m-links').innerHTML =
+    `<span class="qtybox"><button type="button" data-step="-1">−</button><input class="qv" id="m-qty" type="number" min="1" value="1" aria-label="Aantal"><button type="button" data-step="1">＋</button></span>`+
+    `<button class="btn btn-primary" id="m-add">＋ In mandje</button>`+
+    `<a class="btn btn-ghost" href="${mail}">Vraag advies</a>`+
+    (p.url?`<a class="btn btn-ghost" href="${p.url}" target="_blank" rel="noopener">Technische fiche →</a>`:'');
+  document.getElementById('m-links').querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{
+    const inp=document.getElementById('m-qty');
+    inp.value=Math.max(1,(parseInt(inp.value)||1)+parseInt(b.dataset.step));
+  });
+  document.getElementById('m-add').onclick=()=>{
+    const n=Math.max(1,parseInt(document.getElementById('m-qty').value)||1);
+    addCart(p.id, n);
+    const chk=document.getElementById('m-raam-chk');
+    if(chk && chk.checked && modalRaam) addCart(modalRaam, n);
+    mbg.classList.remove('open');
+  };
+  mbg.classList.add('open');
+}
+document.getElementById('m-close').onclick=()=>mbg.classList.remove('open');
+mbg.addEventListener('click',e=>{if(e.target===mbg)mbg.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){mbg.classList.remove('open');document.getElementById('cart-drawer').classList.remove('open');}});
+
+// ================= winkelmandje =================
+// bewaring: probeer localStorage (blijft bewaard na verversen), val stil terug op geheugen
+const store={
+  get(){ try{return JSON.parse(localStorage.getItem('bts-cart')||'{}')}catch(e){return this._m||{}} },
+  set(v){ this._m=v; try{localStorage.setItem('bts-cart',JSON.stringify(v))}catch(e){} }
+};
+let cart = store.get();
+function addCart(id,n){
+  if(!byId[id]) return;
+  cart[id]=(cart[id]||0)+n; if(cart[id]<=0) delete cart[id];
+  store.set(cart); renderCart();
+  document.getElementById('cart-drawer').classList.add('open');
+}
+function renderCart(){
+  // ruim artikelen op die niet meer in products.js bestaan (bv. na een update)
+  Object.keys(cart).forEach(id=>{ if(!byId[id]) delete cart[id]; });
+  store.set(cart);
+  const ids=Object.keys(cart);
+  document.getElementById('cart-n').textContent=ids.reduce((s,i)=>s+cart[i],0);
+  const box=document.getElementById('cart-items');
+  if(!ids.length){box.innerHTML='<p class="cart-empty">Je mandje is nog leeg.<br>Voeg producten toe met "＋ In mandje".</p>';}
+  else box.innerHTML=ids.map(id=>{
+    const p=byId[id];
+    return `<div class="citem">${p.img?`<img src="${p.img}" alt="" data-mid="${id}" style="cursor:zoom-in" title="Klik voor grote foto">`:''}
+      <div><div class="ci-name">${p.name}</div>
+      <div class="ci-price">${p.id} · ${(p.show&&p.price!=null)?euro(p.price)+' /st':'prijs op aanvraag'}</div></div>
+      <div class="qty"><button data-q="${id}|-1">−</button><span>${cart[id]}</span><button data-q="${id}|1">＋</button></div>
+      <button class="rm" data-rm="${id}" aria-label="Verwijderen">🗑</button></div>`;
+  }).join('');
+  box.querySelectorAll('[data-mid]').forEach(img=>img.onclick=()=>openModal(byId[img.dataset.mid]));
+  let total=0, opAanvraag=false;
+  ids.forEach(id=>{const p=byId[id]; if(p.show&&p.price!=null) total+=p.price*cart[id]; else opAanvraag=true;});
+  document.getElementById('cart-total').innerHTML=euro(total)+' <small>excl. btw'+(opAanvraag?' · + artikelen op aanvraag':'')+'</small>';
+  box.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const[id,d]=b.dataset.q.split('|');addCart(id,parseInt(d));});
+  box.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{delete cart[b.dataset.rm];store.set(cart);renderCart();});
+}
+function orderLines(){
+  return Object.keys(cart).map(id=>`${cart[id]}x  ${id}  ${byId[id].name}${(byId[id].show&&byId[id].price!=null)?'  à '+euro(byId[id].price):''}`);
+}
+document.getElementById('cartbtn').onclick=()=>{document.getElementById('cart-drawer').classList.toggle('open');};
+document.getElementById('cart-close').onclick=()=>document.getElementById('cart-drawer').classList.remove('open');
+
+// ================= bestelformulier =================
+const obg=document.getElementById('order-bg');
+document.getElementById('cart-send').onclick=()=>{
+  if(!Object.keys(cart).length){return;}
+  document.getElementById('o-count').textContent=orderLines().length+' artikelen';
+  document.getElementById('o-msg').textContent='';
+  document.getElementById('cart-drawer').classList.remove('open');
+  obg.classList.add('open');
+};
+document.getElementById('o-close').onclick=()=>obg.classList.remove('open');
+obg.addEventListener('click',e=>{if(e.target===obg)obg.classList.remove('open')});
+document.querySelectorAll('input[name=levering]').forEach(r=>r.onchange=()=>{
+  document.getElementById('o-lever-adres').style.display = document.querySelector('input[name=levering]:checked').value==='Leveren'?'grid':'none';
+});
+document.getElementById('o-form').onsubmit=async(e)=>{
+  e.preventDefault();
+  const f=new FormData(e.target);
+  const besteltekst='BESTELLING WEBSHOP\n\n'+orderLines().join('\n')+'\n\nTotaal (zichtbare prijzen): '+document.getElementById('cart-total').textContent.replace(/\s+/g,' ');
+  const gegevens='\n\nFACTUURGEGEVENS\nNaam: '+f.get('naam')+'\nBedrijf: '+(f.get('bedrijf')||'-')+'\nE-mail: '+f.get('email')+'\nTelefoon: '+f.get('telefoon')+'\nBTW: '+(f.get('btw')||'-')+'\nFacturatieadres: '+f.get('facturatieadres')+'\nLevering: '+f.get('levering')+(f.get('leveradres')?'\nLeveradres: '+f.get('leveradres'):'')+'\nOpmerking: '+(f.get('opmerking')||'-');
+  const msg=document.getElementById('o-msg'), btn=document.getElementById('o-submit');
+  btn.disabled=true; msg.style.color='var(--muted)'; msg.textContent='Versturen…';
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',
+      headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({
+        access_key:WEB3FORMS_KEY,
+        subject:'Webshopbestelling — '+f.get('naam'),
+        from_name:'BeTechSmart Webshop',
+        name:f.get('naam'), klant_email:f.get('email'), replyto:f.get('email'),
+        message:besteltekst+gegevens
+      })});
+    const j=await r.json();
+    if(j.success){
+      msg.style.color='#2E7D32'; msg.textContent='✓ Bestelling verzonden! Je ontvangt binnen 1 werkdag onze bevestiging.';
+      cart={}; store.set(cart); renderCart();
+      setTimeout(()=>obg.classList.remove('open'),2600);
+    } else throw new Error(j.message||'verzending geweigerd');
+  }catch(err){
+    // vangnet: laat de bestelling nooit verloren gaan
+    msg.style.color='var(--orange-deep)';
+    msg.textContent='Rechtstreeks versturen lukte niet — we openen je e-mailprogramma als reserve.';
+    location.href=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Webshopbestelling — '+f.get('naam'))}&body=${encodeURIComponent('Beste BeTechSmart,\n\n'+besteltekst+gegevens)}`;
+  }
+  btn.disabled=false;
+};
+renderCart();
+
+function refresh(reset=true){
+  if(reset) shown=BATCH;
+  document.querySelectorAll('.cat-chip').forEach(b=>b.classList.toggle('sel', b.dataset.c?b.dataset.c===cat:!cat));
+  const list=filtered();
+  document.getElementById('f-count').textContent=list.length.toLocaleString('nl-BE')+' producten';
+  grid.innerHTML='';
+  list.slice(0,shown).forEach(p=>grid.appendChild(card(p)));
+  document.getElementById('empty').style.display=list.length?'none':'block';
+  document.getElementById('more').style.display=list.length>shown?'inline-flex':'none';
+  document.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{
+    const inp=b.parentElement.querySelector('.qv');
+    inp.value=Math.max(1,(parseInt(inp.value)||1)+parseInt(b.dataset.step));
+  });
+  document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{
+    const inp=b.parentElement.querySelector('.qv');
+    addCart(b.dataset.add, inp?Math.max(1,parseInt(inp.value)||1):1);
+  });
+  document.querySelectorAll('[data-builder]').forEach(b=>b.onclick=()=>openBuilder(BUILDER_TRIGGERS[b.dataset.builder]));
+  bindAdminInputs();
+}
+document.getElementById('more').onclick=()=>{shown+=BATCH;refresh(false)};
+
+// ================= samensteller (drukknop & stopcontact) =================
+const BUILDER_TRIGGERS={
+  'ZEZS55SOFT':{mode:'knop', serie:'ZS55'},
+  'ZEZS70SOFT':{mode:'knop', serie:'ZS70'},
+  'ZE8300005':{mode:'stopc', stopc:'penaarde'},
+  'ZE8300003':{mode:'stopc', stopc:'schuko'}
+};
+let bMode='knop', bSerie='ZS55', bType='enkel', bStopc='penaarde', bKleur='wit';
+const KLEURWOORD={wit:'wit',antraciet:'antraciet',champagne:'champagne',mokka:'mokka',zilver:'zilver'};
+const TOETS_RX={
+  enkel:  /Enkelvoudige toets \(neerwaarts\)/i,
+  opneer: /Enkelvoudige toets \(op\/neer\)/i,
+  dubbel: /Dubbele toets \(neerwaarts\)/i,
+  vier:   /Dubbele toets \(op\/neer\)/i
+};
+const TOETS_LABEL={enkel:'Toets enkel (1-v)',opneer:'Toets op/neer (2-v)',dubbel:'Dubbele toets (2-v)',vier:'Dubbele toets op/neer (4-v)'};
+function kleurIn(name,k){
+  const groups=[...name.matchAll(/\(([^)]*)\)/g)];
+  return groups.some(m=>m[1].toLowerCase().includes(KLEURWOORD[k]));
+}
+function findRaam(){
+  return PRODUCTS.find(p=>p.brand==='Zennio' && p.name.includes(bSerie) && /afdekraam 1m/i.test(p.name)
+    && !/custom/i.test(p.name) && kleurIn(p.name,bKleur));
+}
+function findBuilderSet(){
+  if(bMode==='knop'){
+    const base = PRODUCTS.find(p=>p.id===(bSerie==='ZS55'?'ZEZS55SOFT':'ZEZS70SOFT'));
+    const toets = PRODUCTS.find(p=>p.brand==='Zennio' && p.name.includes(bSerie) && TOETS_RX[bType].test(p.name)
+      && /voor knx/i.test(p.name) && !/icoon/i.test(p.name) && !/custom/i.test(p.name) && kleurIn(p.name,bKleur));
+    return {parts:[base,toets,findRaam()], labels:['KNX-drukknop '+bSerie,TOETS_LABEL[bType],'Afdekraam 1M '+bSerie]};
+  } else {
+    const insert = PRODUCTS.find(p=>p.id===(bStopc==='penaarde'?'ZE8300005':'ZE8300003'));
+    const rx = bStopc==='penaarde'?/centraalplaat voor penaarde stopcontact/i:/centraalplaat voor schuko stopcontact/i;
+    const plaat = PRODUCTS.find(p=>p.brand==='Zennio' && p.name.includes(bSerie) && rx.test(p.name)
+      && !/custom/i.test(p.name) && kleurIn(p.name,bKleur));
+    return {parts:[insert,plaat,findRaam()], labels:['Stopcontact-insert ('+bStopc+')','Centraalplaat '+bSerie,'Afdekraam 1M '+bSerie]};
+  }
+}
+function renderBuilder(){
+  document.getElementById('b-title').textContent = bMode==='knop' ? 'Stel je '+bSerie+' KNX-drukknop samen' : 'Stel je '+bSerie+' stopcontact samen';
+  document.getElementById('b-row-type').style.display = bMode==='knop'?'flex':'none';
+  document.getElementById('b-row-stopc').style.display = bMode==='stopc'?'flex':'none';
+  document.querySelectorAll('[data-serie]').forEach(b=>b.classList.toggle('sel',b.dataset.serie===bSerie));
+  document.querySelectorAll('[data-type]').forEach(b=>b.classList.toggle('sel',b.dataset.type===bType));
+  document.querySelectorAll('[data-stopc]').forEach(b=>b.classList.toggle('sel',b.dataset.stopc===bStopc));
+  document.querySelectorAll('[data-kleur]').forEach(b=>b.classList.toggle('sel',b.dataset.kleur===bKleur));
+  const {parts,labels}=findBuilderSet(); const out=document.getElementById('b-result');
+  const rows=[], ids=[]; let total=0, compleet=true;
+  parts.forEach((p,i)=>{
+    if(!p){compleet=false; rows.push(`<div class="b-line"><span>${labels[i]}: niet gevonden in deze combinatie — wij zoeken het juiste artikel voor je op.</span></div>`); return;}
+    ids.push(p.id); if(p.price!=null) total+=p.price;
+    rows.push(`<div class="b-line">${p.img?`<img src="${p.img}" alt="" data-mid="${p.id}" style="cursor:zoom-in" title="Klik voor grote foto">`:''}<span>${p.name}</span><span class="lp">${p.price!=null?euro(p.price):'op aanvraag'}</span></div>`);
+  });
+  out.innerHTML = rows.join('')+
+    `<div class="b-total">${compleet?`Set-totaal: ${euro(total)} <small>excl. btw</small>`:''}
+     <span class="qtybox" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><button type="button" data-bstep="-1" style="background:transparent;color:#fff">−</button><input id="b-qty" type="number" min="1" value="1" style="background:transparent;color:#fff" aria-label="Aantal sets"><button type="button" data-bstep="1" style="background:transparent;color:#fff">＋</button></span>
+     <button class="btn btn-primary" id="b-add">＋ Zet set in mandje</button></div>`;
+  out.querySelectorAll('[data-bstep]').forEach(b=>b.onclick=()=>{
+    const inp=document.getElementById('b-qty');
+    inp.value=Math.max(1,(parseInt(inp.value)||1)+parseInt(b.dataset.bstep));
+  });
+  const add=document.getElementById('b-add');
+  if(add) add.onclick=()=>{
+    const n=Math.max(1,parseInt(document.getElementById('b-qty').value)||1);
+    ids.forEach(id=>addCart(id,n));
+  };
+  out.querySelectorAll('[data-mid]').forEach(img=>img.onclick=()=>openModal(byId[img.dataset.mid]));
+}
+function openBuilder(cfg){
+  bMode=cfg.mode; if(cfg.serie) bSerie=cfg.serie; if(cfg.stopc) bStopc=cfg.stopc;
+  document.getElementById('builder').classList.add('open');
+  renderBuilder();
+  document.getElementById('builder').scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.querySelectorAll('[data-serie]').forEach(b=>b.onclick=()=>{bSerie=b.dataset.serie;renderBuilder()});
+document.querySelectorAll('[data-type]').forEach(b=>b.onclick=()=>{bType=b.dataset.type;renderBuilder()});
+document.querySelectorAll('[data-stopc]').forEach(b=>b.onclick=()=>{bStopc=b.dataset.stopc;renderBuilder()});
+document.querySelectorAll('[data-kleur]').forEach(b=>b.onclick=()=>{bKleur=b.dataset.kleur;renderBuilder()});
+document.getElementById('b-close').onclick=()=>document.getElementById('builder').classList.remove('open');
+
+// ================= admin =================
+document.getElementById('adminlink').onclick=()=>{
+  const c=prompt('Admincode:');
+  if(c===ADMIN_CODE){document.body.classList.add('admin');refresh(false);}
+  else if(c!==null) alert('Onjuiste code.');
+};
+document.getElementById('a-exit').onclick=()=>document.body.classList.remove('admin');
+function bindAdminInputs(){
+  document.querySelectorAll('.a-price').forEach(i=>i.onchange=()=>{ byId[i.dataset.id].price = i.value===''?null:Math.round(parseFloat(i.value)*100)/100; });
+  document.querySelectorAll('.a-show').forEach(i=>i.onchange=()=>{ byId[i.dataset.id].show = i.checked; });
+}
+document.getElementById('a-show').onclick=()=>{filtered().forEach(p=>p.show=true);refresh(false);};
+document.getElementById('a-hide').onclick=()=>{filtered().forEach(p=>p.show=false);refresh(false);};
+document.getElementById('a-disc').onclick=()=>{
+  const v=prompt('Kortingspercentage op de adviesprijs (RRP) voor het huidige filterresultaat?\nBv. 15 voor -15%. Geef 0 om terug naar adviesprijs te gaan.');
+  if(v===null) return;
+  const pct=parseFloat(v.replace(',','.'));
+  if(isNaN(pct)||pct<0||pct>90){alert('Geef een getal tussen 0 en 90.');return;}
+  filtered().forEach(p=>{ if(p.rrp!=null){ p.price=Math.round(p.rrp*(1-pct/100)*100)/100; } });
+  refresh(false);
+};
+document.getElementById('a-download').onclick=()=>{
+  const head='// BeTechSmart productdata — bewerkt via adminmodus op '+new Date().toLocaleString('nl-BE')+'\n'
+            +'// Prijzen = verkoopprijs per stuk excl. btw. "show": true/false bepaalt of de prijs zichtbaar is.\n';
+  const blob=new Blob([head+'const PRODUCTS = '+JSON.stringify(PRODUCTS)+';\n'],{type:'text/javascript'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='products.js';a.click();
+};
+
+refresh();
+</script>
+</body>
+</html>

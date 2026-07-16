@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeTechSmart — KNX domotica · zelfbouw & installatie in België</title>
+<meta name="description" content="KNX domotica op jouw tempo: van zelfbouwpakket tot volledige installatie. Actief in heel België, showroom in Kapellen. Vind in 30 seconden jouw pakket.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#F0941F;
+  --orange-deep:#D97F0E;
+  --orange-soft:#FDF1E0;
+  --ink:#232A3D;
+  --muted:#5C6478;
+  --bg:#F5F7FB;
+  --card:#FFFFFF;
+  --line:#E3E8F0;
+  --dark:#20242E;
+  --radius:14px;
+  --maxw:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:'Sora',sans-serif;line-height:1.12;letter-spacing:-0.02em}
+.mono{font-family:'IBM Plex Mono',monospace}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange-deep);margin-bottom:16px}
+.accent{color:var(--orange)}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease}
+.btn-primary{background:var(--orange);color:#fff;box-shadow:0 4px 14px rgba(240,148,31,.35)}
+.btn-primary:hover{background:var(--orange-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange-deep)}
+.btn-dark-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn-dark-ghost:hover{border-color:#fff}
+
+/* nav */
+header{position:sticky;top:0;z-index:60;background:rgba(245,247,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{display:flex;align-items:center;gap:11px;font-family:'Sora',sans-serif;font-weight:800;font-size:21px;text-decoration:none;letter-spacing:-.02em}
+.logo-icon{width:32px;height:32px;background:var(--orange);border-radius:9px;position:relative;flex:none;box-shadow:0 3px 8px rgba(240,148,31,.4)}
+.logo-icon::after{content:"";position:absolute;inset:9px;border:2.5px solid #fff;border-radius:5px}
+.logo .smart{color:var(--orange)}
+.nav-links{display:flex;gap:26px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-weight:500;font-size:15.5px;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav .btn{padding:11px 20px;font-size:12px}
+@media (max-width:960px){.nav-links li:not(:last-child){display:none}}
+
+/* hero */
+.hero{padding:80px 0 56px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(var(--line) 1px,transparent 1px),
+  linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;opacity:.45;mask-image:radial-gradient(70% 90% at 30% 20%,black,transparent)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center;position:relative}
+.hero h1{font-size:clamp(40px,5.4vw,64px);font-weight:800;margin-bottom:24px}
+.hero .lede{font-size:19px;color:var(--muted);max-width:50ch;margin-bottom:34px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.hero-partners{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)}
+.hero-partners i{width:8px;height:8px;border-radius:50%;background:var(--orange);flex:none;font-style:normal}
+
+/* hero panel visual */
+.panelwrap{position:relative}
+.panel{background:linear-gradient(160deg,#2A3040,#171B25);border-radius:22px;padding:30px 28px;color:#E8EBF2;box-shadow:0 34px 70px -34px rgba(35,42,61,.65);max-width:420px;margin-left:auto}
+.panel-top{display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#9AA3B5;margin-bottom:22px}
+.panel-temp{font-family:'Sora',sans-serif;font-size:44px;font-weight:700;color:#fff}
+.panel-temp small{font-size:16px;color:#9AA3B5;font-weight:600}
+.panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.tile{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:14px 12px;font-size:12px;color:#C6CCDA;display:grid;gap:8px;transition:background .2s ease}
+.tile.on{background:rgba(240,148,31,.16);border-color:rgba(240,148,31,.45);color:#FFD9A3}
+.tile .ic{font-size:18px}
+.panel-note{position:absolute;bottom:-16px;left:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 18px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);box-shadow:0 14px 30px -18px rgba(35,42,61,.4)}
+.panel-note b{color:var(--orange-deep)}
+
+/* stats */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:38px 0}
+.stat b{font-family:'Sora',sans-serif;font-size:34px;font-weight:800;display:block}
+.stat b sup{font-size:18px;color:var(--orange)}
+.stat span{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+/* sections */
+section{padding:96px 0}
+.sec-head{max-width:660px;margin-bottom:54px}
+.sec-head h2{font-size:clamp(30px,3.8vw,44px);font-weight:800;margin-bottom:16px}
+.sec-head p{color:var(--muted);font-size:18px}
+
+/* ===== pakketkiezer (signature) ===== */
+.kiezer{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:46px 46px 40px;box-shadow:0 30px 70px -45px rgba(35,42,61,.4)}
+.kiezer-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.kiezer-head h2{font-size:clamp(26px,3vw,36px);font-weight:800}
+.kiezer-head .mono{font-size:12px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.k-step{margin-bottom:30px}
+.k-label{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;gap:10px}
+.k-label b{color:var(--orange-deep)}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);padding:10px 20px;border-radius:999px;cursor:pointer;transition:all .15s ease}
+.chip:hover{border-color:var(--orange)}
+.chip.sel{background:var(--orange);border-color:var(--orange);color:#fff}
+/* slider */
+.slider-row{display:flex;align-items:center;gap:18px}
+.slider-row .end{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);flex:none}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--orange),var(--line));outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--orange);border:5px solid #fff;box-shadow:0 3px 10px rgba(35,42,61,.35);cursor:grab}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--orange);border:5px solid #fff;box-shadow:0 3px 10px rgba(35,42,61,.35);cursor:grab}
+/* result */
+.k-result{margin-top:36px;border-top:2px dashed var(--line);padding-top:32px;display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:center}
+.k-result .badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;background:var(--orange-soft);color:var(--orange-deep);padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.k-result h3{font-size:26px;font-weight:800;margin-bottom:10px}
+.k-result p{color:var(--muted);font-size:16px}
+.k-cta{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center}
+.k-cta .price{font-family:'Sora',sans-serif;font-weight:800;font-size:24px;margin-bottom:4px}
+.k-cta .price-note{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:18px;letter-spacing:.06em}
+.k-cta .btn{width:100%}
+
+/* pakketten */
+.spectrum{display:flex;align-items:center;gap:16px;margin:0 0 34px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.spectrum::before{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--orange),var(--line));order:2}
+.spectrum span:first-child{order:1}.spectrum span:last-child{order:3}
+.pak-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pak{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px;position:relative;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+.pak:hover{transform:translateY(-5px);box-shadow:0 24px 50px -30px rgba(35,42,61,.4)}
+.pak.featured{border:2px solid var(--orange)}
+.pak .flag{position:absolute;top:-13px;left:22px;background:var(--orange);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:999px}
+.pak .cat{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange-deep);margin-bottom:12px}
+.pak h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.pak .sub{font-size:14.5px;color:var(--muted);margin-bottom:18px}
+.pak ul{list-style:none;display:grid;gap:10px;margin-bottom:24px}
+.pak li{font-size:14px;color:var(--ink);display:flex;gap:10px;align-items:baseline}
+.pak li::before{content:"✓";color:var(--orange);font-weight:700;flex:none}
+.pak .price{margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);margin-bottom:14px;letter-spacing:.04em}
+.pak .price b{font-family:'Sora',sans-serif;font-size:19px;color:var(--ink);letter-spacing:0;display:block}
+
+/* vergelijk table */
+.tbl-wrap{margin-top:64px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 26px 6px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+th,td{padding:16px 12px;text-align:center;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:none}
+th{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td:first-child,th:first-child{text-align:left}
+td .y{color:var(--orange);font-weight:700}
+td .n{color:#C4CAD6}
+th.hl{color:var(--orange-deep)}
+.tbl-note{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);padding:14px 2px 12px}
+
+/* waarom knx */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
+.why .num{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--orange);margin-bottom:14px}
+.why h3{font-size:17.5px;font-weight:700;margin-bottom:10px}
+.why p{font-size:14.5px;color:var(--muted)}
+
+/* dark band */
+.dark{background:linear-gradient(150deg,#262B38,#171B25);color:#E8EBF2;border-radius:26px;padding:64px 56px;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;overflow:hidden;position:relative}
+.dark .eyebrow{color:var(--orange)}
+.dark h2{font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#fff;margin-bottom:16px}
+.dark p{color:#A9B1C2;font-size:17px;margin-bottom:26px}
+.dark .chips{gap:9px}
+.dark .chip{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#C6CCDA;cursor:default;font-size:13.5px;padding:8px 16px}
+
+/* werkwijze */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 26px}
+.step{border-top:2px solid var(--line);padding-top:20px;position:relative}
+.step::before{content:"";position:absolute;top:-2px;left:0;width:44px;height:2px;background:var(--orange)}
+.step .num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--orange-deep);margin-bottom:10px}
+.step h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--muted)}
+
+/* producten */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:34px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;display:flex;flex-direction:column;gap:8px;text-decoration:none;transition:border-color .15s ease,transform .15s ease}
+.prod:hover{border-color:var(--orange);transform:translateY(-3px)}
+.prod .cat{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.prod h3{font-size:17.5px;font-weight:700}
+.prod p{font-size:14px;color:var(--muted)}
+.prod .go{margin-top:auto;padding-top:14px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange-deep)}
+.prod-note{background:var(--orange-soft);border:1px solid #F3DDB8;border-radius:16px;padding:26px 30px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.prod-note p{font-size:16px;color:var(--ink);font-weight:500;max-width:56ch}
+.trust{display:flex;gap:26px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:36px}
+.trust span{display:flex;gap:8px;align-items:center}
+.trust i{width:7px;height:7px;border-radius:50%;background:var(--orange);flex:none;font-style:normal}
+
+/* faq */
+.faq{max-width:760px;margin:0 auto}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;gap:18px;align-items:baseline;padding:24px 0;font-family:'Sora',sans-serif;font-weight:700;font-size:18px}
+summary::-webkit-details-marker{display:none}
+summary .qn{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--orange);font-weight:400;flex:none}
+summary .plus{margin-left:auto;color:var(--orange);font-weight:400;font-size:22px;transition:transform .2s ease;flex:none}
+details[open] .plus{transform:rotate(45deg)}
+details p{padding:0 0 26px 44px;color:var(--muted);font-size:16px;max-width:62ch}
+
+/* contact */
+.contact{background:var(--card);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px}
+.contact-info h2{font-size:clamp(28px,3.6vw,42px);font-weight:800;margin-bottom:16px}
+.contact-info>p{color:var(--muted);margin-bottom:30px;font-size:17px}
+.cline{display:flex;gap:14px;align-items:baseline;margin-bottom:14px;font-size:15.5px}
+.cline .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--muted);width:96px;flex:none;text-transform:uppercase}
+.cline a{color:var(--orange-deep);text-decoration:none;font-weight:500}
+form{display:grid;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:34px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{font-size:13.5px;font-weight:700;display:grid;gap:7px;font-family:'Sora',sans-serif}
+input,select,textarea{font-family:'DM Sans',sans-serif;font-size:15px;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--orange);outline:none}
+textarea{resize:vertical;min-height:110px}
+.form-note{font-size:12.5px;color:var(--muted);text-align:center;font-family:'IBM Plex Mono',monospace}
+
+/* footer */
+footer{background:var(--dark);color:#8E96A8;padding:60px 0 40px;font-size:14.5px}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
+.foot-grid .logo{color:#fff;margin-bottom:16px;font-size:19px}
+.foot-grid p{max-width:30ch}
+.foot-grid .addr{font-family:'IBM Plex Mono',monospace;font-size:12.5px;margin-top:18px;line-height:1.8}
+.foot-h{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6E7688;margin-bottom:16px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a{color:#B4BBC9;text-decoration:none}
+footer a:hover{color:#fff}
+footer .online{color:var(--orange)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.09);padding-top:26px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6E7688}
+.foot-bottom nav{display:flex;gap:20px}
+
+@media (max-width:1000px){
+  .pak-grid,.why-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-grid,.dark,.contact-grid,.k-result{grid-template-columns:1fr}
+  .panel{margin:0 auto}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .pak-grid,.why-grid,.steps,.prod-grid,.frow,.stats-grid{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .hero{padding:52px 0 40px}
+  .kiezer{padding:30px 22px}
+  .dark{padding:40px 26px}
+  summary{font-size:16px}
+  details p{padding-left:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pak:hover,.prod:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><img src="https://static.wixstatic.com/media/2e9bab_c7d7649194be49cf89fd66394828bad8~mv2.png/v1/fill/w_253,h_151,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/color1_logo_transparent_background.png" alt="BeTechSmart" style="height:52px;width:auto"></a>
+    <ul class="nav-links">
+      <li><a href="#waarom">Waarom KNX</a></li>
+      <li><a href="#pakketten">Pakketten</a></li>
+      <li><a href="#werkwijze">Werkwijze</a></li>
+      <li><a href="webshop.html">Producten</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="btn btn-primary">Showroom boeken</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">KNX domotica · Zelfbouw &amp; installatie · Heel België</p>
+      <h1>Een slim huis, helemaal op <span class="accent">jouw tempo</span>.</h1>
+      <p class="lede">Van kant-en-klaar zelfbouwpakket tot volledige KNX-installatie. Jij kiest hoeveel je zelf doet — wij begeleiden je van A tot Z, met Zennio en de open KNX-standaard.</p>
+      <div class="hero-ctas">
+        <a href="#kiezer" class="btn btn-primary">Vind jouw pakket in 30 sec</a>
+        <a href="#contact" class="btn btn-ghost">Showroom boeken</a>
+      </div>
+      <p class="hero-partners"><i></i>In samenwerking met Zennio · Officiële KNX-technologie · ComfortClick</p>
+    </div>
+    <div class="panelwrap">
+      <div class="panel" aria-label="Voorbeeld van een KNX-touchpaneel">
+        <div class="panel-top"><span>MASTER BEDROOM</span><span>21:47</span></div>
+        <div class="panel-temp">21.5<small> °C</small></div>
+        <div class="panel-grid">
+          <div class="tile on"><span class="ic">💡</span>Verlichting<br><b>72%</b></div>
+          <div class="tile"><span class="ic">🪟</span>Rolluiken<br><b>Dicht</b></div>
+          <div class="tile on"><span class="ic">🌡️</span>Verwarming<br><b>Eco</b></div>
+          <div class="tile"><span class="ic">🎵</span>Audio<br><b>Uit</b></div>
+          <div class="tile on"><span class="ic">⚡</span>Energie<br><b>1,2 kW</b></div>
+          <div class="tile"><span class="ic">🎬</span>Scènes<br><b>Avond</b></div>
+        </div>
+      </div>
+      <div class="panel-note">Bedraad. Zonder cloud. <b>Werkt óók als wifi wegvalt.</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= STATS ================= -->
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><b>Heel<sup> BE</sup></b><span>Levering &amp; projecten in heel België</span></div>
+    <div class="stat"><b>4</b><span>Pakketten van DIY tot full-service</span></div>
+    <div class="stat"><b>100<sup>%</sup></b><span>Op de open KNX-standaard</span></div>
+    <div class="stat"><b>500<sup>+</sup></b><span>Componenten permanent leverbaar</span></div>
+  </div>
+</div>
+
+<!-- ================= PAKKETKIEZER ================= -->
+<section id="kiezer" style="padding-bottom:60px">
+  <div class="wrap">
+    <div class="kiezer">
+      <div class="kiezer-head">
+        <h2>Vind jouw pakket.</h2>
+        <span class="mono">3 keuzes · 30 seconden · geen gegevens nodig</span>
+      </div>
+
+      <div class="k-step">
+        <p class="k-label"><b>01</b> Wat voor project is het?</p>
+        <div class="chips" id="q-project">
+          <button class="chip sel" data-v="Nieuwbouw">Nieuwbouw</button>
+          <button class="chip" data-v="Renovatie">Renovatie</button>
+          <button class="chip" data-v="Uitbreiding bestaande KNX">Uitbreiding bestaande KNX</button>
+        </div>
+      </div>
+
+      <div class="k-step">
+        <p class="k-label"><b>02</b> Wat wil je sturen?</p>
+        <div class="chips" id="q-wants">
+          <button class="chip sel" data-v="Verlichting">Verlichting</button>
+          <button class="chip" data-v="Rolluiken">Rolluiken &amp; zonwering</button>
+          <button class="chip" data-v="Verwarming">Verwarming</button>
+          <button class="chip" data-v="Audio">Audio</button>
+          <button class="chip" data-v="Energie">Energiemonitoring</button>
+          <button class="chip" data-v="Toegang">Toegang &amp; camera's</button>
+        </div>
+      </div>
+
+      <div class="k-step" style="margin-bottom:0">
+        <p class="k-label"><b>03</b> Hoeveel doe je zelf?</p>
+        <div class="slider-row">
+          <span class="end">Meer zelf doen</span>
+          <input type="range" id="q-diy" min="0" max="100" value="35" aria-label="Hoeveel doe je zelf, van meer zelf doen tot volledig ontzorgd">
+          <span class="end">Volledig ontzorgd</span>
+        </div>
+      </div>
+
+      <div class="k-result">
+        <div>
+          <span class="badge" id="r-badge">Ons advies</span>
+          <h3 id="r-title">Voorgemonteerde KNX-kast</h3>
+          <p id="r-desc">De eenvoudigste manier om zelf KNX te plaatsen: wij bouwen, bekabelen en testen je kast — jij sluit aan volgens de genummerde klemmen.</p>
+        </div>
+        <div class="k-cta">
+          <p class="price" id="r-price">Prijs op maat</p>
+          <p class="price-note" id="r-pricenote">Op basis van jouw plan</p>
+          <a href="#contact" class="btn btn-primary" id="r-cta">Vraag jouw offerte</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAKKETTEN ================= -->
+<section id="pakketten" style="padding-top:36px">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Pakketten</p>
+      <h2>Kies hoeveel je zelf doet.</h2>
+      <p>Of je nu enkel materialen nodig hebt, een voorgemonteerde kast wenst of volledig ontzorgd wilt worden — wij begeleiden je project van A tot Z.</p>
+    </div>
+
+    <div class="spectrum"><span>Meer zelf doen</span><span>Volledig ontzorgd</span></div>
+
+    <div class="pak-grid">
+      <div class="pak">
+        <p class="cat">Zelfbouw</p>
+        <h3>KNX Zelfbouwpakket</h3>
+        <p class="sub">Voor doe-het-zelvers die alles zelf plaatsen.</p>
+        <ul>
+          <li>Volledig uitgewerkt KNX-plan &amp; kant-en-klaar pakket</li>
+          <li>Kabels aansluiten volgens de nummers op plan</li>
+          <li>Kabelschema's en installatiedocumentatie</li>
+          <li>Technische ondersteuning tijdens het project</li>
+        </ul>
+        <p class="price">Richtprijs<b>vanaf € 7.550 <span style="font-size:12px;font-weight:400">excl. btw</span></b></p>
+        <a href="#contact" class="btn btn-primary" data-pakket="KNX Zelfbouwpakket">Offerte aanvragen</a>
+      </div>
+
+      <div class="pak featured">
+        <span class="flag">Meest gekozen</span>
+        <p class="cat">Populair</p>
+        <h3>Voorgemonteerde KNX-kast</h3>
+        <p class="sub">De eenvoudigste manier om zelf KNX te plaatsen.</p>
+        <ul>
+          <li>Volledig bekabelde en geteste schakelkast</li>
+          <li>Alle KNX-componenten geleverd</li>
+          <li>Genummerde aansluitingen volgens plan</li>
+          <li>Zelf programmeren of door BeTechSmart</li>
+        </ul>
+        <p class="price">Richtprijs<b>Prijs op maat</b></p>
+        <a href="#contact" class="btn btn-primary" data-pakket="Voorgemonteerde KNX-kast">Offerte aanvragen</a>
+      </div>
+
+      <div class="pak">
+        <p class="cat">Materialen</p>
+        <h3>KNX Materialenpakket</h3>
+        <p class="sub">Voor installateurs en ervaren zelfbouwers.</p>
+        <ul>
+          <li>Levering van alle KNX-materialen</li>
+          <li>Schakelaars, actoren, voedingen, sensoren</li>
+          <li>Advies bij productkeuze</li>
+          <li>Ondersteuning bij installatie &amp; programmatie</li>
+        </ul>
+        <p class="price">Richtprijs<b>Prijs op maat</b></p>
+        <a href="#contact" class="btn btn-primary" data-pakket="KNX Materialenpakket">Offerte aanvragen</a>
+      </div>
+
+      <div class="pak">
+        <p class="cat">Full-service</p>
+        <h3>Volledige KNX-installatie</h3>
+        <p class="sub">Van ontwerp tot oplevering, volledig ontzorgd.</p>
+        <ul>
+          <li>Ontwerp en engineering</li>
+          <li>Levering van alle materialen</li>
+          <li>Plaatsing, bekabeling &amp; programmatie</li>
+          <li>Service en ondersteuning na oplevering</li>
+        </ul>
+        <p class="price">Richtprijs<b>Prijs op maat</b></p>
+        <a href="#contact" class="btn btn-primary" data-pakket="Volledige KNX-installatie">Offerte aanvragen</a>
+      </div>
+    </div>
+
+    <!-- vergelijk -->
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Inbegrepen</th><th>Zelfbouw</th><th class="hl">Voorgem. kast</th><th>Materialen</th><th>Volledig</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Uitgewerkt KNX-plan &amp; documentatie</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Alle KNX-materialen geleverd</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Voorgemonteerde &amp; geteste kast</td><td><span class="n">✕</span></td><td><span class="y">✓</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Programmering door BeTechSmart</td><td><span class="n">✕</span></td><td><span class="y">✓</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Plaatsing &amp; bekabeling ter plaatse</td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Technische begeleiding</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Service &amp; support na oplevering</td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">✓ Inbegrepen &nbsp; ✕ Niet inbegrepen &nbsp;·&nbsp; Programmering bij de kast: zelf of door BeTechSmart.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WAAROM KNX ================= -->
+<section id="waarom" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Waarom KNX</p>
+      <h2>Eén open standaard.<br>Geen vendor lock-in.</h2>
+      <p>KNX is dé wereldwijde norm voor woningautomatisering. Open, merkonafhankelijk en gebouwd om decennia mee te gaan — niet gebonden aan één fabrikant of cloud.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why">
+        <p class="num">01</p>
+        <h3>Open standaard</h3>
+        <p>Een merkonafhankelijke wereldnorm. Combineer vrij componenten van honderden fabrikanten — geen vendor lock-in.</p>
+      </div>
+      <div class="why">
+        <p class="num">02</p>
+        <h3>Toekomstbestendig</h3>
+        <p>Je installatie blijft uitbreidbaar en compatibel, ook over 20 jaar. Vandaag investeren, jaren profiteren.</p>
+      </div>
+      <div class="why">
+        <p class="num">03</p>
+        <h3>Bedraad &amp; betrouwbaar</h3>
+        <p>Een vaste KNX-bus werkt zonder wifi of cloud. Stabiel, snel en veilig — ook als het internet wegvalt.</p>
+      </div>
+      <div class="why">
+        <p class="num">04</p>
+        <h3>Zelfbouw-vriendelijk</h3>
+        <p>Alles genummerd volgens plan. Jij sluit aan op je eigen tempo, met begeleiding telefonisch, online of in de showroom.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DARK BAND ================= -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="dark">
+      <div>
+        <p class="eyebrow">Alles in één hand</p>
+        <h2>Bedien je hele huis vanaf touchscreen of telefoon.</h2>
+        <p>Verlichting, klimaat, screens, scènes en realtime energieverbruik — overzichtelijk in één app, of op het touchscreen aan de muur. Strakke panelen die opgaan in je interieur.</p>
+        <div class="chips">
+          <span class="chip">Verlichting</span><span class="chip">Klimaat</span><span class="chip">Screens</span><span class="chip">Scènes</span><span class="chip">Energie</span><span class="chip">Camera's</span><span class="chip">Audio</span><span class="chip">Toegang</span>
+        </div>
+      </div>
+      <div class="panel" style="max-width:380px">
+        <div class="panel-top"><span>BETECHSMART · APP</span><span>20.0 °C</span></div>
+        <div class="panel-grid" style="margin-top:6px">
+          <div class="tile on"><span class="ic">🛋️</span>Living</div>
+          <div class="tile"><span class="ic">🍳</span>Keuken</div>
+          <div class="tile on"><span class="ic">🛏️</span>Slaapkamer</div>
+          <div class="tile"><span class="ic">🎬</span>Scènes</div>
+          <div class="tile"><span class="ic">🎵</span>Audio</div>
+          <div class="tile on"><span class="ic">⚡</span>Energie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WERKWIJZE ================= -->
+<section id="werkwijze" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Werkwijze</p>
+      <h2>Van plan tot slimme woning in 6 stappen.</h2>
+      <p>Een helder traject, zodat je precies weet wat er gebeurt — en wat jij zelf doet.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><p class="num">01</p><h3>Plan &amp; formulier</h3><p>Vul het projectformulier in of stuur je architectenplan door.</p></div>
+      <div class="step"><p class="num">02</p><h3>Designtemplate</h3><p>Bepaal per schakelaar de gewenste acties in je sjabloon.</p></div>
+      <div class="step"><p class="num">03</p><h3>Showroombezoek</h3><p>Test de schakelaars en touchscreens live in Kapellen — of stem online af.</p></div>
+      <div class="step"><p class="num">04</p><h3>Programmering</h3><p>Wij programmeren alle modules, genummerd volgens plan.</p></div>
+      <div class="step"><p class="num">05</p><h3>Levering</h3><p>Kabels, inbouwpotten en kast worden bij je thuis geleverd — in heel België.</p></div>
+      <div class="step"><p class="num">06</p><h3>Aansluiten</h3><p>Jij sluit aan op de genummerde klemmen — wij staan paraat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTEN ================= -->
+<section id="producten" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Producten</p>
+      <h2>Alles voor je KNX-project, advies inbegrepen.</h2>
+      <p>Touchscreens, drukknoppen, voorgemonteerde kasten en meer — geselecteerd Zennio- &amp; KNX-materiaal, geleverd in heel België.</p>
+    </div>
+    <div class="trust">
+      <span><i></i>Levering in heel België</span>
+      <span><i></i>Technische ondersteuning inbegrepen</span>
+      <span><i></i>Advies bij productkeuze</span>
+    </div>
+    <div class="prod-grid">
+      <a class="prod" href="#contact" data-pakket="Advies producten">
+        <p class="cat">Touchscreens</p>
+        <h3>Touchpanelen</h3>
+        <p>Van compacte kleurendisplays tot 10" panelen met scènes en energiemonitoring.</p>
+        <span class="go">Vraag advies →</span>
+      </a>
+      <a class="prod" href="#contact" data-pakket="Advies producten">
+        <p class="cat">Schakelaars</p>
+        <h3>Drukknoppen</h3>
+        <p>Capacitieve drukknoppen in glas en strak design, passend bij elk interieur.</p>
+        <span class="go">Vraag advies →</span>
+      </a>
+      <a class="prod" href="#contact" data-pakket="Advies producten">
+        <p class="cat">Schakelkasten</p>
+        <h3>Voorgemonteerde kasten</h3>
+        <p>Volledig bekabelde en geteste KNX-kasten, klaar om aan te sluiten.</p>
+        <span class="go">Vraag advies →</span>
+      </a>
+      <a class="prod" href="#contact" data-pakket="Advies producten">
+        <p class="cat">Actoren</p>
+        <h3>Schakel- &amp; dimactoren</h3>
+        <p>Zennio-actoren voor verlichting, stopcontacten, rolluiken en kringen.</p>
+        <span class="go">Vraag advies →</span>
+      </a>
+      <a class="prod" href="#contact" data-pakket="Advies producten">
+        <p class="cat">Klimaat</p>
+        <h3>Verwarming &amp; ventilatie</h3>
+        <p>Thermostaten, vloerverwarmingssturing en klimaatmodules.</p>
+        <span class="go">Vraag advies →</span>
+      </a>
+      <a class="prod" href="#contact" data-pakket="Advies producten">
+        <p class="cat">Systeem</p>
+        <h3>Voedingen &amp; interfaces</h3>
+        <p>KNX-voedingen, interfaces, logica- en energiemodules.</p>
+        <span class="go">Vraag advies →</span>
+      </a>
+    </div>
+    <div class="prod-note">
+      <p>Niet zeker welke componenten jouw project nodig heeft? Dat is exact waar wij het verschil maken. Stuur ons je plan — wij stellen de juiste lijst samen.</p>
+      <a href="#contact" class="btn btn-primary">Stuur je plan door</a>
+    </div>
+    <p style="margin-top:22px;text-align:center"><a href="https://www.betechsmart.be/_files/ugd/2e9bab_a0d4e9d2821e4fedb962b9f499c09272.pdf" target="_blank" rel="noopener" class="mono" style="font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-deep);text-decoration:none">Download catalogus (PDF) →</a></p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head" style="margin-left:auto;margin-right:auto;text-align:center">
+      <p class="eyebrow" style="justify-content:center">FAQ</p>
+      <h2>Veelgestelde vragen.</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary><span class="qn">01</span>Kan ik KNX écht zelf installeren?<span class="plus">+</span></summary>
+        <p>Ja. Met ons genummerde plan en een voorgemonteerde, geteste kast sluit je de kabels aan volgens de nummers. We begeleiden je telefonisch, online of in de showroom.</p>
+      </details>
+      <details>
+        <summary><span class="qn">02</span>Wat is het verschil met gesloten systemen?<span class="plus">+</span></summary>
+        <p>KNX is merkonafhankelijk en vrij uitbreidbaar — honderden fabrikanten, ook jaren later nog. Het werkt volledig zonder cloud of wifi en is een wereldwijde, genormeerde standaard. Gesloten systemen binden je aan één merk en vaak aan een cloud-abonnement.</p>
+      </details>
+      <details>
+        <summary><span class="qn">03</span>Moet ik zelf kunnen programmeren?<span class="plus">+</span></summary>
+        <p>Nee. Programmeren kan je zelf leren, maar in de meeste pakketten programmeren wij alle modules voor jou — genummerd volgens plan. Jij kiest.</p>
+      </details>
+      <details>
+        <summary><span class="qn">04</span>Werken jullie in mijn regio?<span class="plus">+</span></summary>
+        <p>Ja — we leveren pakketten en begeleiden projecten in heel België. Voor volledige installaties bekijken we samen de planning. Onze showroom vind je in Kapellen (Antwerpen).</p>
+      </details>
+      <details>
+        <summary><span class="qn">05</span>Hebben jullie een showroom?<span class="plus">+</span></summary>
+        <p>Ja — in Kapellen test je alle schakelaars, touchscreens en scènes live. Op afspraak, zodat we tijd voor je hebben. Boek je bezoek via het formulier hieronder.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <p class="eyebrow">Klaar om te starten?</p>
+      <h2>Stuur je plan door of boek een showroombezoek.</h2>
+      <p>Beschrijf kort je project — we antwoorden binnen één werkdag met concreet advies of een voorstel. Liever eerst alles zelf bedienen? Kom langs in Kapellen.</p>
+      <div class="cline"><span class="k">Showroom</span><span>Klinkaardstraat 210 — Unit C001, 2950 Kapellen</span></div>
+      <div class="cline"><span class="k">Telefoon</span><span><a href="tel:+3233149068">+32 3 314 90 68</a> · <a href="tel:+32475353105">+32 475 35 31 05</a></span></div>
+      <div class="cline"><span class="k">E-mail</span><a href="mailto:info@betechsmart.be">info@betechsmart.be</a></div>
+      <div class="cline"><span class="k">Regio</span><span>Heel België · advies ook online</span></div>
+    </div>
+    <form name="contact" method="POST" data-netlify="true">
+      <div class="frow">
+        <label>Naam<input type="text" name="naam" required autocomplete="name"></label>
+        <label>E-mail<input type="email" name="email" required autocomplete="email"></label>
+      </div>
+      <div class="frow">
+        <label>Telefoon<input type="tel" name="telefoon" autocomplete="tel"></label>
+        <label>Ik wil<select name="onderwerp" id="f-onderwerp">
+          <option>Offerte aanvragen</option>
+          <option>Showroom boeken</option>
+          <option>Mijn plan doorsturen</option>
+          <option>Productadvies</option>
+        </select></label>
+      </div>
+      <label>Pakket (indien gekend)
+        <select name="pakket" id="f-pakket">
+          <option>Nog geen idee — adviseer mij</option>
+          <option>KNX Zelfbouwpakket</option>
+          <option>Voorgemonteerde KNX-kast</option>
+          <option>KNX Materialenpakket</option>
+          <option>Volledige KNX-installatie</option>
+        </select>
+      </label>
+      <label>Jouw project<textarea name="boodschap" id="f-msg" placeholder="Bv. nieuwbouw, 3 slaapkamers — verlichting, rolluiken en verwarming sturen…"></textarea></label>
+      <button type="submit" class="btn btn-primary">Verstuur — antwoord binnen 1 werkdag</button>
+      <p class="form-note">Je gegevens worden enkel gebruikt om je vraag te beantwoorden.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:16px;display:inline-block"><img src="https://static.wixstatic.com/media/2e9bab_c7d7649194be49cf89fd66394828bad8~mv2.png/v1/fill/w_217,h_132,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/color1_logo_transparent_background.png" alt="BeTechSmart" style="height:64px;width:auto"></a>
+        <p>KNX zelfbouw &amp; installatie in België. Van doe-het-zelf tot volledig ontzorgd.</p>
+        <p class="addr">Klinkaardstraat 210 — Unit C001<br>2950 Kapellen, België</p>
+      </div>
+      <div>
+        <p class="foot-h">Navigatie</p>
+        <ul>
+          <li><a href="#waarom">Waarom KNX</a></li>
+          <li><a href="#pakketten">Pakketten</a></li>
+          <li><a href="#werkwijze">Werkwijze</a></li>
+          <li><a href="webshop.html">Producten</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Pakketten</p>
+        <ul>
+          <li><a href="#pakketten">KNX Zelfbouwpakket</a></li>
+          <li><a href="#pakketten">Voorgemonteerde kast</a></li>
+          <li><a href="#pakketten">KNX Materialenpakket</a></li>
+          <li><a href="#pakketten">Volledige installatie</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Contact</p>
+        <ul>
+          <li><a href="tel:+3233149068">+32 3 314 90 68</a></li>
+          <li><a href="tel:+32475353105">+32 475 35 31 05</a></li>
+          <li><a href="mailto:info@betechsmart.be">info@betechsmart.be</a></li>
+          <li><a href="#contact" class="online">Online boeken →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 BeTechSmart — DIY KNX domotica</span>
+      <nav><a href="#">Privacybeleid</a><a href="#">Voorwaarden</a><a href="#">Levering &amp; Klachten</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------- pakketkiezer ----------
+const PAKKETTEN = [
+  {min:0, max:24, cat:"Zelfbouw", title:"KNX Zelfbouwpakket",
+   desc:"Voor doe-het-zelvers die alles zelf plaatsen: volledig uitgewerkt KNX-plan, kabels aansluiten volgens de nummers, met technische ondersteuning tijdens het hele project.",
+   price:"vanaf € 7.550", note:"Richtprijs basis · excl. btw"},
+  {min:25, max:54, cat:"Meest gekozen", title:"Voorgemonteerde KNX-kast",
+   desc:"De eenvoudigste manier om zelf KNX te plaatsen: wij bouwen, bekabelen en testen je kast — jij sluit aan volgens de genummerde klemmen. Programmeren doe je zelf of laat je aan ons over.",
+   price:"Prijs op maat", note:"Op basis van jouw plan"},
+  {min:55, max:79, cat:"Materialen + begeleiding", title:"KNX Materialenpakket",
+   desc:"Voor installateurs en ervaren zelfbouwers: alle KNX-materialen scherp geleverd, met advies bij productkeuze en ondersteuning bij installatie en programmatie.",
+   price:"Prijs op maat", note:"Op basis van jouw materiaallijst"},
+  {min:80, max:100, cat:"Full-service", title:"Volledige KNX-installatie",
+   desc:"Van ontwerp tot oplevering volledig ontzorgd: engineering, levering, plaatsing, programmatie én service na oplevering. Jij hoeft alleen te genieten.",
+   price:"Prijs op maat", note:"Na gratis intake & plan"}
+];
+// NB: slider is 'hoeveel doe je zelf' omgekeerd: links = meer zelf doen (zelfbouw), rechts = ontzorgd
+const slider = document.getElementById('q-diy');
+const rBadge = document.getElementById('r-badge');
+const rTitle = document.getElementById('r-title');
+const rDesc  = document.getElementById('r-desc');
+const rPrice = document.getElementById('r-price');
+const rNote  = document.getElementById('r-pricenote');
+const fPakket = document.getElementById('f-pakket');
+const fOnderwerp = document.getElementById('f-onderwerp');
+const fMsg = document.getElementById('f-msg');
+
+let projectType = "Nieuwbouw";
+let wants = new Set(["Verlichting"]);
+
+function currentPakket(){
+  const v = Number(slider.value);
+  return PAKKETTEN.find(p => v >= p.min && v <= p.max) || PAKKETTEN[1];
+}
+function render(){
+  const p = currentPakket();
+  rBadge.textContent = p.cat;
+  rTitle.textContent = p.title;
+  rDesc.textContent  = p.desc;
+  rPrice.textContent = p.price;
+  rNote.textContent  = p.note;
+}
+function prefillForm(){
+  const p = currentPakket();
+  for (const opt of fPakket.options){ if(opt.text === p.title){ fPakket.value = opt.text; break; } }
+  fOnderwerp.value = "Offerte aanvragen";
+  fMsg.value = projectType + " — ik wil sturen: " + Array.from(wants).join(", ") + ". Interesse in: " + p.title + ".";
+}
+slider.addEventListener('input', render);
+document.getElementById('r-cta').addEventListener('click', prefillForm);
+
+// single-select chips (project)
+document.querySelectorAll('#q-project .chip').forEach(ch=>{
+  ch.addEventListener('click', ()=>{
+    document.querySelectorAll('#q-project .chip').forEach(c=>c.classList.remove('sel'));
+    ch.classList.add('sel'); projectType = ch.dataset.v;
+  });
+});
+// multi-select chips (wants)
+document.querySelectorAll('#q-wants .chip').forEach(ch=>{
+  ch.addEventListener('click', ()=>{
+    ch.classList.toggle('sel');
+    ch.classList.contains('sel') ? wants.add(ch.dataset.v) : wants.delete(ch.dataset.v);
+  });
+});
+// pakket-card CTAs prefill the form too
+document.querySelectorAll('[data-pakket]').forEach(a=>{
+  a.addEventListener('click', ()=>{
+    const name = a.dataset.pakket;
+    for (const opt of fPakket.options){ if(opt.text === name){ fPakket.value = opt.text; break; } }
+    if(name === "Advies producten"){ fOnderwerp.value = "Productadvies"; fPakket.value = "Nog geen idee — adviseer mij"; }
+  });
+});
+render();
+</script>
+</body>
+</html>
