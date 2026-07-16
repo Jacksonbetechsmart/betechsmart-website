@@ -158,7 +158,7 @@ th.hl{color:var(--orange-deep)}
 .tbl-note{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);padding:14px 2px 12px}
 
 /* waarom knx */
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .why{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
 .why .num{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--orange);margin-bottom:14px}
 .why h3{font-size:17.5px;font-weight:700;margin-bottom:10px}
@@ -328,61 +328,6 @@ footer .online{color:var(--orange)}
 </section>
 <style>@media (max-width:640px){#planner div[style*="220px 1fr"]{grid-template-columns:1fr !important}}</style>
 
-<!-- ================= PAKKETKIEZER ================= -->
-<section id="kiezer" style="padding-bottom:60px">
-  <div class="wrap">
-    <div class="kiezer">
-      <div class="kiezer-head">
-        <h2>Vind jouw pakket.</h2>
-        <span class="mono">3 keuzes · 30 seconden · geen gegevens nodig</span>
-      </div>
-
-      <div class="k-step">
-        <p class="k-label"><b>01</b> Wat voor project is het?</p>
-        <div class="chips" id="q-project">
-          <button class="chip sel" data-v="Nieuwbouw">Nieuwbouw</button>
-          <button class="chip" data-v="Renovatie">Renovatie</button>
-          <button class="chip" data-v="Uitbreiding bestaande KNX">Uitbreiding bestaande KNX</button>
-        </div>
-      </div>
-
-      <div class="k-step">
-        <p class="k-label"><b>02</b> Wat wil je sturen?</p>
-        <div class="chips" id="q-wants">
-          <button class="chip sel" data-v="Verlichting">Verlichting</button>
-          <button class="chip" data-v="Rolluiken">Rolluiken &amp; zonwering</button>
-          <button class="chip" data-v="Verwarming">Verwarming</button>
-          <button class="chip" data-v="Audio">Audio</button>
-          <button class="chip" data-v="Energie">Energiemonitoring</button>
-          <button class="chip" data-v="Toegang">Toegang &amp; camera's</button>
-        </div>
-      </div>
-
-      <div class="k-step" style="margin-bottom:0">
-        <p class="k-label"><b>03</b> Hoeveel doe je zelf?</p>
-        <div class="slider-row">
-          <span class="end">Meer zelf doen</span>
-          <input type="range" id="q-diy" min="0" max="100" value="35" aria-label="Hoeveel doe je zelf, van meer zelf doen tot volledig ontzorgd">
-          <span class="end">Volledig ontzorgd</span>
-        </div>
-      </div>
-
-      <div class="k-result">
-        <div>
-          <span class="badge" id="r-badge">Ons advies</span>
-          <h3 id="r-title">Voorgemonteerde KNX-kast</h3>
-          <p id="r-desc">De eenvoudigste manier om zelf KNX te plaatsen: wij bouwen, bekabelen en testen je kast — jij sluit aan volgens de genummerde klemmen.</p>
-        </div>
-        <div class="k-cta">
-          <p class="price" id="r-price">Prijs op maat</p>
-          <p class="price-note" id="r-pricenote">Op basis van jouw plan</p>
-          <a href="#contact" class="btn btn-primary" id="r-cta">Vraag jouw offerte</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= PAKKETTEN ================= -->
 <section id="pakketten" style="padding-top:36px">
   <div class="wrap">
@@ -396,40 +341,11 @@ footer .online{color:var(--orange)}
 
     <div class="pak-grid">
       <div class="pak">
-        <p class="cat">Zelfbouw</p>
-        <h3>KNX Zelfbouwpakket</h3>
-        <p class="sub">Voor doe-het-zelvers die alles zelf plaatsen.</p>
-        <ul>
-          <li>Volledig uitgewerkt KNX-plan &amp; kant-en-klaar pakket</li>
-          <li>Kabels aansluiten volgens de nummers op plan</li>
-          <li>Kabelschema's en installatiedocumentatie</li>
-          <li>Technische ondersteuning tijdens het project</li>
-        </ul>
-        <p class="price">Richtprijs<b>vanaf € 7.550 <span style="font-size:12px;font-weight:400">excl. btw</span></b></p>
-        <a href="#contact" class="btn btn-primary" data-pakket="KNX Zelfbouwpakket">Offerte aanvragen</a>
-      </div>
-
-      <div class="pak featured">
-        <span class="flag">Meest gekozen</span>
-        <p class="cat">Populair</p>
-        <h3>Voorgemonteerde KNX-kast</h3>
-        <p class="sub">De eenvoudigste manier om zelf KNX te plaatsen.</p>
-        <ul>
-          <li>Volledig bekabelde en geteste schakelkast</li>
-          <li>Alle KNX-componenten geleverd</li>
-          <li>Genummerde aansluitingen volgens plan</li>
-          <li>Zelf programmeren of door BeTechSmart</li>
-        </ul>
-        <p class="price">Richtprijs<b>Prijs op maat</b></p>
-        <a href="#contact" class="btn btn-primary" data-pakket="Voorgemonteerde KNX-kast">Offerte aanvragen</a>
-      </div>
-
-      <div class="pak">
-        <p class="cat">Materialen</p>
+        <p class="cat">01 · Materialen</p>
         <h3>KNX Materialenpakket</h3>
-        <p class="sub">Voor installateurs en ervaren zelfbouwers.</p>
+        <p class="sub">Enkel de materialen — jij maakt je eigen plan.</p>
         <ul>
-          <li>Levering van alle KNX-materialen</li>
+          <li>Losse KNX-materialen, scherp geleverd</li>
           <li>Schakelaars, actoren, voedingen, sensoren</li>
           <li>Advies bij productkeuze</li>
           <li>Ondersteuning bij installatie &amp; programmatie</li>
@@ -439,9 +355,38 @@ footer .online{color:var(--orange)}
       </div>
 
       <div class="pak">
-        <p class="cat">Full-service</p>
+        <p class="cat">02 · Zelfbouw</p>
+        <h3>KNX Zelfbouwpakket</h3>
+        <p class="sub">Materialen mét volledig uitgewerkt plan en schema's.</p>
+        <ul>
+          <li>Wij maken jouw volledige KNX-plan</li>
+          <li>Kabelschema's en installatiedocumentatie</li>
+          <li>Kabels aansluiten volgens de nummers op plan</li>
+          <li>Technische ondersteuning tijdens het project</li>
+        </ul>
+        <p class="price">Richtprijs<b>vanaf € 7.550 <span style="font-size:12px;font-weight:400">excl. btw</span></b></p>
+        <a href="#contact" class="btn btn-primary" data-pakket="KNX Zelfbouwpakket">Offerte aanvragen</a>
+      </div>
+
+      <div class="pak featured">
+        <span class="flag">Meest gekozen</span>
+        <p class="cat">03 · Voorgemonteerde kast</p>
+        <h3>Voorgemonteerde KNX-kast</h3>
+        <p class="sub">Wij bouwen jouw kast — geprogrammeerd of niet, jij kiest.</p>
+        <ul>
+          <li>Wij bouwen, bedraden en testen je volledige verdeelkast</li>
+          <li>Genummerde aansluitingen volgens plan</li>
+          <li>Eéndraadschema van de verdeelkast inbegrepen</li>
+          <li>Zelf programmeren of door BeTechSmart</li>
+        </ul>
+        <p class="price">Richtprijs<b>Prijs op maat</b></p>
+        <a href="#contact" class="btn btn-primary" data-pakket="Voorgemonteerde KNX-kast">Offerte aanvragen</a>
+      </div>
+
+      <div class="pak">
+        <p class="cat">04 · Full-service</p>
         <h3>Volledige KNX-installatie</h3>
-        <p class="sub">Van ontwerp tot oplevering, volledig ontzorgd.</p>
+        <p class="sub">Wij plaatsen alles — van ontwerp tot oplevering.</p>
         <ul>
           <li>Ontwerp en engineering</li>
           <li>Levering van alle materialen</li>
@@ -457,13 +402,13 @@ footer .online{color:var(--orange)}
     <div class="tbl-wrap">
       <table>
         <thead>
-          <tr><th>Inbegrepen</th><th>Zelfbouw</th><th class="hl">Voorgem. kast</th><th>Materialen</th><th>Volledig</th></tr>
+          <tr><th>Inbegrepen</th><th>Materialen</th><th>Zelfbouw</th><th class="hl">Voorgem. kast</th><th>Volledig</th></tr>
         </thead>
         <tbody>
-          <tr><td>Uitgewerkt KNX-plan &amp; documentatie</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Uitgewerkt KNX-plan &amp; documentatie</td><td><span class="n">✕</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
           <tr><td>Alle KNX-materialen geleverd</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
-          <tr><td>Voorgemonteerde &amp; geteste kast</td><td><span class="n">✕</span></td><td><span class="y">✓</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
-          <tr><td>Programmering door BeTechSmart</td><td><span class="n">✕</span></td><td><span class="y">✓</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Voorgemonteerde &amp; geteste kast</td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+          <tr><td>Programmering door BeTechSmart</td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
           <tr><td>Plaatsing &amp; bekabeling ter plaatse</td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
           <tr><td>Technische begeleiding</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
           <tr><td>Service &amp; support na oplevering</td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="n">✕</span></td><td><span class="y">✓</span></td></tr>
@@ -485,21 +430,31 @@ footer .online{color:var(--orange)}
     <div class="why-grid">
       <div class="why">
         <p class="num">01</p>
-        <h3>Open standaard</h3>
-        <p>Een merkonafhankelijke wereldnorm. Combineer vrij componenten van honderden fabrikanten — geen vendor lock-in.</p>
+        <h3>Open wereldstandaard</h3>
+        <p>KNX is dé merkonafhankelijke norm voor gebouwautomatisering. Meer dan 500 fabrikanten wereldwijd maken KNX-componenten — combineer vrij wat jij het beste vindt.</p>
       </div>
       <div class="why">
         <p class="num">02</p>
-        <h3>Toekomstbestendig</h3>
-        <p>Je installatie blijft uitbreidbaar en compatibel, ook over 20 jaar. Vandaag investeren, jaren profiteren.</p>
+        <h3>35 jaar bewezen — en nog steeds compatibel</h3>
+        <p>KNX bestaat sinds 1990. Een component van toen werkt nog altijd samen met een component van vandaag. Welk ander systeem kan dat zeggen?</p>
       </div>
       <div class="why">
         <p class="num">03</p>
-        <h3>Bedraad &amp; betrouwbaar</h3>
-        <p>Een vaste KNX-bus werkt zonder wifi of cloud. Stabiel, snel en veilig — ook als het internet wegvalt.</p>
+        <h3>Geen merk-gevangenis</h3>
+        <p>Bij merkgebonden systemen zoals Niko Home Control of Loxone zit je vast aan één fabrikant — voor uitbreidingen, prijzen én de toekomst. Bij KNX kies jij, vandaag en over 20 jaar.</p>
       </div>
       <div class="why">
         <p class="num">04</p>
+        <h3>Toekomstbestendig</h3>
+        <p>Je installatie blijft uitbreidbaar en compatibel, ook over 20 jaar. Vandaag investeren, decennia profiteren — en elke KNX-professional kan er later mee verder.</p>
+      </div>
+      <div class="why">
+        <p class="num">05</p>
+        <h3>Bedraad &amp; betrouwbaar</h3>
+        <p>Een vaste KNX-bus werkt zonder wifi of cloud. Stabiel, snel en veilig — ook als het internet wegvalt, blijft je huis gewoon werken.</p>
+      </div>
+      <div class="why">
+        <p class="num">06</p>
         <h3>Zelfbouw-vriendelijk</h3>
         <p>Alles genummerd volgens plan. Jij sluit aan op je eigen tempo, met begeleiding telefonisch, online of in de showroom.</p>
       </div>
@@ -713,9 +668,9 @@ footer .online{color:var(--orange)}
       <div>
         <p class="foot-h">Pakketten</p>
         <ul>
+          <li><a href="#pakketten">KNX Materialenpakket</a></li>
           <li><a href="#pakketten">KNX Zelfbouwpakket</a></li>
           <li><a href="#pakketten">Voorgemonteerde kast</a></li>
-          <li><a href="#pakketten">KNX Materialenpakket</a></li>
           <li><a href="#pakketten">Volledige installatie</a></li>
         </ul>
       </div>
@@ -737,70 +692,6 @@ footer .online{color:var(--orange)}
 </footer>
 
 <script>
-// ---------- pakketkiezer ----------
-const PAKKETTEN = [
-  {min:0, max:24, cat:"Zelfbouw", title:"KNX Zelfbouwpakket",
-   desc:"Voor doe-het-zelvers die alles zelf plaatsen: volledig uitgewerkt KNX-plan, kabels aansluiten volgens de nummers, met technische ondersteuning tijdens het hele project.",
-   price:"vanaf € 7.550", note:"Richtprijs basis · excl. btw"},
-  {min:25, max:54, cat:"Meest gekozen", title:"Voorgemonteerde KNX-kast",
-   desc:"De eenvoudigste manier om zelf KNX te plaatsen: wij bouwen, bekabelen en testen je kast — jij sluit aan volgens de genummerde klemmen. Programmeren doe je zelf of laat je aan ons over.",
-   price:"Prijs op maat", note:"Op basis van jouw plan"},
-  {min:55, max:79, cat:"Materialen + begeleiding", title:"KNX Materialenpakket",
-   desc:"Voor installateurs en ervaren zelfbouwers: alle KNX-materialen scherp geleverd, met advies bij productkeuze en ondersteuning bij installatie en programmatie.",
-   price:"Prijs op maat", note:"Op basis van jouw materiaallijst"},
-  {min:80, max:100, cat:"Full-service", title:"Volledige KNX-installatie",
-   desc:"Van ontwerp tot oplevering volledig ontzorgd: engineering, levering, plaatsing, programmatie én service na oplevering. Jij hoeft alleen te genieten.",
-   price:"Prijs op maat", note:"Na gratis intake & plan"}
-];
-// NB: slider is 'hoeveel doe je zelf' omgekeerd: links = meer zelf doen (zelfbouw), rechts = ontzorgd
-const slider = document.getElementById('q-diy');
-const rBadge = document.getElementById('r-badge');
-const rTitle = document.getElementById('r-title');
-const rDesc  = document.getElementById('r-desc');
-const rPrice = document.getElementById('r-price');
-const rNote  = document.getElementById('r-pricenote');
-const fPakket = document.getElementById('f-pakket');
-const fOnderwerp = document.getElementById('f-onderwerp');
-const fMsg = document.getElementById('f-msg');
-
-let projectType = "Nieuwbouw";
-let wants = new Set(["Verlichting"]);
-
-function currentPakket(){
-  const v = Number(slider.value);
-  return PAKKETTEN.find(p => v >= p.min && v <= p.max) || PAKKETTEN[1];
-}
-function render(){
-  const p = currentPakket();
-  rBadge.textContent = p.cat;
-  rTitle.textContent = p.title;
-  rDesc.textContent  = p.desc;
-  rPrice.textContent = p.price;
-  rNote.textContent  = p.note;
-}
-function prefillForm(){
-  const p = currentPakket();
-  for (const opt of fPakket.options){ if(opt.text === p.title){ fPakket.value = opt.text; break; } }
-  fOnderwerp.value = "Offerte aanvragen";
-  fMsg.value = projectType + " — ik wil sturen: " + Array.from(wants).join(", ") + ". Interesse in: " + p.title + ".";
-}
-slider.addEventListener('input', render);
-document.getElementById('r-cta').addEventListener('click', prefillForm);
-
-// single-select chips (project)
-document.querySelectorAll('#q-project .chip').forEach(ch=>{
-  ch.addEventListener('click', ()=>{
-    document.querySelectorAll('#q-project .chip').forEach(c=>c.classList.remove('sel'));
-    ch.classList.add('sel'); projectType = ch.dataset.v;
-  });
-});
-// multi-select chips (wants)
-document.querySelectorAll('#q-wants .chip').forEach(ch=>{
-  ch.addEventListener('click', ()=>{
-    ch.classList.toggle('sel');
-    ch.classList.contains('sel') ? wants.add(ch.dataset.v) : wants.delete(ch.dataset.v);
-  });
-});
 // pakket-card CTAs prefill the form too
 document.querySelectorAll('[data-pakket]').forEach(a=>{
   a.addEventListener('click', ()=>{
@@ -809,7 +700,6 @@ document.querySelectorAll('[data-pakket]').forEach(a=>{
     if(name === "Advies producten"){ fOnderwerp.value = "Productadvies"; fPakket.value = "Nog geen idee — adviseer mij"; }
   });
 });
-render();
 </script>
 </body>
 </html>
