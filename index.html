@@ -70,6 +70,10 @@ header{position:sticky;top:0;z-index:60;background:rgba(245,247,251,.92);backdro
 .hero-partners i{width:8px;height:8px;border-radius:50%;background:var(--orange);flex:none;font-style:normal}
 
 /* hero panel visual */
+.hero-grid > div:first-child{position:relative;z-index:2}
+.hero-photo{position:relative;margin-left:-110px;z-index:1}
+.hero-photo img{width:100%;border-radius:24px;box-shadow:0 40px 90px -40px rgba(35,42,61,.65);display:block}
+@media (max-width:960px){.hero-photo{margin-left:0;margin-top:10px}}
 .panelwrap{position:relative}
 .panel{background:linear-gradient(160deg,#2A3040,#171B25);border-radius:22px;padding:30px 28px;color:#E8EBF2;box-shadow:0 34px 70px -34px rgba(35,42,61,.65);max-width:420px;margin-left:auto}
 .panel-top{display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#9AA3B5;margin-bottom:22px}
@@ -275,24 +279,12 @@ footer .online{color:var(--orange)}
       <h1>Een slim huis, helemaal op <span class="accent">jouw tempo</span>.</h1>
       <p class="lede">Van kant-en-klaar zelfbouwpakket tot volledige KNX-installatie. Jij kiest hoeveel je zelf doet — wij begeleiden je van A tot Z, met Zennio en de open KNX-standaard.</p>
       <div class="hero-ctas">
-        <a href="#kiezer" class="btn btn-primary">Vind jouw pakket in 30 sec</a>
-        <a href="#contact" class="btn btn-ghost">Showroom boeken</a>
+        <a href="https://betechsmart-configurator.vercel.app" class="btn btn-primary">Start de Smart Home Planner →</a>
       </div>
       <p class="hero-partners"><i></i>In samenwerking met Zennio · Officiële KNX-technologie · ComfortClick</p>
     </div>
-    <div class="panelwrap">
-      <div class="panel" aria-label="Voorbeeld van een KNX-touchpaneel">
-        <div class="panel-top"><span>MASTER BEDROOM</span><span>21:47</span></div>
-        <div class="panel-temp">21.5<small> °C</small></div>
-        <div class="panel-grid">
-          <div class="tile on"><span class="ic">💡</span>Verlichting<br><b>72%</b></div>
-          <div class="tile"><span class="ic">🪟</span>Rolluiken<br><b>Dicht</b></div>
-          <div class="tile on"><span class="ic">🌡️</span>Verwarming<br><b>Eco</b></div>
-          <div class="tile"><span class="ic">🎵</span>Audio<br><b>Uit</b></div>
-          <div class="tile on"><span class="ic">⚡</span>Energie<br><b>1,2 kW</b></div>
-          <div class="tile"><span class="ic">🎬</span>Scènes<br><b>Avond</b></div>
-        </div>
-      </div>
+    <div class="hero-photo">
+      <img src="https://static.wixstatic.com/media/8eb050_778794e441ba493f888508fe92b63363~mv2.jpg" alt="De nieuwe Zennio KNX-bediening in metalen afwerking">
       <div class="panel-note">Bedraad. Zonder cloud. <b>Werkt óók als wifi wegvalt.</b></div>
     </div>
   </div>
@@ -302,9 +294,9 @@ footer .online{color:var(--orange)}
 <div class="stats">
   <div class="wrap stats-grid">
     <div class="stat"><b>Heel<sup> BE</sup></b><span>Levering &amp; projecten in heel België</span></div>
-    <div class="stat"><b>4</b><span>Pakketten van DIY tot full-service</span></div>
+    <div class="stat"><b>6.000<sup>+</sup></b><span>Componenten direct bestelbaar in de webshop</span></div>
     <div class="stat"><b>100<sup>%</sup></b><span>Op de open KNX-standaard</span></div>
-    <div class="stat"><b>500<sup>+</sup></b><span>Componenten permanent leverbaar</span></div>
+    <div class="stat"><b>15</b><span>Topmerken, van Zennio tot Elsner</span></div>
   </div>
 </div>
 
