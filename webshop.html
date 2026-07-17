@@ -297,18 +297,28 @@ footer a:hover{color:#fff}
           <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Telefoon *<input type="tel" name="telefoon" required style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
         </div>
         <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">BTW-nummer (indien van toepassing)<input name="btw" placeholder="BE 0xxx.xxx.xxx" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
-        <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Facturatieadres *<textarea name="facturatieadres" required rows="2" placeholder="Straat + nr, postcode gemeente" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
+        <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Facturatieadres — straat + nummer *<input name="fact_straat" required placeholder="Klinkaardstraat 210" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px">
+          <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Postcode *<input name="fact_postcode" required placeholder="2950" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+          <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Gemeente *<input name="fact_gemeente" required placeholder="Kapellen" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+        </div>
         <div style="display:flex;gap:16px;font-size:14px;align-items:center;flex-wrap:wrap">
           <b style="font-family:'Sora',sans-serif;font-size:13px">Levering *</b>
           <label style="display:flex;gap:6px;align-items:center"><input type="radio" name="levering" value="Afhalen in Kapellen" checked style="accent-color:var(--orange)"> Afhalen in Kapellen</label>
           <label style="display:flex;gap:6px;align-items:center"><input type="radio" name="levering" value="Leveren" style="accent-color:var(--orange)"> Leveren</label>
         </div>
-        <label id="o-lever-adres" style="display:none;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;gap:5px">Leveradres<textarea name="leveradres" rows="2" placeholder="Indien anders dan facturatieadres" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
+        <div id="o-lever-adres" style="display:none;gap:12px">
+          <p class="mono" style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Leveradres — enkel invullen indien anders dan facturatieadres</p>
+          <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px;margin-bottom:12px">Straat + nummer<input name="lev_straat" placeholder="Straat en huisnummer" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+          <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px">
+            <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Postcode<input name="lev_postcode" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+            <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Gemeente<input name="lev_gemeente" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
+          </div>
+        </div>
         <div id="o-lever-kost" style="display:none;background:var(--orange-soft);border:1.5px solid var(--orange);border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.65">
-          <b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten (excl. btw)</b><br>
-          België: gratis vanaf € 250 onder 30 kg · onder 30 kg € 16 · boven 30 kg € 40 · pallet tot 400 kg € 100.<br>
-          Nederland: onder 30 kg € 20 · boven 30 kg € 50 · pallet tot 400 kg € 145. Andere landen op aanvraag.<br>
-          <span style="color:var(--muted)">De juiste kost voor jouw bestelling bevestigen we samen met je prijs en levertermijn. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>
+          <b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten — België &amp; Nederland</b><br>
+          <b>Gratis vanaf € 250.</b> Daaronder € 10 (excl. btw).<br>
+          <span style="color:var(--muted)">Voor zware of grote zendingen bevestigen we de juiste kost samen met je prijs en levertermijn. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>
         </div>
         <p id="o-afhaal-info" style="background:#F0F4F9;border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.65;margin:0"><b style="font-family:'Sora',sans-serif;font-size:13px">Gratis afhalen — geen leveringskosten</b><br><span style="color:var(--muted)">Klinkaardstraat 210 Unit C001, 2950 Kapellen. We laten je weten zodra je bestelling klaarstaat.</span></p>
         <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Opmerkingen<textarea name="opmerking" rows="2" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
@@ -610,7 +620,7 @@ document.getElementById('o-close').onclick=()=>obg.classList.remove('open');
 obg.addEventListener('click',e=>{if(e.target===obg)obg.classList.remove('open')});
 document.querySelectorAll('input[name=levering]').forEach(r=>r.onchange=()=>{
   const lev = document.querySelector('input[name=levering]:checked').value==='Leveren';
-  document.getElementById('o-lever-adres').style.display = lev?'grid':'none';
+  document.getElementById('o-lever-adres').style.display = lev?'block':'none';
   document.getElementById('o-lever-kost').style.display  = lev?'block':'none';
   document.getElementById('o-afhaal-info').style.display = lev?'none':'block';
 });
@@ -618,7 +628,8 @@ document.getElementById('o-form').onsubmit=async(e)=>{
   e.preventDefault();
   const f=new FormData(e.target);
   const besteltekst='BESTELLING WEBSHOP\n\n'+orderLines().join('\n')+'\n\nTotaal (zichtbare prijzen): '+document.getElementById('cart-total').textContent.replace(/\s+/g,' ');
-  const gegevens='\n\nFACTUURGEGEVENS\nNaam: '+f.get('naam')+'\nBedrijf: '+(f.get('bedrijf')||'-')+'\nE-mail: '+f.get('email')+'\nTelefoon: '+f.get('telefoon')+'\nBTW: '+(f.get('btw')||'-')+'\nFacturatieadres: '+f.get('facturatieadres')+'\nLevering: '+f.get('levering')+(f.get('leveradres')?'\nLeveradres: '+f.get('leveradres'):'')+'\nOpmerking: '+(f.get('opmerking')||'-');
+  const levAdres = (f.get('lev_straat')||f.get('lev_postcode')||f.get('lev_gemeente')) ? '\nLeveradres: '+[f.get('lev_straat'),(f.get('lev_postcode')+' '+f.get('lev_gemeente')).trim()].filter(Boolean).join(', ') : '';
+  const gegevens='\n\nFACTUURGEGEVENS\nNaam: '+f.get('naam')+'\nBedrijf: '+(f.get('bedrijf')||'-')+'\nE-mail: '+f.get('email')+'\nTelefoon: '+f.get('telefoon')+'\nBTW: '+(f.get('btw')||'-')+'\nFacturatieadres: '+f.get('fact_straat')+', '+f.get('fact_postcode')+' '+f.get('fact_gemeente')+'\nLevering: '+f.get('levering')+levAdres+'\nOpmerking: '+(f.get('opmerking')||'-');
   const msg=document.getElementById('o-msg'), btn=document.getElementById('o-submit');
   btn.disabled=true; msg.style.color='var(--muted)'; msg.textContent='Versturen…';
   try{
