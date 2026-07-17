@@ -55,7 +55,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(245,247,251,.92);backdro
 .nav-links a{text-decoration:none;font-weight:500;font-size:15.5px;color:var(--muted)}
 .nav-links a:hover{color:var(--ink)}
 .nav .btn{padding:11px 20px;font-size:12px}
-@media (max-width:960px){.nav-links li:not(:last-child){display:none}}
+@media (max-width:960px){.nav-links li{display:none}.nav-links li.shop{display:block}.nav-links li.shop a{background:var(--orange);color:#fff;padding:10px 18px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}}
 
 /* hero */
 .hero{padding:80px 0 56px;position:relative;overflow:hidden}
@@ -287,7 +287,7 @@ footer .online{color:var(--orange)}
       <li><a href="#waarom">Waarom KNX</a></li>
       <li><a href="#pakketten">Pakketten</a></li>
       <li><a href="#werkwijze">Werkwijze</a></li>
-      <li><a href="webshop.html">Producten</a></li>
+      <li class="shop"><a href="webshop.html">Webshop</a></li>
       <li><a href="comfortclick.html">ComfortClick</a></li>
       <li><a href="#faq">FAQ</a></li>
       
@@ -541,7 +541,7 @@ footer .online{color:var(--orange)}
 <section id="producten" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Producten</p>
+      <p class="eyebrow">Webshop</p>
       <h2>Alles voor je KNX-project, advies inbegrepen.</h2>
       <p>Touchscreens, drukknoppen, voorgemonteerde kasten en meer — geselecteerd Zennio- &amp; KNX-materiaal, geleverd in heel België.</p>
     </div>
@@ -686,7 +686,7 @@ footer .online{color:var(--orange)}
           <li><a href="#waarom">Waarom KNX</a></li>
           <li><a href="#pakketten">Pakketten</a></li>
           <li><a href="#werkwijze">Werkwijze</a></li>
-          <li><a href="webshop.html">Producten</a></li>
+          <li class="shop"><a href="webshop.html">Webshop</a></li>
       <li><a href="comfortclick.html">ComfortClick</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>

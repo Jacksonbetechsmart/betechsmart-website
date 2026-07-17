@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Producten — BeTechSmart | KNX-materiaal met advies</title>
+<title>Webshop — BeTechSmart | KNX-materiaal met advies</title>
 <meta name="description" content="6.000+ KNX- en elektrocomponenten: Zennio, Vimar, Berker en meer. Advies inbegrepen, levering in heel België.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(245,247,251,.94);backdro
 .nav-links a{text-decoration:none;font-weight:500;font-size:15px;color:var(--muted)}
 .nav-links a:hover{color:var(--ink)}
 .nav-links .active{color:var(--ink);font-weight:700}
-@media (max-width:860px){.nav-links li:not(:last-child){display:none}}
+@media (max-width:860px){.nav-links li{display:none}.nav-links li.shop{display:block}.nav-links li.shop a{background:var(--orange);color:#fff;padding:10px 18px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}}
 
 .hero{padding:56px 0 8px}
 .hero h1{font-size:clamp(30px,4.4vw,48px);font-weight:800;margin-bottom:14px}
@@ -47,7 +47,8 @@ header{position:sticky;top:0;z-index:60;background:rgba(245,247,251,.94);backdro
 .trust i{width:7px;height:7px;border-radius:50%;background:var(--orange);flex:none;font-style:normal}
 
 /* filters */
-.filters{position:sticky;top:72px;z-index:50;background:var(--bg);padding:18px 0 14px;border-bottom:1px solid var(--line)}
+.filters{position:sticky;top:72px;z-index:50;background:var(--bg);padding:18px 0 14px;border-bottom:1px solid var(--line);transition:transform .28s ease}
+@media (max-width:860px){.filters.verstopt{transform:translateY(-120%)}}
 .filter-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .search{flex:1;min-width:220px;position:relative}
 .search input{width:100%;padding:12px 16px 12px 42px;border:1.5px solid var(--line);border-radius:999px;font-size:15px;font-family:'DM Sans',sans-serif;background:var(--card)}
@@ -184,7 +185,7 @@ footer a:hover{color:#fff}
       <li><a href="index.html#waarom">Waarom KNX</a></li>
       <li><a href="index.html#pakketten">Pakketten</a></li>
       <li><a href="index.html#werkwijze">Werkwijze</a></li>
-      <li><a class="active" href="#">Producten</a></li>
+      <li class="shop"><a class="active" href="#">Webshop</a></li>
       <li><a href="comfortclick.html">ComfortClick</a></li>
       <li><a href="index.html#contact" class="btn btn-primary">Showroom boeken</a></li>
     </ul>
@@ -206,7 +207,7 @@ footer a:hover{color:#fff}
 <main>
 <div class="hero">
   <div class="wrap">
-    <p class="eyebrow">Producten</p>
+    <p class="eyebrow">Webshop</p>
     <h1>Alles voor je KNX-project, <span class="accent">advies inbegrepen</span>.</h1>
     <p>Meer dan 6.000 componenten van Zennio, Vimar, Berker en andere topmerken — permanent leverbaar. Niet zeker wat jouw project nodig heeft? Dat is exact waar wij het verschil maken.</p>
     <div class="trust">
@@ -518,13 +519,22 @@ function openModal(p){
       }
     }
   }
+  // samensteller prominent tonen wanneer die bestaat
+  if(BUILDER_TRIGGERS[p.id]){
+    exHtml = `<div style="border:2px solid var(--orange);background:var(--orange-soft);border-radius:12px;padding:14px 16px;margin-top:12px">
+      <b style="font-family:'Sora',sans-serif;font-size:14px">Stel je bediening compleet samen</b>
+      <p style="font-size:13px;color:var(--muted);margin:4px 0 10px">Kies je uitvoering, kleur en de bijhorende toetsen, centraalplaat en afdekraam — alles gaat samen in je mandje.</p>
+      <button class="btn btn-primary" id="m-stel" style="width:100%">Stel samen →</button>
+    </div>` + exHtml;
+    setTimeout(()=>{const b=document.getElementById('m-stel'); if(b) b.onclick=()=>{mbg.classList.remove('open');openBuilder(BUILDER_TRIGGERS[p.id]);};},0);
+  }
   ex.innerHTML=exHtml;
   const mail=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Vraag over '+p.id+' — '+p.name)}`;
   document.getElementById('m-links').innerHTML =
     `<span class="qtybox"><button type="button" data-step="-1">−</button><input class="qv" id="m-qty" type="number" min="1" value="1" aria-label="Aantal"><button type="button" data-step="1">＋</button></span>`+
     `<button class="btn btn-primary" id="m-add">＋ In mandje</button>`+
     `<a class="btn btn-ghost" href="${mail}">Vraag advies</a>`+
-    (p.url?`<a class="btn btn-ghost" href="${p.url}" target="_blank" rel="noopener">Technische fiche →</a>`:'');
+    '';
   document.getElementById('m-links').querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{
     const inp=document.getElementById('m-qty');
     inp.value=Math.max(1,(parseInt(inp.value)||1)+parseInt(b.dataset.step));
@@ -763,6 +773,18 @@ document.getElementById('a-download').onclick=()=>{
   const blob=new Blob([head+'const PRODUCTS = '+JSON.stringify(PRODUCTS)+';\n'],{type:'text/javascript'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='products.js';a.click();
 };
+
+// ---------- filterbalk verbergt zich bij scrollen naar beneden ----------
+(function(){
+  const bar=document.querySelector('.filters'); if(!bar) return;
+  let vorige=window.scrollY;
+  addEventListener('scroll',()=>{
+    const nu=window.scrollY;
+    if(nu>vorige && nu>260) bar.classList.add('verstopt');
+    else bar.classList.remove('verstopt');
+    vorige=nu;
+  },{passive:true});
+})();
 
 refresh();
 </script>
