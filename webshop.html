@@ -300,6 +300,13 @@ footer a:hover{color:#fff}
           <label style="display:flex;gap:6px;align-items:center"><input type="radio" name="levering" value="Leveren" style="accent-color:var(--orange)"> Leveren</label>
         </div>
         <label id="o-lever-adres" style="display:none;font-size:13px;font-weight:700;font-family:'Sora',sans-serif;gap:5px">Leveradres<textarea name="leveradres" rows="2" placeholder="Indien anders dan facturatieadres" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
+        <div id="o-lever-kost" style="display:none;background:var(--orange-soft);border:1.5px solid var(--orange);border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.65">
+          <b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten (excl. btw)</b><br>
+          België: gratis vanaf € 250 onder 30 kg · onder 30 kg € 16 · boven 30 kg € 40 · pallet tot 400 kg € 100.<br>
+          Nederland: onder 30 kg € 20 · boven 30 kg € 50 · pallet tot 400 kg € 145. Andere landen op aanvraag.<br>
+          <span style="color:var(--muted)">De juiste kost voor jouw bestelling bevestigen we samen met je prijs en levertermijn. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>
+        </div>
+        <p id="o-afhaal-info" style="background:#F0F4F9;border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.65;margin:0"><b style="font-family:'Sora',sans-serif;font-size:13px">Gratis afhalen — geen leveringskosten</b><br><span style="color:var(--muted)">Klinkaardstraat 210 Unit C001, 2950 Kapellen. We laten je weten zodra je bestelling klaarstaat.</span></p>
         <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Opmerkingen<textarea name="opmerking" rows="2" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
         <button type="submit" class="btn btn-primary" id="o-submit">Bestelling versturen</button>
         <p id="o-msg" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;text-align:center;color:var(--muted)"></p>
@@ -329,7 +336,8 @@ footer a:hover{color:#fff}
 <footer>
   <div class="wrap foot">
     <span>© 2026 BeTechSmart — Klinkaardstraat 210, Unit C001, 2950 Kapellen</span>
-    <span><a href="mailto:info@betechsmart.be">info@betechsmart.be</a> · <a href="tel:+3233149068">+32 3 314 90 68</a> · <span class="adminlink mono" id="adminlink" style="font-size:11px">beheer</span></span>
+    <span><a href="mailto:info@betechsmart.be">info@betechsmart.be</a> · <a href="tel:+3233149068">+32 3 314 90 68</a></span>
+    <span><a href="privacy.html">Privacybeleid</a> · <a href="voorwaarden.html">Voorwaarden</a> · <a href="levering-klachten.html">Levering &amp; Klachten</a> · <span class="adminlink mono" id="adminlink" style="font-size:11px">beheer</span></span>
   </div>
 </footer>
 
@@ -588,7 +596,10 @@ document.getElementById('cart-send').onclick=()=>{
 document.getElementById('o-close').onclick=()=>obg.classList.remove('open');
 obg.addEventListener('click',e=>{if(e.target===obg)obg.classList.remove('open')});
 document.querySelectorAll('input[name=levering]').forEach(r=>r.onchange=()=>{
-  document.getElementById('o-lever-adres').style.display = document.querySelector('input[name=levering]:checked').value==='Leveren'?'grid':'none';
+  const lev = document.querySelector('input[name=levering]:checked').value==='Leveren';
+  document.getElementById('o-lever-adres').style.display = lev?'grid':'none';
+  document.getElementById('o-lever-kost').style.display  = lev?'block':'none';
+  document.getElementById('o-afhaal-info').style.display = lev?'none':'block';
 });
 document.getElementById('o-form').onsubmit=async(e)=>{
   e.preventDefault();
