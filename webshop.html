@@ -276,7 +276,7 @@ footer a:hover{color:#fff}
   <div class="cart-foot">
     <div class="cart-total"><span>Totaal</span><span id="cart-total">€ 0,00 <small>excl. btw</small></span></div>
     <button class="btn btn-primary" id="cart-send">Ga naar bestellen →</button>
-    <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);text-align:center">Geen online betaling — je vult je factuurgegevens in en wij bevestigen prijs, voorraad en levering binnen 1 werkdag.</p>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);text-align:center">Geen online betaling — je vult je factuurgegevens in en wij bevestigen binnen 1 werkdag je prijs, de beschikbaarheid en de levertermijn.</p>
   </div>
 </div>
 
@@ -286,7 +286,7 @@ footer a:hover{color:#fff}
     <div>
       <span class="pbrand">Bestelling · <span id="o-count"></span></span>
       <h3>Factuurgegevens invullen</h3>
-      <p class="pshort" style="display:block;margin-top:4px">Vul je gegevens in — wij bevestigen prijs, voorraad en levering binnen 1 werkdag. Betalen doe je pas na onze bevestiging, via factuur.</p>
+      <p class="pshort" style="display:block;margin-top:4px">Vul je gegevens in — binnen 1 werkdag bevestigen we je prijs, de beschikbaarheid en de levertermijn. Betalen doe je pas na onze bevestiging, via factuur.</p>
       <form id="o-form" style="display:grid;gap:12px;margin-top:16px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
           <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Naam *<input name="naam" required style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif"></label>
@@ -644,7 +644,7 @@ document.getElementById('o-form').onsubmit=async(e)=>{
       })});
     const j=await r.json();
     if(j.success){
-      msg.style.color='#2E7D32'; msg.textContent='✓ Bestelling verzonden! Je ontvangt binnen 1 werkdag onze bevestiging.';
+      msg.style.color='#2E7D32'; msg.textContent='✓ Bestelling verzonden! Binnen 1 werkdag bevestigen we je prijs en levertermijn.';
       cart={}; store.set(cart); renderCart();
       setTimeout(()=>obg.classList.remove('open'),2600);
     } else throw new Error(j.message||'verzending geweigerd');
