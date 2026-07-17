@@ -69,6 +69,29 @@ header{position:sticky;top:0;z-index:60;background:rgba(245,247,251,.92);backdro
 .hero-partners{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)}
 .hero-partners i{width:8px;height:8px;border-radius:50%;background:var(--orange);flex:none;font-style:normal}
 
+/* hero: bewegende beelden met tekstvak */
+.hero2{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden}
+.hero2 .bg{position:absolute;inset:0}
+.hero2 .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease;transform:scale(1.02)}
+.hero2 .bg img.on{opacity:1}
+.hero2::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,24,32,.62) 0%,rgba(20,24,32,.28) 55%,rgba(20,24,32,.08) 100%)}
+.hero2 .wrap{position:relative;z-index:2;width:100%}
+.herobox{background:#fff;border-radius:20px;padding:42px 44px;max-width:720px;margin:0 auto;box-shadow:0 30px 70px -30px rgba(20,24,32,.55)}
+.herobox h1{font-size:clamp(32px,4.6vw,52px);font-weight:800;margin-bottom:14px}
+.herobox .lede{font-size:17.5px;color:var(--muted);margin-bottom:0}
+.hero2 .slidez-dots{bottom:18px}
+@media (max-width:640px){.hero2{min-height:460px}.herobox{padding:26px 22px}}
+@media (prefers-reduced-motion:reduce){.hero2 .bg img{transition:none}}
+
+/* foto-carrousel (showroom & realisaties) */
+.slidez{position:relative;aspect-ratio:16/10;overflow:hidden}
+.slidez img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease}
+.slidez img.on{opacity:1}
+.slidez-dots{position:absolute;bottom:12px;left:0;right:0;display:flex;gap:8px;justify-content:center;z-index:2}
+.slidez-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.55);cursor:pointer;padding:0}
+.slidez-dots button.on{background:var(--orange)}
+@media (prefers-reduced-motion:reduce){.slidez img{transition:none}}
+
 /* hero panel visual */
 .hero-grid > div:first-child{position:relative;z-index:2}
 .hero-photo{position:relative;margin-left:-110px;z-index:1}
@@ -273,20 +296,22 @@ footer .online{color:var(--orange)}
 
 <main>
 <!-- ================= HERO ================= -->
-<div class="hero">
-  <div class="wrap hero-grid">
-    <div>
+<div class="hero2">
+  <div class="bg" id="hero-slidez">
+    <img class="on" src="img/hero-01.jpg" alt="Slimme woning met KNX-domotica" loading="eager">
+    <img src="img/hero-02.jpg" alt="Slimme woning met KNX-domotica" loading="lazy">
+    <img src="img/hero-03.jpg" alt="Slimme woning met KNX-domotica" loading="lazy">
+    <img src="img/hero-04.jpg" alt="Slimme woning met KNX-domotica" loading="lazy">
+    <img src="img/hero-05.jpg" alt="Slimme woning met KNX-domotica" loading="lazy">
+    <img src="img/hero-06.jpg" alt="Slimme woning met KNX-domotica" loading="lazy">
+    <img src="img/hero-07.jpg" alt="Slimme woning met KNX-domotica" loading="lazy">
+    <div class="slidez-dots" id="hero-dots"></div>
+  </div>
+  <div class="wrap">
+    <div class="herobox">
       <p class="eyebrow">KNX domotica · Zelfbouw &amp; installatie · Heel België</p>
       <h1>Een slim huis, helemaal op <span class="accent">jouw tempo</span>.</h1>
       <p class="lede">Van kant-en-klaar zelfbouwpakket tot volledige KNX-installatie. Jij kiest hoeveel je zelf doet — wij begeleiden je van A tot Z, met Zennio en de open KNX-standaard.</p>
-      <div class="hero-ctas">
-        <a href="https://betechsmart-configurator.vercel.app" class="btn btn-primary">Start de Smart Home Planner →</a>
-      </div>
-      <p class="hero-partners"><i></i>In samenwerking met Zennio · Officiële KNX-technologie · ComfortClick</p>
-    </div>
-    <div class="hero-photo">
-      <img src="https://static.wixstatic.com/media/8eb050_778794e441ba493f888508fe92b63363~mv2.jpg" alt="De nieuwe Zennio KNX-bediening in metalen afwerking">
-      <div class="panel-note">Bedraad. Zonder cloud. <b>Werkt óók als wifi wegvalt.</b></div>
     </div>
   </div>
 </div>
@@ -304,10 +329,7 @@ footer .online{color:var(--orange)}
 <!-- ================= PLANNER + NIEUW VAN ZENNIO ================= -->
 <section id="planner" style="padding-bottom:40px">
   <div class="wrap" style="max-width:880px">
-    <figure style="border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px -40px rgba(35,42,61,.5)">
-      <img src="https://static.wixstatic.com/media/2e9bab_a1f18fc9a8ae4aecab247b06bf9dc8bc~mv2.jpg" alt="De BeTechSmart-showroom in Kapellen" style="width:100%;display:block">
-      <figcaption class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:12px 18px;background:var(--card)">Onze showroom · Kapellen — kom alles zelf bedienen</figcaption>
-    </figure>
+    
 
     <div style="text-align:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px 28px;margin:22px 0">
       <p class="eyebrow" style="justify-content:center">Plan uw slimme woning</p>
@@ -325,6 +347,11 @@ footer .online{color:var(--orange)}
         <p style="font-size:14px;color:#C9D2DF;line-height:1.9">◦ Premium design in metal look<br>◦ Snellere en vloeiende bediening<br>◦ Haarscherp kleurenscherm<br>◦ Volledige controle over verlichting, klimaat, screens en meer</p>
       </div>
     </div>
+
+    <figure style="border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px -40px rgba(35,42,61,.5);margin-top:22px">
+      <img src="https://static.wixstatic.com/media/2e9bab_a1f18fc9a8ae4aecab247b06bf9dc8bc~mv2.jpg" alt="De BeTechSmart-showroom in Kapellen" style="width:100%;display:block">
+      <figcaption class="mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:12px 18px;background:var(--card)">Onze showroom · Kapellen — kom alles zelf bedienen</figcaption>
+    </figure>
   </div>
 </section>
 <style>@media (max-width:640px){#planner div[style*="220px 1fr"]{grid-template-columns:1fr !important}}</style>
@@ -695,6 +722,22 @@ document.querySelectorAll('[data-pakket]').forEach(a=>{
     if(name === "Advies producten"){ fOnderwerp.value = "Productadvies"; fPakket.value = "Nog geen idee — adviseer mij"; }
   });
 });
+
+// ---------- foto-carrousel ----------
+(function(){
+  const box=document.getElementById('hero-slidez'); if(!box) return;
+  const imgs=[...box.querySelectorAll('img')];
+  const dots=document.getElementById('hero-dots');
+  let i=0, timer=null;
+  imgs.forEach((_,n)=>{const b=document.createElement('button');b.setAttribute('aria-label','Foto '+(n+1));b.onclick=()=>{go(n);start();};dots.appendChild(b);});
+  const dotEls=[...dots.children];
+  function go(n){imgs[i].classList.remove('on');dotEls[i].classList.remove('on');i=n;imgs[i].classList.add('on');dotEls[i].classList.add('on');}
+  function start(){clearInterval(timer);if(!matchMedia('(prefers-reduced-motion: reduce)').matches){timer=setInterval(()=>go((i+1)%imgs.length),6000);}}
+  box.addEventListener('mouseenter',()=>clearInterval(timer));
+  box.addEventListener('mouseleave',start);
+  dotEls[0].classList.add('on');
+  start();
+})();
 </script>
 </body>
 </html>
