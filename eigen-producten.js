@@ -1,5 +1,5 @@
 // EIGEN PRODUCTEN — duoclips, afrollers, verlichting, ComfortClick, camera's, speakers.
-// Dit bestand is klein: hier pas je snel je eigen producten aan.
+// Klein bestand: hier pas je snel je eigen producten aan.
 window.EIGEN_PRODUCTS = [
  {
   "id": "BTS-ZENNIO-METAL",
@@ -72,14 +72,35 @@ window.EIGEN_PRODUCTS = [
   "short": "Duoclips / duo clips — montageclips voor gefreesde sleuven (per zak)",
   "cat": "Toebehoren & montage",
   "rrp": null,
-  "price": 19.95,
+  "price": 24.65,
   "show": true,
   "img": "https://static.wixstatic.com/media/2e9bab_6398c75ce4aa41e7a98afcc4cc223ab5~mv2.jpg",
   "life": "Available",
   "note": "Eigen voorraad — direct leverbaar",
   "desc": "Nette en efficiënte montage-oplossing voor gefreesde sleuven.\nPer zak geleverd. Op voorraad. \n\n \n\n🎥 Bekijk hoe DuoClips geplaatst worden in de muur (klik beneden om te openen):\n\nhttps://youtube.com/shorts/nPZUvp3ltkY?si=QpUa91K4wj5SE2z7\n\nhttps://youtube.com/shorts/3IIcbJt1X_I?si=F4ah3rOnwk78DARB\n\nhttps://youtube.com/shorts/QNS5pEZhpOM?si=vTaU_RmAt9YQBiHE\n\nhttps://youtube.com/shorts/QW3zBQO20ms?si=D2mw_BrSu2mTl0Jc\n\n \n\n \n\n \n\nDe Duo Clips zijn dé slimme oplossing voor het snel en netjes bevestigen van leidingen in gevreesde sleuven.\nCompatibel met standaard buisdiameters en eenvoudig in gebruik. Ideaal voor zowel zelfbouwers als installateurs.\n\n \n\nInhoud per zak: 100 clips per zak\n\nVoordelen:\n✅ Tijdbesparend bij montage\n✅ Net en stevig resultaat\n✅ Snelle levering uit voorraad\n\n \n\nAlle prijzen excl BTW\n\n \n\n1-2 zakken 24,65€ + 10€ levering\n\n3-4 zakken 24,65€ = GRATIS levering\n\n5-19 zakken 23,65€ per zak = GRATIS levering\n\n20 zakken ( 1 doos ) = 453€ = GRATIS levering\n\nVraag een offerte op maat via info@betechsmart.be\n\n \n\n1-2 Zakken, 10€ levering binnen België en 15€ in Nederland.\n\nVanaf 3 zakken of meer bieden wij gratis verzending binnen België en Nederland.\n\n \n\nVisit the official DuoClips website\n\nDuoClips – Groove clips for fastening wires & pipes without nails or glue - DuoClips\n\n \n\nWe deliver throughout Europe.\nStandard shipping is €25 a bag, but all orders of 5 bags or more qualify for free shipping.\n\nPlease contact us at info@betechsmart.be\n\nZoekwoorden: duoclip duoclips duo clips gefreesde sleuven montageclips clips sleuf",
   "url": "",
-  "hover": "https://static.wixstatic.com/media/2e9bab_262ed349f4c54699ad2039dfe5ee3349~mv2.png"
+  "hover": "https://static.wixstatic.com/media/2e9bab_262ed349f4c54699ad2039dfe5ee3349~mv2.png",
+  "fotos": [
+   "https://static.wixstatic.com/media/2e9bab_6398c75ce4aa41e7a98afcc4cc223ab5~mv2.jpg",
+   "https://static.wixstatic.com/media/2e9bab_262ed349f4c54699ad2039dfe5ee3349~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_cff6b7d5ffb8465a8bc2d1fa12577b66~mv2.png",
+   "https://static.wixstatic.com/media/8eb050_e05b0e81c6bc40979402924f15886ef7~mv2.jpeg",
+   "https://static.wixstatic.com/media/8eb050_747e7d556a9c42d28e0b5b2a30ad3f63~mv2.png",
+   "https://static.wixstatic.com/media/8eb050_d171711a5c584a5a83089039b37af1eb~mv2.jpg",
+   "https://static.wixstatic.com/media/8eb050_76c6c5b04ba440c0881ded3c3920e0b5~mv2.jpg",
+   "https://static.wixstatic.com/media/8eb050_dc354ab956ef45db8137fe9b8d49a02e~mv2.jpg"
+  ],
+  "staffel": [
+   {
+    "vanaf": 5,
+    "prijs": 23.65
+   },
+   {
+    "vanaf": 20,
+    "prijs": 22.65
+   }
+  ],
+  "gratisLeveringVanaf": 3
  },
  {
   "id": "BTS-DAHUA-PFB205W-E-MUURBEUGEL",
@@ -607,7 +628,14 @@ window.EIGEN_PRODUCTS = [
   "note": "Eigen voorraad",
   "desc": "Een gewichtsafhankelijke, onderhoudsvrije en automatische rem stopt het apparaat na een korte maar goed gecontroleerde loop zodra de poelie wordt onderbroken. De afrolrem past zijn remwerking aan zowel lichte draden als zwaardere kabeltrommels aan. Afhankelijk van het gewicht dat op het apparaat staat, zorgt de afrolrem ervoor dat b.v. het afrollen van zware trommels veel gemakkelijker.\n\nHet apparaat stelt de gebruiker in staat om zonder onderbrekingen in elke richting te werken, zonder dat er toezicht nodig is en zonder een wirwar aan kabels.\n\nDankzij een verstelbare opening tussen het draaibare gedeelte en de spies kan een bijna lege trommel worden gevuld zonder dat hij omvalt. Bovendien dient de verstelbare spleet als hulpmiddel om het bevestigen van de trommel te vergemakkelijken. Daarom moet de LITEC® 250 POCKET met de aangepaste tussenruimte op de trommel worden geplaatst. Daarna moet de trommel rechtop worden gezet met de afroller, die aan de trommel is bevestigd, en klaar!\n\nDe LITEC® 250 POCKET werkt soepel, laag en stabiel. onderhoudsvrij en slipvast.\nHet kan 200 keer zijn eigen gewicht dragen.\nDoor rationeel werken bespaart u kosten!\n\nGemaakt in Duitsland\n\n \n\nhttps://youtu.be/zBYN7nyxp2M\n\nZoekwoorden: litec kabelafroller kabelhaspel afroller kabel afrollen",
   "url": "",
-  "hover": "https://static.wixstatic.com/media/2e9bab_92426b4a2ef6451c95bb52fc8628dccf~mv2.png"
+  "hover": "https://static.wixstatic.com/media/2e9bab_92426b4a2ef6451c95bb52fc8628dccf~mv2.png",
+  "fotos": [
+   "https://static.wixstatic.com/media/2e9bab_bec1ffcbbca243aeb6c5a59a5ac4011c~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_92426b4a2ef6451c95bb52fc8628dccf~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_445a9d62cb0040d9b388cf51676c7def~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_38fbd4f3d22a4c7b8f028446fd3a6cd5~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_175fd503fe9e4101b6ffddc1b16456f3~mv2.png"
+  ]
  },
  {
   "id": "BTS-LITEC400",
@@ -623,7 +651,16 @@ window.EIGEN_PRODUCTS = [
   "note": "Eigen voorraad",
   "desc": "De Litec 400 kan zwaar zijn aan de zijkanten. Kabelhaspels d.m.v. 3 schroeven van ca. 4 x 30 mm worden bevestigd. De 3 montageogen op Litec 400 maken dit mogelijk.\n\nEen lastafhankelijke, onderhoudsvrije automatische rem zorgt ervoor dat het apparaat na een korte, gecontroleerde zwenkbeweging tot stilstand komt zodra de kabelbelasting wordt onderbroken. De afrolrem is in haar remwerking bij een lichtere kabeltrommel net als bij een zwaardere kabeltrommel altijd afhankelijk van het momenteel beschikbare gewicht en houdt er rekening mee dat een zware trommel gemakkelijker rolt.\n\nDe Litec 400 is belastbaar tot maximaal 500 kg.\n\nHet apparaat maakt probleemloos werken in elke richting mogelijk zonder toezicht op het walsproces, zonder kabelwarboel en een kostenbesparing door rationeel werken.\n\nVoordelen: compact en ruimtebesparend ontwerp, zeer glad, vlak, robuust, onderhoudsvrij, antislip stabiel.\n\n \n\nhttps://youtu.be/E11uYnfQTco\n\nZoekwoorden: litec kabelafroller kabelhaspel afroller kabel afrollen",
   "url": "",
-  "hover": "https://static.wixstatic.com/media/2e9bab_c39311bc53de4da491f2591e62fb5f31~mv2.png"
+  "hover": "https://static.wixstatic.com/media/2e9bab_c39311bc53de4da491f2591e62fb5f31~mv2.png",
+  "fotos": [
+   "https://static.wixstatic.com/media/2e9bab_33e0627e7ca6414a903e7c9e996c96f6~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_c39311bc53de4da491f2591e62fb5f31~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_c2a361c0f71a43d9a0980ef97d92e380~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_7ba944c2d5e74f4f8666c93d4f2b37c1~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_7418e798dbf1404885ca8414647b0aad~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_37c0281fe6264902932e636cc99243ac~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_175fd503fe9e4101b6ffddc1b16456f3~mv2.png"
+  ]
  },
  {
   "id": "BTS-ARTSOUND-HPRO550-INWALL-ST",
@@ -735,7 +772,17 @@ window.EIGEN_PRODUCTS = [
   "note": "Eigen voorraad",
   "desc": "De Litec-501 bespaart investeringen en opslag- en transportruimte door het combineren van maximaal vier verschillende en afzonderlijke gadgets. Een gewichtsafhankelijke, onderhoudsvrije en automatische rem stopt het apparaat na een korte maar goed gecontroleerde werking zodra het trekken aan de kabel wordt onderbroken. Deze rem is de beslissende voorwaarde om hetzelfde gadget te kunnen gebruiken voor gemakkelijke en zware gewichten. De afrolrem past zijn remwerking aan zowel lichte draden als zwaardere kabeltrommels aan. Afhankelijk van het gewicht dat op het apparaat staat, zorgt de afrolrem ervoor dat b.v. het afrollen van zware trommels veel gemakkelijker. De Litec-501 is belastbaar tot 380 kg. Het apparaat stelt de gebruiker in staat om zonder onderbrekingen in elke richting te werken, zonder dat er toezicht nodig is en zonder een wirwar van kabels, wat dankzij rationeel werken kosten bespaart. Voor het opnieuw uitrusten heeft u geen speciaal gereedschap of extra onderdelen nodig, zodat er niets verloren kan gaan. Het apparaat is compact en ruimtebesparend ontworpen. Het werkt soepel, laag en stabiel. onderhoudsvrij en slipvast.\n\n \n\nhttps://youtu.be/n7bJodBqgoY\n\nZoekwoorden: litec kabelafroller kabelhaspel afroller kabel afrollen",
   "url": "",
-  "hover": "https://static.wixstatic.com/media/2e9bab_da3e860cd7474437b8f6272bcbf0cee6~mv2.png"
+  "hover": "https://static.wixstatic.com/media/2e9bab_da3e860cd7474437b8f6272bcbf0cee6~mv2.png",
+  "fotos": [
+   "https://static.wixstatic.com/media/2e9bab_42b41a3e5ddd4ba3a5bd3e593e38470b~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_da3e860cd7474437b8f6272bcbf0cee6~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_fb121885a77b41dc854f304d567350d2~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_c4cb526f9eaa4cea8ee126644d1ff3c6~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_b12b0146f81b40e4a876d2ace279ca3b~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_32c83350c63c4d4188e6cd474f171c94~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_56dfd69f8668489f94dd8f3bec71aad9~mv2.png",
+   "https://static.wixstatic.com/media/2e9bab_ff637a339d794ea58f89e5d2dae3bfa3~mv2.png"
+  ]
  },
  {
   "id": "BTS-POE-RECORDER-DH-NVR4108-8P",
