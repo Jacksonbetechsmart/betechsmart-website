@@ -355,8 +355,11 @@ footer a:hover{color:#fff}
   </div>
 </footer>
 
-<script src="products.js"></script>
+<script src="vecolux-producten.js"></script>
+<script src="eigen-producten.js"></script>
 <script>
+// twee bronnen samenvoegen: groot Vecolux-bestand + klein eigen bestand
+const PRODUCTS = [].concat(window.VECOLUX_PRODUCTS||[], window.EIGEN_PRODUCTS||[]);
 // ================= instellingen =================
 const ADMIN_CODE = "BTS-2026";        // ← pas dit aan naar je eigen admincode
 const CONTACT_EMAIL = "info@betechsmart.be";
@@ -781,11 +784,19 @@ document.getElementById('a-disc').onclick=()=>{
   filtered().forEach(p=>{ if(p.rrp!=null){ p.price=Math.round(p.rrp*(1-pct/100)*100)/100; } });
   refresh(false);
 };
-document.getElementById('a-download').onclick=()=>{
+function bewaar(bestand, varnaam, lijst, pretty){
   const head='// BeTechSmart productdata — bewerkt via adminmodus op '+new Date().toLocaleString('nl-BE')+'\n'
             +'// Prijzen = verkoopprijs per stuk excl. btw. "show": true/false bepaalt of de prijs zichtbaar is.\n';
-  const blob=new Blob([head+'const PRODUCTS = '+JSON.stringify(PRODUCTS)+';\n'],{type:'text/javascript'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='products.js';a.click();
+  const json = pretty ? JSON.stringify(lijst,null,1) : JSON.stringify(lijst);
+  const blob=new Blob([head+'window.'+varnaam+' = '+json+';\n'],{type:'text/javascript'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=bestand;a.click();
+}
+document.getElementById('a-download').onclick=()=>{
+  // splits terug in de twee bronbestanden; download enkel wat gewijzigd kon zijn
+  const eigen   = PRODUCTS.filter(p=>String(p.id).startsWith('BTS-'));
+  const vecolux = PRODUCTS.filter(p=>!String(p.id).startsWith('BTS-'));
+  bewaar('eigen-producten.js','EIGEN_PRODUCTS', eigen, true);
+  setTimeout(()=>bewaar('vecolux-producten.js','VECOLUX_PRODUCTS', vecolux, false), 400);
 };
 
 // ---------- filterbalk verbergt zich bij scrollen naar beneden ----------
