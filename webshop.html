@@ -360,10 +360,12 @@ footer a:hover{color:#fff}
 </footer>
 
 <script src="vecolux-producten.js"></script>
+<script src="zennio-producten.js"></script>
 <script src="eigen-producten.js"></script>
 <script>
-// twee bronnen samenvoegen: groot Vecolux-bestand + klein eigen bestand
-const PRODUCTS = [].concat(window.VECOLUX_PRODUCTS||[], window.EIGEN_PRODUCTS||[]);
+// drie bronnen samenvoegen: Vecolux (rest) + Zennio + eigen — daarna terug in oorspronkelijke volgorde (via 'ord')
+const PRODUCTS = [].concat(window.VECOLUX_PRODUCTS||[], window.ZENNIO_PRODUCTS||[], window.EIGEN_PRODUCTS||[])
+                   .sort((a,b)=>(a.ord==null?1e9:a.ord)-(b.ord==null?1e9:b.ord));
 // ================= instellingen =================
 const ADMIN_CODE = "BTS-2026";        // ← pas dit aan naar je eigen admincode
 const CONTACT_EMAIL = "info@betechsmart.be";
@@ -841,11 +843,13 @@ function bewaar(bestand, varnaam, lijst, pretty){
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=bestand;a.click();
 }
 document.getElementById('a-download').onclick=()=>{
-  // splits terug in de twee bronbestanden; download enkel wat gewijzigd kon zijn
+  // splits terug in de drie bronbestanden; upload enkel het bestand dat je effectief wijzigde (meestal zennio-producten.js)
   const eigen   = PRODUCTS.filter(p=>String(p.id).startsWith('BTS-'));
-  const vecolux = PRODUCTS.filter(p=>!String(p.id).startsWith('BTS-'));
+  const zennio  = PRODUCTS.filter(p=>p.brand==='Zennio' && !String(p.id).startsWith('BTS-'));
+  const vecolux = PRODUCTS.filter(p=>p.brand!=='Zennio' && !String(p.id).startsWith('BTS-'));
   bewaar('eigen-producten.js','EIGEN_PRODUCTS', eigen, true);
-  setTimeout(()=>bewaar('vecolux-producten.js','VECOLUX_PRODUCTS', vecolux, false), 400);
+  setTimeout(()=>bewaar('zennio-producten.js','ZENNIO_PRODUCTS', zennio, false), 400);
+  setTimeout(()=>bewaar('vecolux-producten.js','VECOLUX_PRODUCTS', vecolux, false), 800);
 };
 
 // ---------- filterbalk verbergt zich bij scrollen naar beneden ----------
