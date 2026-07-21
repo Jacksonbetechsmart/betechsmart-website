@@ -77,7 +77,7 @@ window.EIGEN_PRODUCTS = [
   "img": "https://static.wixstatic.com/media/2e9bab_6398c75ce4aa41e7a98afcc4cc223ab5~mv2.jpg",
   "life": "Available",
   "note": "Eigen voorraad — direct leverbaar",
-  "desc": "Nette en efficiënte montage-oplossing voor gefreesde sleuven.\nPer zak geleverd. Op voorraad. \n\n \n\n🎥 Bekijk hoe DuoClips geplaatst worden in de muur (klik beneden om te openen):\n\nhttps://youtube.com/shorts/nPZUvp3ltkY?si=QpUa91K4wj5SE2z7\n\nhttps://youtube.com/shorts/3IIcbJt1X_I?si=F4ah3rOnwk78DARB\n\nhttps://youtube.com/shorts/QNS5pEZhpOM?si=vTaU_RmAt9YQBiHE\n\nhttps://youtube.com/shorts/QW3zBQO20ms?si=D2mw_BrSu2mTl0Jc\n\n \n\n \n\n \n\nDe Duo Clips zijn dé slimme oplossing voor het snel en netjes bevestigen van leidingen in gevreesde sleuven.\nCompatibel met standaard buisdiameters en eenvoudig in gebruik. Ideaal voor zowel zelfbouwers als installateurs.\n\n \n\nInhoud per zak: 100 clips per zak\n\nVoordelen:\n✅ Tijdbesparend bij montage\n✅ Net en stevig resultaat\n✅ Snelle levering uit voorraad\n\n \n\nAlle prijzen excl BTW\n\n \n\n1-2 zakken 24,65€ + 10€ levering\n\n3-4 zakken 24,65€ = GRATIS levering\n\n5-19 zakken 23,65€ per zak = GRATIS levering\n\n20 zakken ( 1 doos ) = 453€ = GRATIS levering\n\nVraag een offerte op maat via info@betechsmart.be\n\n \n\n1-2 Zakken, 10€ levering binnen België en 15€ in Nederland.\n\nVanaf 3 zakken of meer bieden wij gratis verzending binnen België en Nederland.\n\n \n\nVisit the official DuoClips website\n\nDuoClips – Groove clips for fastening wires & pipes without nails or glue - DuoClips\n\n \n\nWe deliver throughout Europe.\nStandard shipping is €25 a bag, but all orders of 5 bags or more qualify for free shipping.\n\nPlease contact us at info@betechsmart.be\n\nZoekwoorden: duoclip duoclips duo clips gefreesde sleuven montageclips clips sleuf",
+  "desc": "Nette en efficiënte montage-oplossing voor gefreesde sleuven.\nPer zak geleverd. Op voorraad. \n\n \n\n🎥 Bekijk hoe DuoClips geplaatst worden in de muur (klik beneden om te openen):\n\nhttps://youtube.com/shorts/nPZUvp3ltkY?si=QpUa91K4wj5SE2z7\n\nhttps://youtube.com/shorts/3IIcbJt1X_I?si=F4ah3rOnwk78DARB\n\nhttps://youtube.com/shorts/QNS5pEZhpOM?si=vTaU_RmAt9YQBiHE\n\nhttps://youtube.com/shorts/QW3zBQO20ms?si=D2mw_BrSu2mTl0Jc\n\n \n\n \n\n \n\nDe Duo Clips zijn dé slimme oplossing voor het snel en netjes bevestigen van leidingen in gevreesde sleuven.\nCompatibel met standaard buisdiameters en eenvoudig in gebruik. Ideaal voor zowel zelfbouwers als installateurs.\n\n \n\nInhoud per zak: 100 clips per zak\n\nVoordelen:\n✅ Tijdbesparend bij montage\n✅ Net en stevig resultaat\n✅ Snelle levering uit voorraad\n\n \n\nAlle prijzen zijn excl. btw (in de webshop staat de incl.-prijs erbij).\n\nStaffelprijzen per zak:\n1-4 zakken: 24,65€ per zak\n5-19 zakken: 23,65€ per zak\n20 zakken (1 doos): 22,65€ per zak (= 453€ per doos)\n\n✅ Gratis levering in België & Nederland — bij élke bestelling van Duo Clips.\n\nAndere landen of een offerte op maat? Mail info@betechsmart.be\n\n \n\nVisit the official DuoClips website\n\nDuoClips – Groove clips for fastening wires & pipes without nails or glue - DuoClips\n\n \n\nWe ship across Europe — contact us at info@betechsmart.be for a quote.\n\nZoekwoorden: duoclip duoclips duo clips gefreesde sleuven montageclips clips sleuf",
   "url": "",
   "hover": "https://static.wixstatic.com/media/2e9bab_262ed349f4c54699ad2039dfe5ee3349~mv2.png",
   "fotos": [
@@ -100,7 +100,7 @@ window.EIGEN_PRODUCTS = [
     "prijs": 22.65
    }
   ],
-  "gratisLeveringVanaf": 3
+  "gratisLeveringVanaf": 1
  },
  {
   "id": "BTS-DAHUA-PFB205W-E-MUURBEUGEL",
@@ -621,7 +621,7 @@ window.EIGEN_PRODUCTS = [
   "short": "Kabelafroller / afroller met automatische rem — 250",
   "cat": "Toebehoren & montage",
   "rrp": null,
-  "price": 130.0,
+  "price": 104,
   "show": true,
   "img": "https://static.wixstatic.com/media/2e9bab_bec1ffcbbca243aeb6c5a59a5ac4011c~mv2.png",
   "life": "Available",
@@ -644,7 +644,7 @@ window.EIGEN_PRODUCTS = [
   "short": "Kabelafroller / afroller met automatische rem — 400",
   "cat": "Toebehoren & montage",
   "rrp": null,
-  "price": 186.0,
+  "price": 155,
   "show": true,
   "img": "https://static.wixstatic.com/media/2e9bab_33e0627e7ca6414a903e7c9e996c96f6~mv2.png",
   "life": "Available",
@@ -765,7 +765,7 @@ window.EIGEN_PRODUCTS = [
   "short": "Kabelafroller / afroller met automatische rem — 501",
   "cat": "Toebehoren & montage",
   "rrp": null,
-  "price": 260.4,
+  "price": 209,
   "show": true,
   "img": "https://static.wixstatic.com/media/2e9bab_42b41a3e5ddd4ba3a5bd3e593e38470b~mv2.png",
   "life": "Available",

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Webshop — BeTechSmart | KNX-materiaal met advies</title>
-<meta name="description" content="6.000+ KNX- en elektrocomponenten: Zennio, Vimar, Berker en meer. Advies inbegrepen, levering in heel België.">
+<meta name="description" content="6.000+ KNX- en elektrocomponenten: Zennio, Vimar, Berker en meer. Advies inbegrepen, levering in België en Nederland.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -228,7 +228,7 @@ footer a:hover{color:#fff}
     <h1>Alles voor je KNX-project, <span class="accent">advies inbegrepen</span>.</h1>
     <p>Meer dan 6.000 componenten van Zennio, Vimar, Berker en andere topmerken — permanent leverbaar. Niet zeker wat jouw project nodig heeft? Dat is exact waar wij het verschil maken.</p>
     <div class="trust">
-      <span><i></i>Levering in heel België</span>
+      <span><i></i>Levering in België &amp; Nederland · andere landen op aanvraag</span>
       <span><i></i>Technische ondersteuning inbegrepen</span>
       <span><i></i>Advies bij productkeuze</span>
     </div>
@@ -339,7 +339,7 @@ footer a:hover{color:#fff}
         </div>
         <div id="o-lever-kost" style="display:none;background:var(--orange-soft);border:1.5px solid var(--orange);border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.65">
           <b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten — België &amp; Nederland</b><br>
-          <b>Gratis vanaf € 250.</b> Daaronder € 10 (excl. btw).<br>
+          <b>Gratis vanaf € 50.</b> Daaronder € 10 (excl. btw).<br>
           <span style="color:var(--muted)">Andere landen (bv. Polen): verzendkost op aanvraag. Levering doorgaans binnen enkele werkdagen; is een artikel niet op voorraad, dan laten we je meteen de juiste levertermijn weten. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>
         </div>
         <p id="o-afhaal-info" style="background:#F0F4F9;border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.65;margin:0"><b style="font-family:'Sora',sans-serif;font-size:13px">Gratis afhalen — geen leveringskosten</b><br><span style="color:var(--muted)">Klinkaardstraat 210 Unit C001, 2950 Kapellen. We laten je weten zodra je bestelling klaarstaat.</span></p>
@@ -477,8 +477,8 @@ function card(p){
   const pct = hasDisc ? Math.round((1 - p.price/p.rrp)*100) : 0;
   const priceHtml = (p.show && p.price!=null)
     ? (hasDisc
-        ? `<div class="pprice"><s style="font-weight:400;font-size:12.5px;color:var(--muted)">${euro(p.rrp)}</s> ${euro(p.price)}<small>excl. btw · <b style="color:var(--orange-deep)">-${pct}%</b></small></div>`
-        : `<div class="pprice">${euro(p.price)}<small>excl. btw</small></div>`)
+        ? `<div class="pprice"><s style="font-weight:400;font-size:12.5px;color:var(--muted)">${euro(p.rrp)}</s> ${euro(p.price)}<small>excl. · ${euro(p.price*1.21)} incl. btw · <b style="color:var(--orange-deep)">-${pct}%</b></small></div>`
+        : `<div class="pprice">${euro(p.price)}<small>excl. · ${euro(p.price*1.21)} incl. btw</small></div>`)
     : `<div class="pprice" style="font-size:13px;color:var(--muted);font-weight:500">Prijs op aanvraag</div>`;
   const mail = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Vraag over '+p.id+' — '+p.name)}`;
   el.innerHTML = `
@@ -520,7 +520,7 @@ function openModal(p){
   document.getElementById('m-short').textContent = p.short;
   const hasDisc = p.show && p.price!=null && p.rrp!=null && p.price<p.rrp;
   document.getElementById('m-price').innerHTML = (p.show&&p.price!=null)
-    ? `<span class="pprice">${hasDisc?`<s style="font-weight:400;font-size:13px;color:var(--muted)">${euro(p.rrp)}</s> `:''}${euro(p.price)} <small style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">excl. btw${hasDisc?` · <b style="color:var(--orange-deep)">-${Math.round((1-p.price/p.rrp)*100)}%</b>`:''}</small></span>`
+    ? `<span class="pprice">${hasDisc?`<s style="font-weight:400;font-size:13px;color:var(--muted)">${euro(p.rrp)}</s> `:''}${euro(p.price)} <small style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">excl. · ${euro(p.price*1.21)} incl. btw${hasDisc?` · <b style="color:var(--orange-deep)">-${Math.round((1-p.price/p.rrp)*100)}%</b>`:''}</small></span>`
     : `<span style="color:var(--muted);font-weight:500">Prijs op aanvraag</span>`;
   document.getElementById('m-note').innerHTML = p.note?`<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--orange-deep);background:var(--orange-soft);border-radius:6px;padding:4px 8px;display:inline-block;margin-top:8px">⚠ ${p.note}</span>`:'';
   document.getElementById('m-desc').textContent = p.desc||'';
@@ -543,18 +543,18 @@ function openModal(p){
   let exHtml='';
   if(heeftStaffel(p) && p.price!=null || (p.gratisLeveringVanaf && p.price!=null)){
     const st = p.staffel||[];
-    const rijen=[`<tr><td>1–${st.length?st[0].vanaf-1:'∞'} st</td><td>${euro(p.price)}${(p.gratisLeveringVanaf&&p.gratisLeveringVanaf>1)?' · + levering':''}</td></tr>`]
+    const rijen=[`<tr><td>1–${st.length?st[0].vanaf-1:'∞'} st</td><td>${euro(p.price)} <span style="color:var(--muted);font-size:11px">/ ${euro(p.price*1.21)} incl.</span>${(p.gratisLeveringVanaf&&p.gratisLeveringVanaf>1)?' · + levering':''}</td></tr>`]
       .concat(st.map((t,i)=>{const tot=st[i+1]?st[i+1].vanaf-1:null;
-        return `<tr><td>${t.vanaf}${tot?'–'+tot:'+'} st</td><td><b>${euro(t.prijs)}</b></td></tr>`;}));
+        return `<tr><td>${t.vanaf}${tot?'–'+tot:'+'} st</td><td><b>${euro(t.prijs)}</b> <span style="color:var(--muted);font-size:11px">/ ${euro(t.prijs*1.21)} incl.</span></td></tr>`;}));
     let gratisRegel='';
     if(p.gratisLeveringVanaf){
-      gratisRegel=`<p style="font-size:12.5px;color:#2E7D32;font-weight:700;margin-top:8px">✓ Gratis levering vanaf ${p.gratisLeveringVanaf} stuks</p>`;
+      gratisRegel=`<p style="font-size:12.5px;color:#2E7D32;font-weight:700;margin-top:8px">✓ ${p.gratisLeveringVanaf>1?'Gratis levering vanaf '+p.gratisLeveringVanaf+' stuks':'Altijd gratis levering (België &amp; Nederland)'}</p>`;
     }
     exHtml+=`<div style="border:2px solid var(--orange);background:var(--orange-soft);border-radius:12px;padding:14px 16px;margin-top:12px">
       <b style="font-family:'Sora',sans-serif;font-size:14px">Hoe meer, hoe voordeliger</b>
       <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px">${rijen.join('')}</table>
       ${gratisRegel}
-      <p style="font-size:12px;color:var(--muted);margin-top:6px">Automatisch toegepast in je mandje. Prijzen per stuk, excl. btw.</p></div>`;
+      <p style="font-size:12px;color:var(--muted);margin-top:6px">Automatisch toegepast in je mandje. Prijzen per stuk, excl. · incl. btw.</p></div>`;
   }
   if(p.fotos && p.fotos.length>1){
     exHtml+=`<div style="margin-top:14px"><b style="font-family:'Sora',sans-serif;font-size:14px">Foto's</b>
@@ -653,7 +653,7 @@ function renderCart(){
     const korting=(sp!=null && sp<p.price);
     return `<div class="citem">${p.img?`<img src="${p.img}" alt="" data-mid="${id}" style="cursor:zoom-in" title="Klik voor grote foto">`:''}
       <div><div class="ci-name">${p.name}</div>
-      <div class="ci-price">${p.id} · ${sp!=null?euro(sp)+' /st'+(korting?` <span style="color:#2E7D32">▼ staffelkorting</span>`:''):'prijs op aanvraag'}</div></div>
+      <div class="ci-price">${p.id} · ${sp!=null?euro(sp)+'/st <span style="color:var(--muted)">('+euro(sp*1.21)+' incl.)</span>'+(korting?` <span style="color:#2E7D32">▼ staffelkorting</span>`:''):'prijs op aanvraag'}</div></div>
       <div class="qty"><button data-q="${id}|-1">−</button><span>${cart[id]}</span><button data-q="${id}|1">＋</button></div>
       <button class="rm" data-rm="${id}" aria-label="Verwijderen">🗑</button></div>`;
   }).join('');
@@ -662,7 +662,7 @@ function renderCart(){
   ids.forEach(id=>{const p=byId[id]; if(p.show&&p.price!=null){ total+=stuksprijs(p,cart[id])*cart[id]; if(p.gratisLeveringVanaf&&cart[id]>=p.gratisLeveringVanaf) gratisDoorProduct=true; } else opAanvraag=true;});
   document.getElementById('cart-total').innerHTML=euro(total)+' <small>excl. btw'+(opAanvraag?' · + artikelen op aanvraag':'')+'</small>';
   // verzending (spiegelt de serverberekening) + btw + te betalen
-  const verzendExcl=(leverKeuze==='afhalen')?0:((gratisDoorProduct||total>=250)?0:10);
+  const verzendExcl=(leverKeuze==='afhalen')?0:((gratisDoorProduct||total>=50)?0:10);
   const shipRow=document.getElementById('cart-ship'), shipVal=document.getElementById('cart-ship-val');
   if(leverKeuze==='leveren'&&ids.length){shipRow.style.display='flex';shipVal.textContent=verzendExcl===0?'Gratis':euro(verzendExcl)+' excl. btw';}
   else shipRow.style.display='none';
@@ -748,7 +748,7 @@ document.querySelectorAll('input[name=levering]').forEach(r=>r.onchange=()=>{
     if(kostBox.dataset.gratis==='1'){
       kostBox.innerHTML=`<b style="font-family:'Sora',sans-serif;font-size:13px;color:#2E7D32">✓ Gratis levering</b><br><span style="color:var(--muted)">Je bestelling komt in aanmerking voor gratis levering.</span>`;
     } else {
-      kostBox.innerHTML=`<b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten — België &amp; Nederland</b><br><b>Gratis vanaf € 250.</b> Daaronder € 10 (excl. btw).<br><span style="color:var(--muted)">Andere landen (bv. Polen): verzendkost op aanvraag. Levering doorgaans binnen enkele werkdagen; niet op voorraad? Dan laten we je meteen de juiste levertermijn weten. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>`;
+      kostBox.innerHTML=`<b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten — België &amp; Nederland</b><br><b>Gratis vanaf € 50.</b> Daaronder € 10 (excl. btw).<br><span style="color:var(--muted)">Andere landen (bv. Polen): verzendkost op aanvraag. Levering doorgaans binnen enkele werkdagen; niet op voorraad? Dan laten we je meteen de juiste levertermijn weten. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>`;
     }
   } else kostBox.style.display='none';
 });
@@ -862,7 +862,7 @@ function renderBuilder(){
     rows.push(`<div class="b-line">${p.img?`<img src="${p.img}" alt="" data-mid="${p.id}" style="cursor:zoom-in" title="Klik voor grote foto">`:''}<span>${p.name}</span><span class="lp">${p.price!=null?euro(p.price):'op aanvraag'}</span></div>`);
   });
   out.innerHTML = rows.join('')+
-    `<div class="b-total">${compleet?`Set-totaal: ${euro(total)} <small>excl. btw</small>`:''}
+    `<div class="b-total">${compleet?`Set-totaal: ${euro(total)} <small>excl. · ${euro(total*1.21)} incl. btw</small>`:''}
      <span class="qtybox" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><button type="button" data-bstep="-1" style="background:transparent;color:#fff">−</button><input id="b-qty" type="number" min="1" value="1" style="background:transparent;color:#fff" aria-label="Aantal sets"><button type="button" data-bstep="1" style="background:transparent;color:#fff">＋</button></span>
      <button class="btn btn-primary" id="b-add">＋ Zet set in mandje</button></div>`;
   out.querySelectorAll('[data-bstep]').forEach(b=>b.onclick=()=>{
