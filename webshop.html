@@ -28,6 +28,20 @@ h1,h2,h3{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.15}
 .btn-primary:hover{background:var(--orange-deep)}
 .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .btn-ghost:hover{border-color:var(--orange);color:var(--orange-deep)}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.3)}
+.cart-ship{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin:2px 0}
+.cart-btw{display:flex;justify-content:space-between;align-items:baseline;font-family:'Sora',sans-serif;font-weight:800;font-size:16px;margin:4px 0 2px}
+.cart-btw small{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:400;color:var(--muted);letter-spacing:.03em}
+.lever-keuze{display:flex;gap:6px;margin:12px 0 2px}
+.lever-keuze .lk{flex:1;padding:9px 6px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .15s ease}
+.lever-keuze .lk.sel{border-color:var(--orange);background:var(--orange-soft);color:var(--orange-deep);font-weight:600}
+.cart-foot .btn{width:100%;margin-top:8px}
+.cart-note{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);text-align:center;line-height:1.6;margin-top:10px}
+.paybanner{position:fixed;top:0;left:0;right:0;z-index:200;padding:14px 18px;text-align:center;font-family:'Sora',sans-serif;font-weight:700;font-size:14.5px;color:#fff;transform:translateY(-100%);transition:transform .35s ease}
+.paybanner.show{transform:translateY(0)}
+.paybanner.ok{background:#2E7D32}
+.paybanner.info{background:var(--ink)}
+.paybanner button{background:rgba(255,255,255,.25);border:none;color:#fff;border-radius:6px;padding:3px 10px;margin-left:12px;cursor:pointer;font-family:inherit;font-size:12px}
 
 header{position:sticky;top:0;z-index:60;background:rgba(245,247,251,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
@@ -274,9 +288,17 @@ footer a:hover{color:#fff}
   <div class="cart-head"><h3>Jouw mandje</h3><button id="cart-close" aria-label="Sluiten">✕</button></div>
   <div class="cart-items" id="cart-items"></div>
   <div class="cart-foot">
-    <div class="cart-total"><span>Totaal</span><span id="cart-total">€ 0,00 <small>excl. btw</small></span></div>
-    <button class="btn btn-primary" id="cart-send">Ga naar bestellen →</button>
-    <p style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);text-align:center">Geen online betaling — je vult je factuurgegevens in en wij bevestigen binnen 1 werkdag je prijs, de beschikbaarheid en de levertermijn.</p>
+    <div class="cart-total"><span>Subtotaal</span><span id="cart-total">€ 0,00 <small>excl. btw</small></span></div>
+    <div class="cart-ship" id="cart-ship" style="display:none"><span>Verzending</span><span id="cart-ship-val"></span></div>
+    <div class="cart-btw"><span>Te betalen</span><span><span id="cart-incl">€ 0,00</span> <small>incl. 21% btw</small></span></div>
+    <div class="lever-keuze" id="lever-keuze">
+      <button class="lk sel" data-lk="leveren">Leveren · BE/NL</button>
+      <button class="lk" data-lk="afhalen">Afhalen · gratis</button>
+    </div>
+    <button class="btn btn-primary" id="cart-pay">🔒 Nu betalen</button>
+    <p class="cart-note" id="cart-pay-note" style="display:none;color:var(--orange-deep)"></p>
+    <button class="btn btn-ghost" id="cart-invoice">Bestellen op factuur →</button>
+    <p class="cart-note">Nu betalen met kaart of Bancontact (levering in België &amp; Nederland). Naar een ander land, of liever achteraf via factuur? Kies "Bestellen op factuur".</p>
   </div>
 </div>
 
@@ -318,7 +340,7 @@ footer a:hover{color:#fff}
         <div id="o-lever-kost" style="display:none;background:var(--orange-soft);border:1.5px solid var(--orange);border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.65">
           <b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten — België &amp; Nederland</b><br>
           <b>Gratis vanaf € 250.</b> Daaronder € 10 (excl. btw).<br>
-          <span style="color:var(--muted)">Voor zware of grote zendingen bevestigen we de juiste kost samen met je prijs en levertermijn. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>
+          <span style="color:var(--muted)">Andere landen (bv. Polen): verzendkost op aanvraag. Levering doorgaans binnen enkele werkdagen; is een artikel niet op voorraad, dan laten we je meteen de juiste levertermijn weten. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>
         </div>
         <p id="o-afhaal-info" style="background:#F0F4F9;border:1px solid var(--line);border-radius:10px;padding:12px 15px;font-size:13px;line-height:1.65;margin:0"><b style="font-family:'Sora',sans-serif;font-size:13px">Gratis afhalen — geen leveringskosten</b><br><span style="color:var(--muted)">Klinkaardstraat 210 Unit C001, 2950 Kapellen. We laten je weten zodra je bestelling klaarstaat.</span></p>
         <label style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;display:grid;gap:5px">Opmerkingen<textarea name="opmerking" rows="2" style="padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;resize:vertical"></textarea></label>
@@ -375,6 +397,7 @@ const BATCH = 48;                      // producten per lading
 
 // ================= state =================
 let q = "", brand = "", cat = "", shown = BATCH;
+let leverKeuze = 'leveren';   // keuze bij 'Nu betalen': 'leveren' of 'afhalen'
 const grid = document.getElementById('grid');
 const byId = {}; PRODUCTS.forEach(p=>byId[p.id]=p);
 // kleurvarianten-index: zelfde naam, andere (kleur)
@@ -635,9 +658,20 @@ function renderCart(){
       <button class="rm" data-rm="${id}" aria-label="Verwijderen">🗑</button></div>`;
   }).join('');
   box.querySelectorAll('[data-mid]').forEach(img=>img.onclick=()=>openModal(byId[img.dataset.mid]));
-  let total=0, opAanvraag=false;
-  ids.forEach(id=>{const p=byId[id]; if(p.show&&p.price!=null) total+=stuksprijs(p,cart[id])*cart[id]; else opAanvraag=true;});
+  let total=0, opAanvraag=false, gratisDoorProduct=false;
+  ids.forEach(id=>{const p=byId[id]; if(p.show&&p.price!=null){ total+=stuksprijs(p,cart[id])*cart[id]; if(p.gratisLeveringVanaf&&cart[id]>=p.gratisLeveringVanaf) gratisDoorProduct=true; } else opAanvraag=true;});
   document.getElementById('cart-total').innerHTML=euro(total)+' <small>excl. btw'+(opAanvraag?' · + artikelen op aanvraag':'')+'</small>';
+  // verzending (spiegelt de serverberekening) + btw + te betalen
+  const verzendExcl=(leverKeuze==='afhalen')?0:((gratisDoorProduct||total>=250)?0:10);
+  const shipRow=document.getElementById('cart-ship'), shipVal=document.getElementById('cart-ship-val');
+  if(leverKeuze==='leveren'&&ids.length){shipRow.style.display='flex';shipVal.textContent=verzendExcl===0?'Gratis':euro(verzendExcl)+' excl. btw';}
+  else shipRow.style.display='none';
+  document.getElementById('cart-incl').textContent=euro((total+verzendExcl)*1.21);
+  // "Nu betalen" uit bij leeg mandje of op-aanvraag-artikelen
+  const payBtn=document.getElementById('cart-pay'), payNote=document.getElementById('cart-pay-note');
+  if(!ids.length){payBtn.disabled=true;payNote.style.display='none';}
+  else if(opAanvraag){payBtn.disabled=true;payNote.style.display='block';payNote.textContent='Je mandje bevat een artikel "op aanvraag" — reken dat af via "Bestellen op factuur".';}
+  else{payBtn.disabled=false;payNote.style.display='none';}
   box.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const[id,d]=b.dataset.q.split('|');addCart(id,parseInt(d));});
   box.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{delete cart[b.dataset.rm];store.set(cart);renderCart();});
 }
@@ -650,7 +684,7 @@ document.getElementById('cart-close').onclick=()=>document.getElementById('cart-
 
 // ================= bestelformulier =================
 const obg=document.getElementById('order-bg');
-document.getElementById('cart-send').onclick=()=>{
+document.getElementById('cart-invoice').onclick=()=>{
   if(!Object.keys(cart).length){return;}
   // gratis levering door productregel (bv. duoclips vanaf 3 stuks)?
   let gratisDoorProduct=false;
@@ -662,6 +696,46 @@ document.getElementById('cart-send').onclick=()=>{
   document.getElementById('cart-drawer').classList.remove('open');
   obg.classList.add('open');
 };
+// ---------- leveren/afhalen-keuze bij 'Nu betalen' ----------
+document.querySelectorAll('#lever-keuze .lk').forEach(b=>b.onclick=()=>{
+  leverKeuze=b.dataset.lk;
+  document.querySelectorAll('#lever-keuze .lk').forEach(x=>x.classList.toggle('sel', x===b));
+  renderCart();
+});
+// ---------- Nu betalen via Stripe ----------
+document.getElementById('cart-pay').onclick=async()=>{
+  const ids=Object.keys(cart); if(!ids.length) return;
+  if(ids.some(id=>{const p=byId[id];return !(p.show&&p.price!=null);})) return;
+  const btn=document.getElementById('cart-pay'), orig=btn.innerHTML, note=document.getElementById('cart-pay-note');
+  btn.disabled=true; btn.innerHTML='Even geduld…'; note.style.display='none';
+  try{
+    const r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({items:ids.map(id=>({id,qty:cart[id]})), levering:leverKeuze})});
+    const j=await r.json();
+    if(j.url){ location.href=j.url; return; }
+    throw new Error(j.error||'fout');
+  }catch(err){
+    btn.disabled=false; btn.innerHTML=orig; note.style.display='block';
+    note.textContent = err.message==='prijzen_onbeschikbaar'
+      ? 'Online betalen lukt even niet — reken gerust af via "Bestellen op factuur".'
+      : 'Er ging iets mis met de betaling. Probeer opnieuw, of gebruik "Bestellen op factuur".';
+  }
+};
+// ---------- resultaat tonen na terugkeer van Stripe ----------
+(function(){
+  const st=new URLSearchParams(location.search).get('betaald'); if(!st) return;
+  const banner=document.createElement('div');
+  banner.className='paybanner '+(st==='ok'?'ok':'info');
+  banner.innerHTML=(st==='ok'
+    ? '✓ Bedankt! Je betaling is gelukt — je krijgt je factuur binnen 1 werkdag.'
+    : 'Betaling geannuleerd — je mandje bleef bewaard.')+' <button aria-label="Sluiten">Sluiten</button>';
+  document.body.appendChild(banner);
+  banner.querySelector('button').onclick=()=>banner.classList.remove('show');
+  requestAnimationFrame(()=>banner.classList.add('show'));
+  if(st==='ok'){ cart={}; try{store.set(cart);}catch(e){} }
+  history.replaceState(null,'',location.pathname);
+  setTimeout(()=>banner.classList.remove('show'), 9000);
+})();
 document.getElementById('o-close').onclick=()=>obg.classList.remove('open');
 obg.addEventListener('click',e=>{if(e.target===obg)obg.classList.remove('open')});
 document.querySelectorAll('input[name=levering]').forEach(r=>r.onchange=()=>{
@@ -674,7 +748,7 @@ document.querySelectorAll('input[name=levering]').forEach(r=>r.onchange=()=>{
     if(kostBox.dataset.gratis==='1'){
       kostBox.innerHTML=`<b style="font-family:'Sora',sans-serif;font-size:13px;color:#2E7D32">✓ Gratis levering</b><br><span style="color:var(--muted)">Je bestelling komt in aanmerking voor gratis levering.</span>`;
     } else {
-      kostBox.innerHTML=`<b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten — België &amp; Nederland</b><br><b>Gratis vanaf € 250.</b> Daaronder € 10 (excl. btw).<br><span style="color:var(--muted)">Voor zware of grote zendingen bevestigen we de juiste kost samen met je prijs en levertermijn. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>`;
+      kostBox.innerHTML=`<b style="font-family:'Sora',sans-serif;font-size:13px">Leveringskosten — België &amp; Nederland</b><br><b>Gratis vanaf € 250.</b> Daaronder € 10 (excl. btw).<br><span style="color:var(--muted)">Andere landen (bv. Polen): verzendkost op aanvraag. Levering doorgaans binnen enkele werkdagen; niet op voorraad? Dan laten we je meteen de juiste levertermijn weten. <a href="levering-klachten.html" target="_blank" style="color:var(--orange-deep)">Volledig leveringsbeleid →</a></span>`;
     }
   } else kostBox.style.display='none';
 });

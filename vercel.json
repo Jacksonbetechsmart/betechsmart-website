@@ -1,19 +1,7 @@
 {
-  "redirects": [
-    { "source": "/category/all-products", "destination": "/webshop.html", "permanent": true },
-    { "source": "/category/:pad*", "destination": "/webshop.html", "permanent": true },
-    { "source": "/product-page/:pad*", "destination": "/webshop.html", "permanent": true },
-    { "source": "/waarom-knx", "destination": "/#waarom", "permanent": true },
-    { "source": "/copy-of-knx-voordelen", "destination": "/#waarom", "permanent": true },
-    { "source": "/diy-zelfbouw", "destination": "/#werkwijze", "permanent": true },
-    { "source": "/projectstappen", "destination": "/#werkwijze", "permanent": true },
-    { "source": "/pakketten-en-prijzen", "destination": "/#pakketten", "permanent": true },
-    { "source": "/comfortclick", "destination": "/comfortclick.html", "permanent": true },
-    { "source": "/blank-2", "destination": "/webshop.html", "permanent": true },
-    { "source": "/contact", "destination": "/#contact", "permanent": true },
-    { "source": "/faq", "destination": "/#faq", "permanent": true },
-    { "source": "/privacy", "destination": "/", "permanent": false },
-    { "source": "/copy-of-privacy", "destination": "/", "permanent": false },
-    { "source": "/copy-of-privacy-1", "destination": "/", "permanent": false }
-  ]
+  "functions": {
+    "api/checkout.js": {
+      "includeFiles": "*-producten.js"
+    }
+  }
 }
