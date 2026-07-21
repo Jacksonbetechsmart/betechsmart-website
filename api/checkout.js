@@ -92,7 +92,7 @@ module.exports = async (req, res) => {
     if (levering === 'leveren') {
       params.append('shipping_address_collection[allowed_countries][0]', 'BE');
       params.append('shipping_address_collection[allowed_countries][1]', 'NL');
-      const gratis = gratisDoorProduct || subtotaalExcl >= 250;
+      const gratis = gratisDoorProduct || subtotaalExcl >= 50;
       const verzendCenten = gratis ? 0 : Math.round(10 * 1.21 * 100); // €10 excl. btw -> incl.
       params.append('shipping_options[0][shipping_rate_data][type]', 'fixed_amount');
       params.append('shipping_options[0][shipping_rate_data][display_name]', gratis ? 'Gratis levering (BE/NL)' : 'Levering (BE/NL)');
