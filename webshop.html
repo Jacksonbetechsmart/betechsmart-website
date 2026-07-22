@@ -451,8 +451,9 @@ function filtered(){
     if(brand && p.brand!==brand) return false;
     if(cat && p.cat!==cat) return false;
     if(words.length){
-      const hay = (p.name+' '+p.short+' '+p.id+' '+p.brand).toLowerCase();
-      if(!words.every(w=>hay.includes(w))) return false;
+    const hay = (p.name+' '+p.short+' '+p.id+' '+p.brand).toLowerCase();
+const haySquashed = hay.replace(/\s+/g,'');
+if(!words.every(w=>hay.includes(w) || haySquashed.includes(w))) return false; 
     }
     return true;
   });
