@@ -3,5 +3,12 @@
     "api/checkout.js": {
       "includeFiles": "*-producten.js"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/product-page/(.*)",
+      "destination": "/webshop.html",
+      "permanent": true
+    }
+  ]
 }
