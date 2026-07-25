@@ -185,6 +185,13 @@ footer a:hover{color:#fff}
 .cdot:hover{transform:scale(1.2)}
 .cdot.sel{outline:2.5px solid var(--orange);outline-offset:1.5px}
 
+/* betaalmethode-badges */
+.pay-icons{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.pay-badge{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.03em;padding:4px 9px;border-radius:6px;border:1.4px solid var(--line);background:#fff;color:var(--muted)}
+.pay-badge.visa{color:#1A1F71;border-color:#1A1F71}
+.pay-badge.mc{color:#EB001B;border-color:#EB001B}
+.pay-badge.bcmc{color:#005AA0;border-color:#005AA0}
+
 @media (max-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:480px){.grid{grid-template-columns:1fr}}
@@ -217,7 +224,7 @@ footer a:hover{color:#fff}
     <button class="btn btn-primary" style="background:#8A5A00" id="a-disc">Korting % op filterresultaat</button>
     <button class="btn btn-primary" style="background:#2E7D32" id="a-download">⬇ Download products.js</button>
     <button class="btn btn-primary" style="background:#3A4152" id="a-exit">Sluit admin</button>
-    <span class="note">Wijzigingen zijn pas live nadat je het gedownloade products.js naar GitHub uploadt.</span>
+    <span class="note">Wijzigingen zijn pas live nadat je het gedownloede products.js naar GitHub uploadt.</span>
   </div>
 </div>
 
@@ -233,6 +240,7 @@ footer a:hover{color:#fff}
       <span><i></i>Technische ondersteuning inbegrepen</span>
       <span><i></i>Advies bij productkeuze</span>
     </div>
+    <button class="btn btn-primary" id="pakket-open" style="margin-top:6px">🧰 Zelfbouw starterspakket bekijken</button>
   </div>
 </div>
 
@@ -249,6 +257,12 @@ footer a:hover{color:#fff}
 
 <div class="gridwrap">
   <div class="wrap">
+    <div class="builder" id="pakket">
+      <button class="close" id="pakket-close" aria-label="Sluiten">✕</button>
+      <h3>Zelfbouw starterspakket</h3>
+      <p class="sub">Voeding, MAXinBOX-actoren, dimactoren en een soft-knop op één rij — met prijs per stuk en pakkettotaal. Deze artikelen blijven ook gewoon op hun eigen plaats in de volledige lijst staan.</p>
+      <div class="b-result" id="pakket-result"></div>
+    </div>
     <div class="builder" id="builder">
       <button class="close" id="b-close" aria-label="Sluiten">✕</button>
       <h3 id="b-title">Stel je KNX-drukknop samen</h3>
@@ -297,6 +311,11 @@ footer a:hover{color:#fff}
       <button class="lk" data-lk="afhalen">Afhalen · gratis</button>
     </div>
     <button class="btn btn-primary" id="cart-pay">🔒 Nu betalen</button>
+    <div class="pay-icons" aria-hidden="true">
+      <span class="pay-badge visa">VISA</span>
+      <span class="pay-badge mc">Mastercard</span>
+      <span class="pay-badge bcmc">Bancontact</span>
+    </div>
     <p class="cart-note" id="cart-pay-note" style="display:none;color:var(--orange-deep)"></p>
     <button class="btn btn-ghost" id="cart-invoice">Bestellen op factuur →</button>
     <p class="cart-note">Nu betalen met kaart of Bancontact (levering in België &amp; Nederland). Naar een ander land, of liever achteraf via factuur? Kies "Bestellen op factuur".</p>
@@ -889,6 +908,43 @@ document.querySelectorAll('[data-type]').forEach(b=>b.onclick=()=>{bType=b.datas
 document.querySelectorAll('[data-stopc]').forEach(b=>b.onclick=()=>{bStopc=b.dataset.stopc;renderBuilder()});
 document.querySelectorAll('[data-kleur]').forEach(b=>b.onclick=()=>{bKleur=b.dataset.kleur;renderBuilder()});
 document.getElementById('b-close').onclick=()=>document.getElementById('builder').classList.remove('open');
+
+// ================= zelfbouw starterspakket =================
+// Zoekt de artikelen op basis van naam/id — ze blijven gewoon ook op hun normale plaats in de volledige lijst staan.
+const PAKKET_MATCHERS=[
+  {label:'Voeding KUP320', test:p=>/kup\s*320/i.test(p.name)},
+  {label:'MAXinBOX 16', test:p=>/maxinbox\s*16\b/i.test(p.name)},
+  {label:'MAXinBOX 20 (met kamgeleider)', test:p=>/maxinbox\s*20\b/i.test(p.name) && /kamgeleider/i.test(p.name)},
+  {label:'Dimactor DX2', test:p=>/\bdx\s*2\b/i.test(p.name)},
+  {label:'Dimactor DX4', test:p=>/\bdx\s*4\b/i.test(p.name)},
+  {label:'Soft-knop ZS55', test:p=>p.id==='ZEZS55SOFT'},
+  {label:'Soft-knop ZS70', test:p=>p.id==='ZEZS70SOFT'},
+  {label:'Stopcontact-insert (penaarde)', test:p=>p.id==='ZE8300005'}
+];
+function renderPakket(){
+  const out=document.getElementById('pakket-result');
+  const gevonden=[]; let total=0, alleZichtbaar=true;
+  const rows=PAKKET_MATCHERS.map(m=>{
+    const p=PRODUCTS.find(m.test);
+    if(!p) return `<div class="b-line"><span>${m.label}: nog niet gevonden in de productdata</span></div>`;
+    gevonden.push(p.id);
+    if(p.show && p.price!=null) total+=p.price; else alleZichtbaar=false;
+    const prijsHtml=(p.show&&p.price!=null)?euro(p.price):'op aanvraag';
+    return `<div class="b-line">${p.img?`<img src="${p.img}" alt="" data-mid="${p.id}" style="cursor:zoom-in" title="Klik voor grote foto">`:''}<span>${p.name}</span><span class="lp">${prijsHtml}</span></div>`;
+  });
+  out.innerHTML = rows.join('')+
+    `<div class="b-total">${(gevonden.length && alleZichtbaar)?`Pakket-totaal: ${euro(total)} <small>excl. · ${euro(total*1.21)} incl. btw</small>`:'<span style="font-size:12.5px;color:#9AA3B5">Prijs pas volledig zodra alle artikelen zichtbaar zijn</span>'}
+     <button class="btn btn-primary" id="pakket-add"${gevonden.length?'':' disabled'}>＋ Volledig pakket in mandje</button></div>`;
+  out.querySelectorAll('[data-mid]').forEach(img=>img.onclick=()=>openModal(byId[img.dataset.mid]));
+  const addBtn=document.getElementById('pakket-add');
+  if(addBtn) addBtn.onclick=()=>{ gevonden.forEach(id=>addCart(id,1)); };
+}
+document.getElementById('pakket-open').onclick=()=>{
+  document.getElementById('pakket').classList.add('open');
+  renderPakket();
+  document.getElementById('pakket').scrollIntoView({behavior:'smooth',block:'start'});
+};
+document.getElementById('pakket-close').onclick=()=>document.getElementById('pakket').classList.remove('open');
 
 // ================= admin =================
 document.getElementById('adminlink').onclick=()=>{
