@@ -941,20 +941,22 @@ const PAKKET_ITEMS=[
     const p=PRODUCTS.find(p=>/\bdx\s*4\b/i.test(p.name));
     return p?[p.id]:[];
   }},
-  {label:'ZS55 soft-knop (dubbele knop + 1M kader)', ids:()=>{
+  {label:'ZS55 soft-knop (dubbele knop + 1M kader)', heeftKleur:true, ids:(kleur='wit')=>{
     const base=byId['ZEZS55SOFT'];
-    const toets=PRODUCTS.find(p=>p.brand==='Zennio' && p.name.includes('ZS55') && /Dubbele toets \(neerwaarts\)/i.test(p.name) && /voor knx/i.test(p.name) && !/icoon/i.test(p.name) && !/custom/i.test(p.name) && kleurIn(p.name,'wit'));
-    const raam=PRODUCTS.find(p=>p.brand==='Zennio'&&p.name.includes('ZS55')&&/afdekraam 1m/i.test(p.name)&&!/custom/i.test(p.name)&&kleurIn(p.name,'wit'));
+    const toets=PRODUCTS.find(p=>p.brand==='Zennio' && p.name.includes('ZS55') && /Dubbele toets \(neerwaarts\)/i.test(p.name) && /voor knx/i.test(p.name) && !/icoon/i.test(p.name) && !/custom/i.test(p.name) && kleurIn(p.name,kleur));
+    const raam=PRODUCTS.find(p=>p.brand==='Zennio'&&p.name.includes('ZS55')&&/afdekraam 1m/i.test(p.name)&&!/custom/i.test(p.name)&&kleurIn(p.name,kleur));
     return [base,toets,raam].filter(Boolean).map(p=>p.id);
   }},
-  {label:'ZS55 stopcontact (penaarde, insert + binnenplaatje + 1M kader)', ids:()=>{
+  {label:'ZS55 stopcontact (penaarde, insert + binnenplaatje + 1M kader)', heeftKleur:true, ids:(kleur='wit')=>{
     const insert=byId['ZE8300005'];
     const plaat=PRODUCTS.find(p=>p.brand==='Zennio'&&p.name.includes('ZS55')&&/centraalplaat voor penaarde stopcontact/i.test(p.name)&&!/custom/i.test(p.name));
-    const raam=PRODUCTS.find(p=>p.brand==='Zennio'&&p.name.includes('ZS55')&&/afdekraam 1m/i.test(p.name)&&!/custom/i.test(p.name)&&kleurIn(p.name,'wit'));
+    const raam=PRODUCTS.find(p=>p.brand==='Zennio'&&p.name.includes('ZS55')&&/afdekraam 1m/i.test(p.name)&&!/custom/i.test(p.name)&&kleurIn(p.name,kleur));
     return [insert,plaat,raam].filter(Boolean).map(p=>p.id);
   }}
 ];
 let pakketQty = PAKKET_ITEMS.map(()=>0);
+let pakketKleur = PAKKET_ITEMS.map(()=>'wit');
+const PAKKET_KLEUREN=['wit','antraciet','champagne','mokka','zilver'];
 function pakketUnitprijs(ids){
   const prods = ids.map(id=>byId[id]).filter(Boolean);
   if(!prods.length || prods.some(p=>!(p.show && p.price!=null))) return null;
@@ -973,8 +975,8 @@ function renderPakket(){
   const out=document.getElementById('pakket-result');
   let grandTotal=0, alleOk=true;
   const rows=PAKKET_ITEMS.map((item,i)=>{
-    const ids=item.ids();
-    if(!ids.length){ alleOk=false; return `<div class="b-line"><span>${item.label}: nog niet gevonden in de productdata</span></div>`; }
+    const ids=item.heeftKleur ? item.ids(pakketKleur[i]) : item.ids();
+    if(!ids.length){ alleOk=false; return `<div class="b-line"><span>${item.label}: nog niet gevonden in de productdata${item.heeftKleur?' (kleur: '+pakketKleur[i]+')':''}</span></div>`; }
     const prods=ids.map(id=>byId[id]).filter(Boolean);
     const unit=pakketUnitprijs(ids);
     const qty=pakketQty[i]||0;
@@ -983,7 +985,8 @@ function renderPakket(){
     const img=fotoSrc?`<img src="${fotoSrc}" alt="" data-mid="${prods[0].id}" style="cursor:zoom-in" title="Klik voor grote foto">`:'';
     const prijsHtml = unit!=null ? euro(unit)+' /st' : 'op aanvraag';
     const qtyHtml = `<span class="qtybox" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)"><button type="button" data-pstep="${i}|-1" style="background:transparent;color:#fff">−</button><input class="p-qty" data-pidx="${i}" type="number" min="0" value="${qty}" style="background:transparent;color:#fff;width:34px" aria-label="Aantal"><button type="button" data-pstep="${i}|1" style="background:transparent;color:#fff">＋</button></span>`;
-    return `<div class="b-line">${img}<span>${item.label}</span>${qtyHtml}<span class="lp">${prijsHtml}</span></div>`;
+    const kleurRow = item.heeftKleur ? `<div class="cdots" style="margin:2px 0 4px 50px">${PAKKET_KLEUREN.map(k=>`<span class="cdot${pakketKleur[i]===k?' sel':''}" style="background:${KLEUR_HEX[k]}" data-pkleur="${i}|${k}" title="${k.charAt(0).toUpperCase()+k.slice(1)}"></span>`).join('')}</div>` : '';
+    return `<div class="b-line" style="flex-wrap:wrap">${img}<span style="flex:1">${item.label}</span>${qtyHtml}<span class="lp">${prijsHtml}</span></div>${kleurRow}`;
   });
   out.innerHTML = rows.join('')+
     `<div class="b-total">${alleOk?`Pakket-totaal: ${euro(grandTotal)} <small>excl. · ${euro(grandTotal*1.21)} incl. btw</small>`:'<span style="font-size:12.5px;color:#9AA3B5">Totaal pas volledig zodra alle artikelen een prijs hebben</span>'}
@@ -999,10 +1002,16 @@ function renderPakket(){
     pakketQty[idx]=Math.max(0,parseInt(inp.value,10)||0);
     renderPakket();
   });
+  out.querySelectorAll('[data-pkleur]').forEach(d=>d.onclick=()=>{
+    const [idx,k]=d.dataset.pkleur.split('|');
+    pakketKleur[idx]=k;
+    renderPakket();
+  });
   const addBtn=document.getElementById('pakket-add');
   if(addBtn) addBtn.onclick=()=>{
     PAKKET_ITEMS.forEach((item,i)=>{
-      const ids=item.ids(); const qty=pakketQty[i]||0;
+      const ids=item.heeftKleur ? item.ids(pakketKleur[i]) : item.ids();
+      const qty=pakketQty[i]||0;
       if(!ids.length || !qty) return;
       ids.forEach(id=>addCart(id,qty));
     });
