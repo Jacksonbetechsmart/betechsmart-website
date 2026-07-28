@@ -765,7 +765,24 @@ const sid=new URLSearchParams(location.search).get('session_id');
   document.body.appendChild(banner);
   banner.querySelector('button').onclick=()=>banner.classList.remove('show');
   requestAnimationFrame(()=>banner.classList.add('show'));
- if(st==='ok'){ cart={}; try{store.set(cart);}catch(e){} if(sid){ fetch('/api/bestel-mail?session_id='+encodeURIComponent(sid)).catch(()=>{}); } }
+if(st==='ok'){ cart={}; try{store.set(cart);}catch(e){}
+  if(sid){
+    fetch('/api/bestel-mail?session_id='+encodeURIComponent(sid))
+      .then(r=>r.json())
+      .then(d=>{
+        if(!d || !d.ok || !d.mailText) return;
+        return fetch('https://api.web3forms.com/submit',{method:'POST',
+          headers:{'Content-Type':'application/json',Accept:'application/json'},
+          body:JSON.stringify({
+            access_key:WEB3FORMS_KEY,
+            subject:'Nieuwe bestelling '+d.bestelnummer,
+            from_name:'BeTechSmart Webshop',
+            replyto:d.replyto||'',
+            message:d.mailText
+          })});
+      }).catch(()=>{});
+  }
+}
   history.replaceState(null,'',location.pathname);
   setTimeout(()=>banner.classList.remove('show'), 9000);
 })();
