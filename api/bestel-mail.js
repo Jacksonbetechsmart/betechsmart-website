@@ -100,9 +100,13 @@ TOTAAL BETAALD (incl. btw, zoals Stripe): ${euro(totaalBetaald)}
 `;
 
    // 3. Mail versturen via Web3Forms
-    const mailResp = await fetch('https://api.web3forms.com/submit', {
+  const mailResp = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+      },
       body: JSON.stringify({
         access_key: '9a7809dd-5ff2-452d-a363-78a1351357bc',
         subject: 'Nieuwe bestelling ' + bestelnummer,
@@ -112,12 +116,15 @@ TOTAAL BETAALD (incl. btw, zoals Stripe): ${euro(totaalBetaald)}
         message: tekst
       })
     });
-    const mailJson = await mailResp.json();
+    const mailRespTekst = await mailResp.text();
+    let mailJson;
+    try { mailJson = JSON.parse(mailRespTekst); }
+    catch (e) { mailJson = { success: false, message: 'Geen geldig antwoord: ' + mailRespTekst.slice(0, 200) }; }
     if (!mailJson.success) {
-      console.error('Web3Forms weigerde de bestel-mail:', mailJson.message || mailJson);
+      console.error('Web3Forms weigerde de bestel-mail:', mailJson.message);
     }
 
-    res.status(200).json({ ok: true, mailVerstuurd: !!mailJson.success });
+    res.status(200).json({ ok: true, mailVerstuurd: !!mailJson.success, mailInfo: mailJson.message || null });
   } catch (e) {
     res.status(500).json({ error: 'Serverfout: ' + (e && e.message ? e.message : String(e)) });
   }
