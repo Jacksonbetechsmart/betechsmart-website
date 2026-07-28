@@ -755,7 +755,8 @@ document.getElementById('cart-pay').onclick=async()=>{
 };
 // ---------- resultaat tonen na terugkeer van Stripe ----------
 (function(){
-  const st=new URLSearchParams(location.search).get('betaald'); if(!st) return;
+ const st=new URLSearchParams(location.search).get('betaald'); if(!st) return;
+const sid=new URLSearchParams(location.search).get('session_id');
   const banner=document.createElement('div');
   banner.className='paybanner '+(st==='ok'?'ok':'info');
   banner.innerHTML=(st==='ok'
@@ -764,7 +765,7 @@ document.getElementById('cart-pay').onclick=async()=>{
   document.body.appendChild(banner);
   banner.querySelector('button').onclick=()=>banner.classList.remove('show');
   requestAnimationFrame(()=>banner.classList.add('show'));
-  if(st==='ok'){ cart={}; try{store.set(cart);}catch(e){} }
+ if(st==='ok'){ cart={}; try{store.set(cart);}catch(e){} if(sid){ fetch('/api/bestel-mail?session_id='+encodeURIComponent(sid)).catch(()=>{}); } }
   history.replaceState(null,'',location.pathname);
   setTimeout(()=>banner.classList.remove('show'), 9000);
 })();
