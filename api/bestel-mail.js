@@ -99,20 +99,25 @@ Totaal netto excl. btw (met korting): ${euro(totaalNettoExcl)}
 TOTAAL BETAALD (incl. btw, zoals Stripe): ${euro(totaalBetaald)}
 `;
 
-    // 3. Mail versturen via Web3Forms
-    await fetch('https://api.web3forms.com/submit', {
+   // 3. Mail versturen via Web3Forms
+    const mailResp = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
-        access_key: '9a7809dd-5ff2-452d-a363-78a1351357bc', // TODO: vervangen door je echte Web3Forms-sleutel
+        access_key: '9a7809dd-5ff2-452d-a363-78a1351357bc',
         subject: 'Nieuwe bestelling ' + bestelnummer,
         from_name: 'BeTechSmart Webshop',
-        email: 'info@betechsmart.be',
+        name: klant.name || 'Webshopklant',
+        replyto: klant.email || '',
         message: tekst
       })
     });
+    const mailJson = await mailResp.json();
+    if (!mailJson.success) {
+      console.error('Web3Forms weigerde de bestel-mail:', mailJson.message || mailJson);
+    }
 
-    res.status(200).json({ ok: true });
+    res.status(200).json({ ok: true, mailVerstuurd: !!mailJson.success });
   } catch (e) {
     res.status(500).json({ error: 'Serverfout: ' + (e && e.message ? e.message : String(e)) });
   }
