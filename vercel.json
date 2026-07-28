@@ -2,6 +2,9 @@
   "functions": {
     "api/checkout.js": {
       "includeFiles": "*-producten.js"
+    },
+    "api/bestel-mail.js": {
+      "includeFiles": "*-producten.js"
     }
   },
   "redirects": [
