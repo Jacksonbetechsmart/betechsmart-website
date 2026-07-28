@@ -39,6 +39,11 @@ function stuksprijs(p, aantal) {
   return prijs;
 }
 
+// kort, uniek bestelnummer — bv. BTS-M8X2K1
+function maakBestelnummer() {
+  return 'BTS-' + Date.now().toString(36).toUpperCase();
+}
+
 async function leesBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
   if (typeof req.body === 'string' && req.body) { try { return JSON.parse(req.body); } catch (e) { return {}; } }
@@ -73,6 +78,7 @@ module.exports = async (req, res) => {
     params.append('tax_id_collection[enabled]', 'true');
 
     let subtotaalExcl = 0, gratisDoorProduct = false, idx = 0;
+    const itemsCompact = []; // voor metadata: welke producten/aantallen zaten in het mandje
     for (const it of items) {
       const p = map[String(it.id)];
       const aantal = Math.max(1, Math.min(999, parseInt(it.qty, 10) || 0));
@@ -86,25 +92,30 @@ module.exports = async (req, res) => {
       params.append(`line_items[${idx}][price_data][product_data][name]`, p.name);
       params.append(`line_items[${idx}][price_data][unit_amount]`, String(centenIncl));
       params.append(`line_items[${idx}][quantity]`, String(aantal));
+      itemsCompact.push(it.id + ':' + aantal);
       idx++;
     }
 
+    let verzendGratis = false;
     if (levering === 'leveren') {
       params.append('shipping_address_collection[allowed_countries][0]', 'BE');
       params.append('shipping_address_collection[allowed_countries][1]', 'NL');
-      const gratis = gratisDoorProduct || subtotaalExcl >= 50;
-      const verzendCenten = gratis ? 0 : Math.round(10 * 1.21 * 100); // €10 excl. btw -> incl.
+      verzendGratis = gratisDoorProduct || subtotaalExcl >= 250;
+      const verzendCenten = verzendGratis ? 0 : Math.round(10 * 1.21 * 100); // €10 excl. btw -> incl.
       params.append('shipping_options[0][shipping_rate_data][type]', 'fixed_amount');
-      params.append('shipping_options[0][shipping_rate_data][display_name]', gratis ? 'Gratis levering (BE/NL)' : 'Levering (BE/NL)');
+      params.append('shipping_options[0][shipping_rate_data][display_name]', verzendGratis ? 'Gratis levering (BE/NL)' : 'Levering (BE/NL)');
       params.append('shipping_options[0][shipping_rate_data][fixed_amount][amount]', String(verzendCenten));
       params.append('shipping_options[0][shipping_rate_data][fixed_amount][currency]', 'eur');
     }
 
+    const bestelnummer = maakBestelnummer();
     params.append('metadata[bron]', 'webshop');
     params.append('metadata[levering]', levering);
+    params.append('metadata[bestelnummer]', bestelnummer);
+    params.append('metadata[items]', itemsCompact.join(','));
 
     const origin = req.headers.origin || ('https://' + (req.headers.host || ''));
-    params.append('success_url', origin + '/webshop.html?betaald=ok');
+    params.append('success_url', origin + '/webshop.html?betaald=ok&bestelnummer=' + bestelnummer + '&session_id={CHECKOUT_SESSION_ID}');
     params.append('cancel_url', origin + '/webshop.html?betaald=geannuleerd');
 
     const r = await fetch('https://api.stripe.com/v1/checkout/sessions', {
