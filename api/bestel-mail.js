@@ -22,7 +22,7 @@ function laadProducten() {
   const alle = [].concat(win.VECOLUX_PRODUCTS || [], win.ZENNIO_PRODUCTS || [], win.EIGEN_PRODUCTS || []);
   PRIJSMAP = {};
   alle.forEach(p => {
-    PRIJSMAP[p.id] = { name: p.name, price: p.price, staffel: p.staffel || null };
+   PRIJSMAP[p.id] = { name: p.name, price: p.price, rrp: p.rrp || p.price, staffel: p.staffel || null };
   });
   return PRIJSMAP;
 }
@@ -61,7 +61,7 @@ module.exports = async (req, res) => {
       const aantal = parseInt(aantalStr, 10) || 0;
       const p = map[id];
       if (!p || !aantal) return;
-      const bruto = p.price;
+     const bruto = p.rrp;
       const netto = stuksprijs(p, aantal);
       const brutoTotaal = bruto * aantal;
       const nettoExclTotaal = netto * aantal;
